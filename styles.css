@@ -427,42 +427,50 @@ p {
 
 .thanks-slide {
   display: grid;
-  grid-template-columns: auto 1fr;
+  grid-template-columns: 520px 1fr;
   grid-template-rows: auto 1fr auto;
+  column-gap: 180px;
+  row-gap: 32px;
 }
 
-.thanks-title {
+.thanks-slide .thanks-title {
   position: relative;
   z-index: 1;
   grid-column: 2;
   justify-self: end;
+  align-self: start;
   text-align: right;
 }
 
-.team-grid {
+.thanks-slide .team-grid {
   position: relative;
   z-index: 1;
   grid-column: 1;
-  grid-row: 2 / 4;
-  align-self: end;
+  grid-row: 1 / 4;
+  align-self: center;
   display: grid;
   grid-template-columns: repeat(2, 200px);
-  gap: 42px 54px;
+  gap: 40px 56px;
 }
 
-.team-card {
+.thanks-slide .team-card {
   display: grid;
   gap: 10px;
 }
 
-.team-name {
+.thanks-slide .placeholder {
+  width: 200px;
+  height: 200px;
+}
+
+.thanks-slide .team-name {
   margin-top: 10px;
   font-size: 24px;
   font-weight: 500;
   line-height: 1.15;
 }
 
-.team-role {
+.thanks-slide .team-role {
   color: var(--ink-muted);
   font-size: 20px;
   line-height: 1.2;
