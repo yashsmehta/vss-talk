@@ -228,7 +228,7 @@ p {
   grid-template-rows: auto 1fr auto;
   padding-top: 88px;
   padding-bottom: 96px;
-  row-gap: 56px;
+  row-gap: 48px;
 }
 
 .takeaway-slide h1::after,
@@ -248,36 +248,60 @@ p {
   text-transform: uppercase;
 }
 
-.title-slide .eyebrow {
+/* ----- Title slide: header strip with eyebrow ----- */
+.title-slide .title-header {
   position: relative;
   z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 48px;
+}
+
+.title-slide .eyebrow {
   margin: 0;
   font-family: var(--font-sans);
   font-size: 18px;
   font-weight: 500;
-  letter-spacing: 0.22em;
+  letter-spacing: 0.24em;
   text-transform: uppercase;
   color: var(--ink-muted);
-  display: flex;
-  align-items: center;
-  gap: 24px;
-}
-
-.title-slide .eyebrow::after {
-  content: "";
-  flex: 0 0 56px;
-  height: 1px;
-  background: var(--orange);
+  white-space: nowrap;
 }
 
 .title-slide .eyebrow-sep {
+  display: inline-block;
+  margin: 0 12px;
   color: var(--orange);
   font-weight: 400;
+  transform: translateY(-1px);
 }
 
-.title-slide .title-h1 {
+/* ----- Title stage: spine + title + epigraph ----- */
+.title-slide .title-stage {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 1180px) 1fr;
+  align-items: center;
+  column-gap: 80px;
   align-self: center;
-  max-width: 100%;
+}
+
+.title-slide .title-spine {
+  position: absolute;
+  left: -42px;
+  top: 4px;
+  bottom: 4px;
+  width: 3px;
+  background: var(--orange);
+  opacity: 0.9;
+}
+
+/* ----- Title typography ----- */
+.title-slide .title-h1 {
+  position: relative;
+  z-index: 1;
   margin: 0;
   font-family: var(--font-display);
   font-size: 108px;
@@ -291,16 +315,133 @@ p {
   display: none;
 }
 
-.title-slide .title-line-2,
-.title-slide .title-line-3 {
+.title-slide .title-quiet {
   display: inline-block;
+  margin-top: 22px;
+  color: var(--ink-muted);
+  font-size: 64px;
+  font-style: italic;
+  font-weight: 300;
+  letter-spacing: -0.018em;
+  line-height: 1.1;
 }
 
+/* ----- Hero motif (right column of title stage) ----- */
+.title-slide .title-hero {
+  align-self: center;
+  justify-self: end;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  margin: 0;
+  padding-right: 8px;
+}
+
+.title-slide .hero-motif {
+  width: 348px;
+  height: 348px;
+  display: block;
+}
+
+.title-slide .hero-motif .hero-dots {
+  fill: var(--orange);
+}
+
+.title-slide .hero-caption {
+  margin: 0;
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  color: var(--ink-muted);
+}
+
+.title-slide .hero-num {
+  color: var(--ink);
+  font-weight: 500;
+}
+
+.title-slide .hero-sep {
+  color: var(--orange);
+  opacity: 0.7;
+}
+
+.title-slide .hero-axis {
+  margin-left: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 11px;
+  color: var(--ink-muted);
+}
+
+/* ----- Epigraph (right column) ----- */
+.title-slide .title-epigraph {
+  align-self: end;
+  display: grid;
+  gap: 22px;
+  justify-items: start;
+  max-width: 380px;
+  margin: 0;
+  padding-bottom: 4px;
+}
+
+.title-slide .epigraph-eyebrow {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+}
+
+.title-slide .epigraph-rule {
+  display: inline-block;
+  width: 28px;
+  height: 1px;
+  background: var(--orange);
+}
+
+.title-slide .epigraph-text {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 30px;
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.28;
+  letter-spacing: -0.005em;
+  color: var(--ink);
+}
+
+.title-slide .motif {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 4px;
+}
+
+.title-slide .motif-dot {
+  display: block;
+  border-radius: 50%;
+  background: var(--orange);
+}
+
+.title-slide .motif-dot-1 { width: 18px; height: 18px; opacity: 1.00; }
+.title-slide .motif-dot-2 { width: 12px; height: 12px; opacity: 0.55; }
+.title-slide .motif-dot-3 { width:  7px; height:  7px; opacity: 0.28; }
+
+/* ----- Footer meta ----- */
 .title-slide .title-meta {
   position: relative;
   z-index: 1;
   display: grid;
-  grid-template-columns: 1fr auto auto;
+  grid-template-columns: 1fr auto;
   align-items: end;
   gap: 96px;
   padding-top: 28px;
@@ -308,7 +449,7 @@ p {
 }
 
 .title-slide .author-block {
-  align-self: end;
+  align-self: start;
 }
 
 .title-slide .author-name {
@@ -330,13 +471,24 @@ p {
   color: var(--ink-muted);
 }
 
+.title-slide .jhu-mark {
+  display: block;
+  width: 168px;
+  height: auto;
+  margin-top: 14px;
+}
+
 .title-slide .dim {
   color: var(--orange);
 }
 
-.title-slide .venue-date {
-  margin: 0 0 6px;
+.title-slide .venue-block {
   align-self: end;
+  text-align: right;
+}
+
+.title-slide .venue-date {
+  margin: 0;
   font-family: var(--font-sans);
   font-size: 18px;
   font-weight: 500;
@@ -349,22 +501,28 @@ p {
   margin: 0;
   display: grid;
   gap: 8px;
-  justify-items: center;
+  justify-items: end;
   align-self: end;
 }
 
-.title-slide .qr img {
-  display: block;
-  width: 124px;
-  height: 124px;
-  mix-blend-mode: multiply;
-}
-
 .title-slide .qr figcaption {
+  order: -1;
   font-family: var(--font-mono);
   font-size: 12px;
   letter-spacing: 0.05em;
   color: var(--ink-muted);
+}
+
+.title-slide .qr img {
+  display: block;
+  width: 96px;
+  height: 96px;
+  mix-blend-mode: multiply;
+}
+
+/* Hide global footer strip on the title slide for a cleaner cover */
+body:has(.title-slide) #footer-strip {
+  display: none;
 }
 
 /* ======================================================================
