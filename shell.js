@@ -1,8 +1,11 @@
 const SLIDES = [
   '01-title',
-  '02-alignment',
-  '03-takeaway',
-  '04-thanks',
+  '02-imagenet',
+  '03-classification',
+  '04-pca-method',
+  '05-representations',
+  '06-takeaway',
+  '07-thanks',
 ];
 
 const stage = document.getElementById('stage');

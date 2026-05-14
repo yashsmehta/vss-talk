@@ -275,47 +275,66 @@ p {
   align-self: end;
 }
 
-.alignment-slide {
+.imagenet-slide,
+.classification-slide,
+.pca-method-slide,
+.representations-slide {
   display: grid;
   grid-template-rows: auto 1fr;
 }
 
-.alignment-figure {
-  position: relative;
+.imagenet-figure,
+.classification-figure,
+.pca-method-figure,
+.representations-figure {
   z-index: 1;
   align-self: center;
   justify-self: center;
-  width: 1000px;
-  height: 640px;
   margin-top: 38px;
 }
 
-.alignment-figure .placeholder {
-  position: absolute;
+.imagenet-figure {
+  width: 1180px;
 }
 
-.alignment-base {
-  inset: 0;
+.imagenet-figure img {
+  display: block;
+  width: 1180px;
+  height: auto;
 }
 
-.alignment-step-1 {
-  left: 382px;
-  bottom: 74px;
+.classification-figure {
+  width: 1220px;
 }
 
-.alignment-step-2 {
-  right: 120px;
-  bottom: 130px;
+.classification-figure img {
+  display: block;
+  width: 1220px;
+  height: auto;
 }
 
-.alignment-step-3 {
-  left: 180px;
-  top: 92px;
+.pca-method-figure {
+  width: 1280px;
 }
 
-.alignment-step-4 {
-  left: 332px;
-  top: 70px;
+.pca-method-figure svg {
+  display: block;
+  width: 1280px;
+  height: auto;
+}
+
+.pca-method-figure .step {
+  transform: none;
+}
+
+.representations-figure {
+  width: 1240px;
+}
+
+.representations-figure img {
+  display: block;
+  width: 1240px;
+  height: auto;
 }
 
 .takeaway-slide {
