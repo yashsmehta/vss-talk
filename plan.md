@@ -1,151 +1,180 @@
-# Plan: Visual overhaul v1 — projection-grade integration
+# Plan: Responsive figure containment — fix overflow on every slide
 
-Apply the revised `DESIGN.md` (projection principles, tighter rhythm, figure
-integration via `mix-blend-mode: multiply`, per-slide overrides in `styles.css`).
-Refine each slide for a conference-projection setting.
+Apply the *Responsive figure containment* pattern from DESIGN.md (newly added)
+to every slide. Today, fixed-pixel widths in `styles.css` cause figures to
+overflow the slide's safe content area (1640 × 827 px) and get clipped by
+`overflow: hidden`. The pc-scatter slide is the most affected (~273 px clipped
+at the bottom on every projection), but every figure-bearing slide is at risk
+at non-standard projector aspect ratios.
 
-Two sequential phases:
-
-1. **Phase A (serial, 1 worker):** rewrite `styles.css` to apply the new global
-   visual layer.
-2. **Phase B (parallel, 7 workers):** each worker takes 2 slides (last takes 1),
-   refines per-slide layout in `styles.css` (slide-class-scoped) and slide-module
-   markup.
+Single serial worker — this is a global, uniform refactor of `styles.css` and
+selected slide modules. Parallel workers would cause merge conflicts and
+inconsistent application of the pattern.
 
 Manager (Claude) verifies and merges per `~/.claude/skills/delegate/SKILL.md`.
 
 ---
 
-## Phase A — global styles overhaul (serial, 1 worker)
+## Goal
 
-### Subtask A1 — `styles.css`: apply DESIGN.md v2
-
-**Files touched:** `styles.css` only.
-
-**Required changes:**
-
-1. **Add the new spatial-rhythm tokens** to `:root`:
-   `--pad-top: 56px; --pad-side: 140px; --pad-bottom: 64px;
-    --title-rule-gap: 20px; --figure-gap: 24px;`
-2. **Replace `.slide` padding** to use the new tokens:
-   `padding: var(--pad-top) var(--pad-side) var(--pad-bottom);`
-3. **Replace `.slide > h1::after` margin-top** with `var(--title-rule-gap)`.
-4. **Add `isolation: isolate` to `.slide`** so blend modes don't leak to the
-   footer or sibling slides during transitions.
-5. **Add the global figure-blending rule:**
-   ```css
-   .slide figure img,
-   .slide figure svg,
-   .slide figure { mix-blend-mode: multiply; }
-   ```
-   Captions inside `<figure>` must NOT blend — exempt them:
-   ```css
-   .slide figure figcaption { mix-blend-mode: normal; }
-   ```
-6. **Update existing per-slide figure rules** (slides 1–5) to use the new
-   `--figure-gap` token in place of hardcoded `margin-top: 38px`.
-7. **Add per-slide layout rules for slides 06–13** — for each new slide
-   (`nsd-schematic`, `nsd-result`, `things-schematic`, `things-result`,
-   `things-model-comparison`, `pc-scatter`, `takeaway` already styled,
-   `thanks` already styled), add:
-   ```css
-   .<name>-slide {
-     display: grid;
-     grid-template-rows: auto 1fr;
-   }
-   .<name>-slide .<name>-figure {
-     align-self: center;
-     justify-self: center;
-     margin-top: var(--figure-gap);
-   }
-   .<name>-slide .<name>-figure img {
-     display: block;
-     width: 100%;
-     height: auto;
-   }
-   ```
-   Pick a width per asset by aspect ratio (1000–1320 px range; see DESIGN.md
-   §"Picking figure widths per slide"). For now use **1180px** as a default for
-   schematic-style PNGs and **1240px** for results SVGs; per-slide workers in
-   Phase B may refine.
-8. **Do not change** the title-slide, takeaway-slide, or thanks-slide bespoke
-   rules in this subtask — they are already custom and Phase-B workers will
-   refine them.
-9. **Do not change** color tokens, font tokens, or any chart accent values.
-
-**Acceptance:**
-- The browser at `http://localhost:8000` loads without console errors.
-- Slides 1–5 still render; figures now sit closer to the title and have no
-  visible white bounding box (white SVG bg blends into paper).
-- Slides 6–11 render with their assets correctly sized (no overflow, no crop).
-- Footer strip is unaffected (no blending leak).
+Every figure in the deck must fit inside the slide's safe content area at
+every viewport aspect ratio without clipping.
 
 ---
 
-## Phase B — per-slide refinement (parallel, 7 workers)
+## Files to touch
 
-Each worker takes a slide pair (or single, for W7) and refines:
-
-- The slide module's HTML to use `<section class="slide <name>-slide">` and
-  `<figure class="<name>-figure"><img …><figcaption …/></figure>`.
-- **Remove all `style="..."` attributes from the slide module.** Any sizing/layout
-  goes into `styles.css` under the slide-specific class.
-- Add or tighten per-slide layout in `styles.css` ONLY for the slides the worker
-  owns (do not touch other slides' rules). If Phase A already added a rule for
-  the worker's slide, the worker may refine it (figure width, grid arrangement,
-  caption position) but must not delete other slides' rules.
-- Add a one-line caption that *describes the figure* in the audience's terms
-  (not a placeholder like "Figure 1"). Captions are short and concrete.
-
-**Parallelism note:** all 7 workers touch `styles.css`. To avoid merge conflicts,
-each worker only edits CSS rules whose selector starts with `.<their-slide>-slide`
-(or `.<their-slide>-figure`). They must not touch the `:root` block, the global
-`.slide` block, or any other slide's rules. Manager will merge sequentially and
-fall back to manual conflict resolution if any worker oversteps.
-
-### Pair assignments
-
-| Worker | Slides                                   |
-|--------|------------------------------------------|
-| W1     | `01-title.js`, `02-imagenet.js`          |
-| W2     | `03-classification.js`, `04-pca-method.js` |
-| W3     | `05-representations.js`, `06-nsd-schematic.js` |
-| W4     | `07-nsd-result.js`, `08-things-schematic.js` |
-| W5     | `09-things-result.js`, `10-things-model-comparison.js` |
-| W6     | `11-pc-scatter.js`, `12-takeaway.js`     |
-| W7     | `13-thanks.js`                           |
-
-### Per-pair acceptance
-
-For each worker:
-- Both slide modules render in the browser without errors.
-- Both slides' figures sit in the new tighter spatial rhythm (titles high,
-  figures close to title).
-- White bg from SVG/PNG assets is no longer visible.
-- No inline `style=""` attributes remain in the slide modules.
-- Captions are descriptive one-liners, not placeholders.
-
----
+- `styles.css` (per-slide figure rules — all of them)
+- `slides/04-pca-method.js` — the inlined SVG has fixed `width=` / `height=`
+  attributes that must be removed (only `viewBox` kept) so CSS can govern.
+- All other slide modules: read-only verification (no changes expected).
 
 ## Out of scope
 
-- Changes to `shell.js`, `index.html`, font choice, color tokens.
-- Animations beyond the existing step-reveal and slide-transition machinery.
-- Edits to image assets (no SVG editing — rely on `mix-blend-mode`).
-- Changes to slide content/text beyond captions and the title placeholder strings
-  (user will rewrite final copy later).
+- `:root` tokens, font system, color palette, motion settings.
+- DESIGN.md (already updated).
+- `shell.js`, `index.html`.
+- Any image asset.
+- Any slide-content edits (titles, captions stay as-is).
 
 ---
 
-## Verification (manager runs after Phase B merges)
+## Subtasks (single worker)
+
+### Subtask 1 — refactor every per-slide figure rule in `styles.css`
+
+For each per-slide block in `styles.css`, replace fixed-pixel `width:` figure
+rules with the *Responsive figure containment* pattern from DESIGN.md
+§"Responsive figure containment".
+
+Slides to refactor:
+
+| Slide                       | Asset shape (best guess)        | Preferred cap     |
+|-----------------------------|----------------------------------|-------------------|
+| `02-imagenet`               | scatter, near-square            | 1100 px width     |
+| `03-classification`         | wide deep-net diagram (~3:1)    | 1500 px width     |
+| `04-pca-method`             | wide 2-panel SVG (~2:1)         | 1500 px width     |
+| `05-representations`        | medium chart                    | 1240 px width     |
+| `06-nsd-schematic`          | schematic (~2:1)                | 1320 px width     |
+| `07-nsd-result`             | bar chart                        | 1240 px width     |
+| `08-things-schematic`       | schematic (~2:1)                | 1320 px width     |
+| `09-things-result`          | bar chart                        | 1240 px width     |
+| `10-things-model-comparison`| bar chart, possibly wider       | 1400 px width     |
+| `11-pc-scatter`             | square scatter — **HEIGHT bound** | use `max-height: 800px` instead of width cap; let aspect drive width |
+
+For each, use this pattern (replace `<name>` with the slide's canonical name):
+
+```css
+.<name>-slide {
+  display: grid;
+  grid-template-rows: auto 1fr;
+}
+
+.<name>-slide .<name>-figure {
+  align-self: stretch;
+  justify-self: stretch;
+  display: grid;
+  place-items: center;
+  min-height: 0;
+  margin-top: var(--figure-gap);
+}
+
+.<name>-slide .<name>-figure img,
+.<name>-slide .<name>-figure svg {
+  display: block;
+  max-width: <cap>px;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+}
+```
+
+For `pc-scatter` (square asset, height-bound):
+
+```css
+.pc-scatter-slide .pc-scatter-figure img {
+  display: block;
+  max-width: 100%;
+  max-height: 800px;
+  width: auto;
+  height: auto;
+}
+```
+
+The existing block of slide-1–5 rules in `styles.css` should be reorganized so
+each slide has the pattern above; redundancy is fine — readability over
+DRY-ness, since these are the contract between slide module and slide layout.
+
+### Subtask 2 — strip fixed `width=` / `height=` from the inlined SVG in `slides/04-pca-method.js`
+
+The SVG opens with:
+
+```html
+<svg xmlns:xlink="..." width="708.017187pt" height="373.494687pt" viewBox="0 0 708.017187 373.494687" ...>
+```
+
+Remove the `width="..."` and `height="..."` attributes (a previous worker
+already did this — verify and re-apply if missing). Keep `viewBox` so the
+intrinsic aspect ratio is preserved when CSS sizes it.
+
+### Subtask 3 — bespoke-layout slides (01-title, 12-takeaway, 13-thanks)
+
+Audit each:
+
+- **01-title** — the QR placeholder is `width: 140px; height: 140px;`. Wrap in
+  `min-height: 0` parent if not already. Author block, venue, title h1 — these
+  are text and naturally responsive; no figure containment needed.
+- **12-takeaway** — `place-items: center; .hero-sentence` is text. Add
+  `min-height: 0` to `.takeaway-slide` if it doesn't have it. No figure to
+  contain.
+- **13-thanks** — team-grid placeholders are `200×200`. They sit in a 2×2 grid
+  at column 1 with 40 px row gap, ~520 px wide. At maximum height
+  `2 * 200 + 1 * 40 = 440 px` which fits comfortably in the slide.
+  Confirm `min-height: 0` on the team-grid container so it can shrink in 1fr
+  rows. If `.thanks-slide`'s grid template is not grid-row-bounded, no change
+  needed.
+
+For all three: when team-card placeholders or QR code are eventually replaced
+with `<img>`, the same `max-width: 100%; max-height: 100%; width: auto;
+height: auto` pattern applies inside the placeholder container.
+
+---
+
+## Acceptance
+
+After the worker commits and you merge:
+
+1. `styles.css` syntactically valid — equal `{` and `}` counts.
+2. Every figure-bearing slide (02–11) uses the *Responsive figure containment*
+   pattern with no remaining `.figure { width: <fixed>px; }` declarations.
+3. `slides/04-pca-method.js` SVG has no `width=` / `height=` attributes on the
+   root `<svg>`.
+4. Manager smoke-tests in browser at `http://localhost:8000`:
+   - Step through 01 → 13.
+   - Resize browser window to a few aspects (16:9, 16:10, 4:3, ultra-wide).
+   - Confirm no figure is clipped at any aspect.
+   - Confirm pc-scatter (slide 11) is no longer clipped at the bottom.
+   - Confirm titles still sit high; spatial rhythm is preserved.
+
+---
+
+## Verification (worker runs before committing)
+
+```bash
+python -c "s=open('styles.css').read(); assert s.count('{')==s.count('}'), 'brace mismatch'; print('OK')"
+```
+
+Then visually re-read styles.css and confirm:
+
+- Every `.<name>-slide` block uses `grid-template-rows: auto 1fr`.
+- Every `.<name>-figure` block has `min-height: 0` and `place-items: center`
+  (or `justify-self: stretch; align-self: stretch` and `display: grid`).
+- Every `.<name>-figure img` or `svg` has `max-width: <cap>; max-height: 100%`
+  with `width: auto; height: auto`. NO declarations of `.figure img { width:
+  100%; }` remain.
+
+Worker commit message:
 
 ```
-node --check shell.js
-for f in slides/*.js; do node --check "$f"; done
+Apply responsive figure containment to all slides (DESIGN.md v2.1)
 ```
-
-Then load `http://localhost:8000`, step through 1→13, confirm:
-- titles all sit at the same y-coordinate (top of slide, not floating mid-page)
-- no white panels around figures
-- no horizontal/vertical overflow
-- footer + slide number visible on every slide

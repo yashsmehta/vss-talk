@@ -192,6 +192,105 @@ Use `<figure>` for every figure region. Inside it:
   widths if a slide-class rule covers it; see *Per-slide overrides* below).
 - Caption sits 18px below the figure, in `--ink-muted`, at the caption type size.
 
+### Responsive figure containment (mandatory)
+
+The slide is authored at 1920×1080 logical px and scaled by CSS to fit the
+viewport (see `shell.js` and the `.slide-wrapper > section { transform: scale(...) }`
+rule). The scaling is uniform — never anisotropic — so aspect ratio is preserved.
+
+**Inside a slide, however, figures must constrain themselves to the slide's safe
+content area or they will overflow and be hidden by `overflow: hidden`.** The
+safe content area is:
+
+```
+content_w = 1920 - 2 * 140       = 1640 px
+content_h = 1080 - 56 - 109 - 24 - 64 = 827 px
+            ^slide ^pad-top ^title-block ^figure-gap ^pad-bottom
+```
+
+(The 109 px title block = 88 px h1 + 20 px title-rule-gap + 1 px hairline rule.
+Bespoke layouts without a title block — title slide, takeaway, thanks — get
+roughly 920 px of vertical space.)
+
+**A fixed pixel `width:` on a figure is wrong.** A 1240 px-wide figure with a
+square asset is 1240 px tall, which overflows the 827 px vertical budget and is
+clipped at the bottom. Specifically `pc-scatter` at the previous `width: 1100 px`
+was clipped by ~273 px on every projection.
+
+**The pattern that works**, per slide:
+
+```css
+.<name>-slide {
+  display: grid;
+  grid-template-rows: auto 1fr;     /* title block, figure cell */
+}
+
+.<name>-slide .<name>-figure {
+  align-self: stretch;
+  justify-self: stretch;
+  display: grid;
+  place-items: center;
+  min-height: 0;                     /* essential — see below */
+  margin-top: var(--figure-gap);
+}
+
+.<name>-slide .<name>-figure img,
+.<name>-slide .<name>-figure svg {
+  display: block;
+  max-width: <preferred-cap>px;      /* cap when there's room (e.g. 1240) */
+  max-height: 100%;                  /* never exceed the figure cell */
+  width: auto;
+  height: auto;
+}
+```
+
+Why this works:
+
+- `grid-template-rows: auto 1fr` gives the figure cell whatever vertical space
+  remains after the title block.
+- `min-height: 0` on the figure overrides CSS Grid's default min-content
+  behavior, which would otherwise expand the row to fit the img's intrinsic
+  height (defeating the 1fr cap).
+- `display: grid; place-items: center` on the figure centers the img both axes.
+- `max-width: <cap>px; max-height: 100%; width: auto; height: auto` makes the
+  img fit the smaller of (preferred width, available height-preserving-aspect),
+  preserving aspect ratio in either case. No `object-fit` needed because the
+  img is intrinsically sized.
+
+Per-slide `<preferred-cap>px` should be set such that the figure looks
+intentional at large viewports and gracefully shrinks at small ones:
+
+| Asset shape          | Preferred cap |
+|----------------------|---------------|
+| Wide chart (4:1+)    | 1500          |
+| Standard chart (3:2) | 1240          |
+| Schematic (2:1)      | 1320          |
+| Near-square (1:1)    | 800–900       |
+| Tall asset           | use `max-height: <preferred>px` instead of width cap |
+
+For inlined SVGs (e.g. the PCA method on slide 04), the same pattern applies
+to the `<svg>` element: drop fixed `width=`/`height=` attributes from the SVG
+markup, keep `viewBox`, and let CSS govern via `max-width`/`max-height`.
+
+### Bespoke-layout slides
+
+Title (01), takeaway (12), thanks (13) do not have the title-then-figure
+two-row pattern — they have specific custom layouts. They still must:
+
+- Use `min-height: 0` on any grid cell that holds an image
+- Cap any image with `max-width` AND `max-height` so it never overflows the
+  slide
+- Avoid intrinsic `width: <px>` on `<img>` without a corresponding `max-height`
+
+### Footer clearance
+
+The `#footer-strip` is `position: fixed; bottom: 0; height: 36px` on the
+viewport. Because the slide section is scaled, the footer overlays the
+bottom 36 viewport-px of the screen — which corresponds to a variable amount
+of slide-px depending on viewport size. The 64 px `--pad-bottom` provides
+clearance for slide content from the footer band at typical projection
+aspect ratios. Do not put figures or text below the bottom padding.
+
 ## Per-slide overrides
 
 Every slide gets a unique class on its root `<section>` (e.g.
