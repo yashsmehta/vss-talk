@@ -341,7 +341,7 @@ p {
 .imagenet-slide .imagenet-figure img,
 .imagenet-slide .imagenet-figure svg {
   display: block;
-  max-width: 1100px;
+  max-width: 880px;
   max-height: 100%;
   width: auto;
   height: auto;
@@ -414,7 +414,7 @@ p {
 .representations-slide .representations-figure img,
 .representations-slide .representations-figure svg {
   display: block;
-  max-width: 1240px;
+  max-width: 1500px;
   max-height: 100%;
   width: auto;
   height: auto;
@@ -460,7 +460,7 @@ p {
 .nsd-result-slide .nsd-result-figure img,
 .nsd-result-slide .nsd-result-figure svg {
   display: block;
-  max-width: 1240px;
+  max-width: 1500px;
   max-height: 100%;
   width: auto;
   height: auto;
@@ -506,7 +506,7 @@ p {
 .things-result-slide .things-result-figure img,
 .things-result-slide .things-result-figure svg {
   display: block;
-  max-width: 1240px;
+  max-width: 950px;
   max-height: 100%;
   width: auto;
   height: auto;
@@ -529,7 +529,7 @@ p {
 .things-model-comparison-slide .things-model-comparison-figure img,
 .things-model-comparison-slide .things-model-comparison-figure svg {
   display: block;
-  max-width: 1400px;
+  max-width: 1180px;
   max-height: 100%;
   width: auto;
   height: auto;
@@ -552,8 +552,8 @@ p {
 .pc-scatter-slide .pc-scatter-figure img,
 .pc-scatter-slide .pc-scatter-figure svg {
   display: block;
-  max-width: 100%;
-  max-height: 800px;
+  max-width: 1500px;
+  max-height: 100%;
   width: auto;
   height: auto;
 }
@@ -614,7 +614,6 @@ p {
   width: 200px;
   height: 200px;
   object-fit: cover;
-  mix-blend-mode: multiply;
 }
 
 .thanks-slide .team-name {
