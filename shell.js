@@ -4,8 +4,14 @@ const SLIDES = [
   '03-classification',
   '04-pca-method',
   '05-representations',
-  '06-takeaway',
-  '07-thanks',
+  '06-nsd-schematic',
+  '07-nsd-result',
+  '08-things-schematic',
+  '09-things-result',
+  '10-things-model-comparison',
+  '11-pc-scatter',
+  '12-takeaway',
+  '13-thanks',
 ];
 
 const stage = document.getElementById('stage');
