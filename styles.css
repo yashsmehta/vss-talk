@@ -445,6 +445,53 @@ p {
   height: auto;
 }
 
+.nsd-schematic-slide .nsd-schematic-stack {
+  position: relative;
+  display: block;
+  max-width: 1320px;
+  max-height: 100%;
+  aspect-ratio: 1672 / 941;
+}
+
+.nsd-schematic-slide .nsd-schematic-stack > img {
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.nsd-schematic-slide .nsd-overlay-label {
+  position: absolute;
+  transform: translateX(-50%);
+  font-family: var(--font-sans);
+  font-size: 26px;
+  font-weight: 500;
+  letter-spacing: -0.005em;
+  color: var(--ink);
+  white-space: nowrap;
+  mix-blend-mode: normal;
+}
+
+.nsd-schematic-slide .nsd-overlay-stimuli      { left: 16%; top:  4%; }
+.nsd-schematic-slide .nsd-overlay-participants { left: 49%; top: 13%; }
+.nsd-schematic-slide .nsd-overlay-fmri         { left: 81%; top: 28%; }
+
+.nsd-schematic-slide .nsd-citation {
+  position: absolute;
+  right: var(--pad-side);
+  bottom: 56px;
+  font-family: var(--font-sans);
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--ink-muted);
+  letter-spacing: 0;
+  mix-blend-mode: normal;
+}
+
+.nsd-schematic-slide .nsd-citation em {
+  font-style: italic;
+}
+
 .nsd-result-slide {
   display: grid;
   grid-template-rows: auto 1fr;
