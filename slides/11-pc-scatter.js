@@ -3,7 +3,7 @@ export default {
     <section class="slide figure-slide pc-scatter-slide" style="--fig-max-w: 100%; --fig-w: 100%">
       <h1>Internal representations</h1>
       <figure>
-        <div class="svg-wrap">
+        <div class="svg-wrap" style="aspect-ratio: 819.024729 / 258.228528;">
           <img src="images/pc_scatter.svg" alt="">
           <span class="col-title" style="left: 17.92%;">Behavioral</span>
           <span class="col-title" style="left: 51.78%;">AlexNet</span>

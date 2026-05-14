@@ -721,17 +721,22 @@ body:has(.title-slide) #footer-strip {
   padding-right: var(--pad-side);
 }
 
-.pc-scatter-slide .svg-wrap {
+/* Figure-title overlay used by slides whose matplotlib SVG has had its
+   path-glyph title stripped. The wrapper carries `aspect-ratio: W / H`
+   inline (matching the SVG's viewBox) so percent positions stay anchored. */
+
+.svg-wrap {
   position: relative;
-  aspect-ratio: 819.024729 / 258.228528;
 }
 
-.pc-scatter-slide .svg-wrap > img {
+.svg-wrap > img,
+.svg-wrap > svg {
+  display: block;
   width: 100%;
   height: 100%;
 }
 
-.pc-scatter-slide .col-title {
+.col-title {
   position: absolute;
   top: 6.5%;
   transform: translate(-50%, -50%);
