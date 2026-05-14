@@ -46,11 +46,21 @@ vss26/
 
 - Static HTML shell, no bundler, no build step.
 - Each slide is an ES module at `slides/NN-name.js` that default-exports
-  `{ html, steps?, onEnter?, onStep?, onLeave?, notes? }`.
+  `{ html, steps?, onEnter?, onStep?, onLeave? }`.
 - The shell imports them via dynamic `import()` and renders the `html` string into a
   `<section>` wrapper. No slide pre-loading.
+- Slides are authored at logical 1920×1080 px. `shell.js` computes a uniform scale
+  + centering offsets (`--slide-scale`, `--slide-offset-x/y`) from the viewport on
+  load and `resize`. Aspect ratio is preserved on any monitor.
 - **Adding a slide:** drop a new file in `slides/`, then add its name (without `.js`)
   to the `SLIDES` array in `shell.js`. That's the entire workflow.
+- **Figure slides** (any "title + figure" slide — most of the deck): use
+  `<section class="slide figure-slide" style="--fig-max-w: NNNpx">` with a single
+  `<figure>` containing one `<img>`, `<svg>`, or `<div class="svg-wrap">…</div>`.
+  The shared `.figure-slide` rule handles layout, centering, and capping the figure
+  width. Default `--fig-max-w` is `1500px`. Add `--fig-w: 100%` for a full-bleed
+  figure. Anything more bespoke (overlay labels, multi-panel grids) goes in its own
+  scoped rule keyed off a slide-specific class.
 - **Step reveals:** mark elements with `class="step step-N"`. The shell automatically
   applies `.revealed` to all `.step-N` elements when the user advances to step N.
   Set `steps: <count>` on the module to enable.
@@ -118,47 +128,35 @@ Files currently in `images/`. The user will tell us which slide each one goes on
 When the user dictates the slide sequence, map each image to its slide here and
 update the relevant slide file. Until then, do not invent assignments.
 
-### Placeholder system
-
-Until a slide has a real image, figure regions render as `.placeholder` boxes with
-`data-name="<filename>"` — a dashed border, paper-2 background, and the filename
-shown inside. Swap pattern when adding a real image:
-
-```html
-<!-- Before -->
-<div class="placeholder" data-name="foo.png" style="width: 880px; height: 720px;"></div>
-
-<!-- After -->
-<img src="images/foo.png" alt="" style="width: 880px; height: 720px;">
-```
-
 ---
 
 ## Slide sequence
 
-**TO BE FILLED IN BY THE USER.**
-
-The user will provide the complete list — count, content, image assignments, step
-counts — before the next round of work. Do not assume a sequence from the PDF, the
-existing 4 slides, or anywhere else. The existing slides (`01-title`, `02-alignment`,
-`03-takeaway`, `04-thanks`) are a showcase v1 only; they will be renamed,
-reordered, or replaced based on user input.
-
-When the user provides the sequence, replace this section with a table:
-
-| # | File | Content (1-line gist) | Images used | Steps |
-
-…and use that as the contract for the next delegation cycle.
+| # | File | Content | Images |
+|---|---|---|---|
+| 1 | `01-title.js` | Title, author, QR | `personal_website_qr.png` |
+| 2 | `02-imagenet.js` | Deep learning trends toward finer feedback | `imagenet_1000.svg` |
+| 3 | `03-classification.js` | …trained with a fine-grained signal | `deep-neural-network-classification.png` |
+| 4 | `04-pca-method.js` | What if the feedback signal were coarser? | inline SVG |
+| 5 | `05-representations.js` | Coarse training → categorical representations | `representations.svg` |
+| 6 | `06-nsd-schematic.js` | Natural Scenes Dataset overview | `nsd_description.png` |
+| 7 | `07-nsd-result.js` | NSD: comparing neural alignment | inline SVG |
+| 8 | `08-things-schematic.js` | THINGS database | `things-schematic.png` |
+| 9 | `09-things-result.js` | THINGS: results | `things_coarse_results.svg` |
+| 10 | `10-things-model-comparison.js` | THINGS: model comparison | `things_model_comparison.svg` |
+| 11 | `11-pc-scatter.js` | Internal representations (full-bleed) | `pc_scatter.svg` |
+| 12 | `12-takeaway.js` | Takeaway sentence | — |
+| 13 | `13-thanks.js` | Thanks + team portraits | `images/team/*` |
 
 ---
 
 ## Current state
 
-- **Built:** the 4 showcase slides listed in `## Layout`, demonstrating the full
-  visual system end-to-end with placeholders for every figure.
+- **Built:** all 13 slides of the talk sequence are wired up with real assets.
 - **Live:** `python -m http.server 8000` in the repo root, then `http://localhost:8000`.
-- **Not yet built:** the full talk sequence (awaiting user input).
-- **Not yet wired:** real images. Every `<img>` slot is currently a `.placeholder`.
+- Most slides use the shared `.figure-slide` pattern; slides 06, 07, 11 carry
+  bespoke per-slide CSS (overlay labels, two-panel grid, full-bleed figure with
+  overlay column titles).
 
 ---
 
