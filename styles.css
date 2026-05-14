@@ -300,51 +300,72 @@ p {
   align-self: end;
 }
 
-.imagenet-slide,
-.classification-slide,
-.pca-method-slide,
-.representations-slide {
+.imagenet-slide {
   display: grid;
   grid-template-rows: auto 1fr;
 }
 
-.imagenet-figure,
-.classification-figure,
-.pca-method-figure,
-.representations-figure {
-  z-index: 1;
-  align-self: center;
-  justify-self: center;
+.imagenet-slide .imagenet-figure {
+  align-self: stretch;
+  justify-self: stretch;
+  display: grid;
+  place-items: center;
+  min-height: 0;
   margin-top: var(--figure-gap);
 }
 
-.imagenet-figure {
-  width: 1220px;
-}
-
-.imagenet-figure img {
+.imagenet-slide .imagenet-figure img,
+.imagenet-slide .imagenet-figure svg {
   display: block;
-  width: 100%;
+  max-width: 1100px;
+  max-height: 100%;
+  width: auto;
   height: auto;
 }
 
-.classification-figure {
-  width: 1220px;
+.classification-slide {
+  display: grid;
+  grid-template-rows: auto 1fr;
 }
 
-.classification-figure img {
+.classification-slide .classification-figure {
+  align-self: stretch;
+  justify-self: stretch;
+  display: grid;
+  place-items: center;
+  min-height: 0;
+  margin-top: var(--figure-gap);
+}
+
+.classification-slide .classification-figure img,
+.classification-slide .classification-figure svg {
   display: block;
-  width: 100%;
+  max-width: 1500px;
+  max-height: 100%;
+  width: auto;
   height: auto;
 }
 
-.pca-method-figure {
-  width: 1280px;
+.pca-method-slide {
+  display: grid;
+  grid-template-rows: auto 1fr;
 }
 
-.pca-method-figure svg {
+.pca-method-slide .pca-method-figure {
+  align-self: stretch;
+  justify-self: stretch;
+  display: grid;
+  place-items: center;
+  min-height: 0;
+  margin-top: var(--figure-gap);
+}
+
+.pca-method-slide .pca-method-figure img,
+.pca-method-slide .pca-method-figure svg {
   display: block;
-  width: 100%;
+  max-width: 1500px;
+  max-height: 100%;
+  width: auto;
   height: auto;
 }
 
@@ -352,69 +373,164 @@ p {
   transform: none;
 }
 
-.representations-figure {
-  width: 1240px;
+.representations-slide {
+  display: grid;
+  grid-template-rows: auto 1fr;
 }
 
-.representations-figure img {
+.representations-slide .representations-figure {
+  align-self: stretch;
+  justify-self: stretch;
+  display: grid;
+  place-items: center;
+  min-height: 0;
+  margin-top: var(--figure-gap);
+}
+
+.representations-slide .representations-figure img,
+.representations-slide .representations-figure svg {
   display: block;
-  width: 100%;
+  max-width: 1240px;
+  max-height: 100%;
+  width: auto;
   height: auto;
 }
 
-.nsd-schematic-slide,
-.nsd-result-slide,
-.things-schematic-slide,
-.things-result-slide,
-.things-model-comparison-slide,
+.nsd-schematic-slide {
+  display: grid;
+  grid-template-rows: auto 1fr;
+}
+
+.nsd-schematic-slide .nsd-schematic-figure {
+  align-self: stretch;
+  justify-self: stretch;
+  display: grid;
+  place-items: center;
+  min-height: 0;
+  margin-top: var(--figure-gap);
+}
+
+.nsd-schematic-slide .nsd-schematic-figure img,
+.nsd-schematic-slide .nsd-schematic-figure svg {
+  display: block;
+  max-width: 1320px;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+}
+
+.nsd-result-slide {
+  display: grid;
+  grid-template-rows: auto 1fr;
+}
+
+.nsd-result-slide .nsd-result-figure {
+  align-self: stretch;
+  justify-self: stretch;
+  display: grid;
+  place-items: center;
+  min-height: 0;
+  margin-top: var(--figure-gap);
+}
+
+.nsd-result-slide .nsd-result-figure img,
+.nsd-result-slide .nsd-result-figure svg {
+  display: block;
+  max-width: 1240px;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+}
+
+.things-schematic-slide {
+  display: grid;
+  grid-template-rows: auto 1fr;
+}
+
+.things-schematic-slide .things-schematic-figure {
+  align-self: stretch;
+  justify-self: stretch;
+  display: grid;
+  place-items: center;
+  min-height: 0;
+  margin-top: var(--figure-gap);
+}
+
+.things-schematic-slide .things-schematic-figure img,
+.things-schematic-slide .things-schematic-figure svg {
+  display: block;
+  max-width: 1320px;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+}
+
+.things-result-slide {
+  display: grid;
+  grid-template-rows: auto 1fr;
+}
+
+.things-result-slide .things-result-figure {
+  align-self: stretch;
+  justify-self: stretch;
+  display: grid;
+  place-items: center;
+  min-height: 0;
+  margin-top: var(--figure-gap);
+}
+
+.things-result-slide .things-result-figure img,
+.things-result-slide .things-result-figure svg {
+  display: block;
+  max-width: 1240px;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+}
+
+.things-model-comparison-slide {
+  display: grid;
+  grid-template-rows: auto 1fr;
+}
+
+.things-model-comparison-slide .things-model-comparison-figure {
+  align-self: stretch;
+  justify-self: stretch;
+  display: grid;
+  place-items: center;
+  min-height: 0;
+  margin-top: var(--figure-gap);
+}
+
+.things-model-comparison-slide .things-model-comparison-figure img,
+.things-model-comparison-slide .things-model-comparison-figure svg {
+  display: block;
+  max-width: 1400px;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+}
+
 .pc-scatter-slide {
   display: grid;
   grid-template-rows: auto 1fr;
 }
 
-.nsd-schematic-slide .nsd-schematic-figure,
-.nsd-result-slide .nsd-result-figure,
-.things-schematic-slide .things-schematic-figure,
-.things-result-slide .things-result-figure,
-.things-model-comparison-slide .things-model-comparison-figure,
 .pc-scatter-slide .pc-scatter-figure {
-  align-self: center;
-  justify-self: center;
+  align-self: stretch;
+  justify-self: stretch;
+  display: grid;
+  place-items: center;
+  min-height: 0;
   margin-top: var(--figure-gap);
 }
 
-.nsd-schematic-slide .nsd-schematic-figure {
-  width: 1180px;
-}
-
-.nsd-result-slide .nsd-result-figure {
-  width: 1240px;
-}
-
-.things-schematic-slide .things-schematic-figure {
-  width: 1180px;
-}
-
-.things-result-slide .things-result-figure {
-  width: 1240px;
-}
-
-.things-model-comparison-slide .things-model-comparison-figure {
-  width: 1240px;
-}
-
-.pc-scatter-slide .pc-scatter-figure {
-  width: 1100px;
-}
-
-.nsd-schematic-slide .nsd-schematic-figure img,
-.nsd-result-slide .nsd-result-figure img,
-.things-schematic-slide .things-schematic-figure img,
-.things-result-slide .things-result-figure img,
-.things-model-comparison-slide .things-model-comparison-figure img,
-.pc-scatter-slide .pc-scatter-figure img {
+.pc-scatter-slide .pc-scatter-figure img,
+.pc-scatter-slide .pc-scatter-figure svg {
   display: block;
-  width: 100%;
+  max-width: 100%;
+  max-height: 800px;
+  width: auto;
   height: auto;
 }
 
@@ -459,6 +575,7 @@ p {
   display: grid;
   grid-template-columns: repeat(2, 200px);
   gap: 40px 56px;
+  min-height: 0;
 }
 
 .thanks-slide .team-card {
