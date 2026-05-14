@@ -22,12 +22,12 @@ function dotCluster(rows, cols) {
 const HERO_LAYOUT = [
   { rows: 8, cols: 8, col: 0, row: 0 },
   { rows: 4, cols: 4, col: 1, row: 0 },
-  { rows: 2, cols: 2, col: 1, row: 1 },
-  { rows: 1, cols: 2, col: 1, row: 2 },
+  { rows: 2, cols: 2, col: 0, row: 1 },
+  { rows: 1, cols: 2, col: 1, row: 1 },
 ];
 
 const HERO_W = TILE_SIZE * 2 + TILE_GAP;
-const HERO_H = TILE_SIZE * 3 + TILE_GAP * 2;
+const HERO_H = TILE_SIZE * 2 + TILE_GAP;
 
 const heroMotif = `
   <svg class="hero-motif"
