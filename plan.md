@@ -1,149 +1,120 @@
-# Plan: Talk-sequence v1 (slides 1–7)
+# Plan: Talk-sequence v2 — extend with NSD, THINGS, PC scatter
 
-Replace the showcase v1 deck with the real talk sequence. First pass covers the
-opening narrative arc (ImageNet → fine-grained classification → coarse signal
-→ representations) plus title/takeaway/thanks bookends.
+Extend the deck with the empirical-results arc. Slides 1–5 stay as-is. Add
+NSD (schematic + result), THINGS (schematic + result + model comparison),
+PC scatter, and renumber the takeaway/thanks bookends.
 
-This plan is the contract for one delegation cycle to Copilot. Manager (Claude)
-verifies and merges per `~/.claude/skills/delegate/SKILL.md`.
+Manager (Claude) verifies and merges per `~/.claude/skills/delegate/SKILL.md`.
 
 ---
 
-## Slide sequence (the contract)
+## Goal
 
-| # | File | Content (1-line gist) | Image | Steps |
-|---|---|---|---|---|
-| 1 | `slides/01-title.js` | Title slide — keep as-is | — | existing |
-| 2 | `slides/02-imagenet.js` | "Deep learning has moved toward finer feedback signals" — each dot is one of 1000 ImageNet classes | `imagenet_1000.svg` | 1 |
-| 3 | `slides/03-classification.js` | The fine-grained feedback signal: 1000-way classification via a deep net | `deep-neural-network-classification.png` | 1 |
-| 4 | `slides/04-pca-method.js` | "What if the signal is coarse?" — 2-way panel reveals first, then 4-way panel | `pca_method.svg` (inlined) | 2 |
-| 5 | `slides/05-representations.js` | 1000-way vs 4-way trained CNN — 4-way model's internal representations are more categorical | `representations.svg` | 1 |
-| 6 | `slides/06-takeaway.js` | Takeaway — port content from existing `03-takeaway.js`, renumbered | — | existing |
-| 7 | `slides/07-thanks.js` | Thanks — port content from existing `04-thanks.js`, renumbered | — | existing |
+Add 6 new slides (NSD x2, THINGS x3, PC scatter) and renumber takeaway/thanks
+so the final deck is 13 slides.
 
-**Files removed:** `slides/02-alignment.js`, `slides/03-takeaway.js`,
-`slides/04-thanks.js` (the latter two are renamed/renumbered, not deleted in spirit).
+---
 
-**`shell.js` `SLIDES` array** must end up as:
+## Final slide sequence (the contract)
+
+| #  | File                              | Content                                          | Image                          | Steps |
+|----|-----------------------------------|--------------------------------------------------|--------------------------------|-------|
+| 1  | `slides/01-title.js`              | Title — **unchanged**                            | —                              | —     |
+| 2  | `slides/02-imagenet.js`           | ImageNet 1000-class scatter — **unchanged**      | `imagenet_1000.svg`            | —     |
+| 3  | `slides/03-classification.js`     | Deep net classifier — **unchanged**              | `deep-neural-network-classification.png` | — |
+| 4  | `slides/04-pca-method.js`         | PCA-based coarse signal — **unchanged**          | `pca_method.svg`               | —     |
+| 5  | `slides/05-representations.js`    | Coarse → categorical reps — **unchanged**        | `representations.svg`          | —     |
+| 6  | `slides/06-nsd-schematic.js`      | **NEW** — NSD methods schematic                  | `nsd_description.png`          | 1     |
+| 7  | `slides/07-nsd-result.js`         | **NEW** — NSD RSA results across granularity     | `nsd_results.svg`              | 1     |
+| 8  | `slides/08-things-schematic.js`   | **NEW** — THINGS database overview               | `things-schematic.png`         | 1     |
+| 9  | `slides/09-things-result.js`      | **NEW** — THINGS coarse alignment results        | `things_coarse_results.svg`    | 1     |
+| 10 | `slides/10-things-model-comparison.js` | **NEW** — vs. pretrained models             | `things_model_comparison.svg`  | 1     |
+| 11 | `slides/11-pc-scatter.js`         | **NEW** — PC scatter = internal reps of coarse-grain models | `pc_scatter.svg`    | 1     |
+| 12 | `slides/12-takeaway.js`           | Takeaway — **renamed** from `06-takeaway.js`     | —                              | —     |
+| 13 | `slides/13-thanks.js`             | Thanks — **renamed** from `07-thanks.js`         | —                              | —     |
+
+After all worker merges, manager updates `shell.js` `SLIDES` array to:
 
 ```js
 const SLIDES = [
-  '01-title',
-  '02-imagenet',
-  '03-classification',
-  '04-pca-method',
-  '05-representations',
-  '06-takeaway',
-  '07-thanks',
+  '01-title', '02-imagenet', '03-classification', '04-pca-method',
+  '05-representations', '06-nsd-schematic', '07-nsd-result',
+  '08-things-schematic', '09-things-result', '10-things-model-comparison',
+  '11-pc-scatter', '12-takeaway', '13-thanks',
 ];
 ```
 
 ---
 
-## Per-slide notes
+## Slide content conventions for the 6 new slides
 
-### Slide 2 — `02-imagenet.js`
-- Title (h1): something like *"Deep learning trends toward finer feedback signals"*
-  (Copilot may refine wording but stay close to this framing).
-- Body: short subtitle/caption noting "each point = one of 1000 ImageNet classes".
-- Figure: `<img src="images/imagenet_1000.svg">`, large, right/centre of slide.
-- 1 step (subtitle fade-in is fine).
+User has explicitly said: **don't worry about polish or final body text** — this
+pass is structural. Each new slide should follow the existing pattern (look at
+`02-imagenet.js`, `03-classification.js`, `05-representations.js` for reference):
 
-### Slide 3 — `03-classification.js`
-- Title (h1): something like *"…trained with a fine-grained feedback signal"*
-  (continuation of slide 2's framing — feel free to bridge).
-- Figure: `<img src="images/deep-neural-network-classification.png">` — large,
-  prominent.
-- 1 step.
-
-### Slide 4 — `04-pca-method.js` ⚠ inlined SVG required
-- Title (h1): something like *"What if the feedback signal were coarser?"*
-- Figure: **inline** the contents of `images/pca_method.svg` directly into the
-  module's `html` string (per CLAUDE.md "Working with images" and animation
-  pattern #2). Do not use `<img>`.
-- The SVG is a matplotlib export with two axes groups — likely `axes_1` (2-way)
-  and `axes_2` (4-way). Copilot must inspect the SVG and tag the appropriate
-  groups with `class="step step-1"` (2-way panel) and `class="step step-2"`
-  (4-way panel) so they reveal in order.
-- Add CSS so step elements start at `opacity: 0` and transition to `1` on
-  `.revealed`. Keep transitions consistent with `--ease` and `--motion-step` from
-  `styles.css` / DESIGN.md.
-- 2 steps.
-
-### Slide 5 — `05-representations.js`
-- Title (h1): something like *"Coarse training yields more categorical representations"*
-- Figure: `<img src="images/representations.svg">`.
-- Body caption (small): "1000-way vs 4-way CNN — 4-way model's internal
-  representations become more categorical."
-- 1 step.
-
-### Slides 6 & 7
-- Pure rename + renumber of the existing `03-takeaway.js` → `06-takeaway.js` and
-  `04-thanks.js` → `07-thanks.js`. No content changes. Use `git mv`.
+- `h1` = a short placeholder title derived from the slide name
+  (e.g. "NSD" / "NSD: results" / "THINGS" / "THINGS: results" /
+  "THINGS: model comparison" / "Internal representations").
+  Copilot should keep titles short and neutral — the user will rewrite later.
+- Optional small caption under the figure.
+- Figure: `<img src="images/<asset>" alt="" style="width: <px>px; height: auto;">`
+  sized in the 900–1300 px range at 1920×1080 logical scale.
+- 1 step (caption fade-in is fine; figure can be visible from step 0).
+- **No hardcoded colors / fonts / font sizes.** Use only existing tokens and
+  utility classes from `styles.css`. If a new layout class is genuinely needed,
+  add it to `styles.css`; do not inline it.
+- Module shape: `export default { html, steps: 1, notes: '' }` — same as siblings.
 
 ---
 
-## Visual / aesthetic acceptance criteria
+## Subtasks (parallel)
 
-Per CLAUDE.md and DESIGN.md:
+Three workers, all touching disjoint files.
 
-1. **No hardcoded colors, fonts, or font sizes in slide files.** Use only CSS
-   variables and existing utility classes. Add new classes to `styles.css` if
-   needed; do not inline `style="color: …"` or `font-family: …`.
-2. **Fonts:** Fraunces for `h1`, Geist for body. Already in `index.html` font
-   chain — slides should not override.
-3. **Layout:** authored at logical 1920×1080. Standard slide padding
-   `96px 140px 80px`. Title block top-left with hairline rule below it (already
-   handled by base `.slide` styles). Figure region below.
-4. **Figures:** sized in px at the 1920×1080 scale. No `vw`/`vh`. Image regions
-   should feel generous — let the image breathe; don't crop or stretch. Aim for
-   figure widths in the 900–1300px range unless the asset's natural aspect
-   demands otherwise.
-5. **Step reveals:** must use the shell's `step step-N` / `.revealed` pattern.
-   Set `steps:` on the module export. Transitions must use `--motion-step` and
-   `--ease`.
-6. **Footer strip + slide counter:** must continue to render correctly across
-   the new sequence (the shell handles this automatically — just verify).
-7. **No new dependencies.** No bundler, no npm, no inline `<script>` tags
-   beyond what's already in `shell.js`.
-8. **Smoke test:** `node --check shell.js && for f in slides/*.js; do node --check "$f"; done` must pass.
-9. **Browser smoke:** when served via `python -m http.server 8000`, deck loads,
-   →/← navigate cleanly through all 7 slides, step reveals on slide 4 fire in
-   the right order (2-way, then 4-way), no console errors.
+### Subtask 1 — NSD slides
+- Create `slides/06-nsd-schematic.js` using `images/nsd_description.png`.
+- Create `slides/07-nsd-result.js` using `images/nsd_results.svg`.
+- Acceptance: `node --check slides/06-nsd-schematic.js slides/07-nsd-result.js`
+  passes; both modules `export default` with `html` string and `steps: 1`.
 
----
+### Subtask 2 — THINGS slides
+- Create `slides/08-things-schematic.js` using `images/things-schematic.png`.
+- Create `slides/09-things-result.js` using `images/things_coarse_results.svg`.
+- Create `slides/10-things-model-comparison.js` using `images/things_model_comparison.svg`.
+- Acceptance: `node --check` passes for all three; same module shape as above.
 
-## Files Copilot will touch
-
-- **Create:** `slides/02-imagenet.js`, `slides/03-classification.js`,
-  `slides/04-pca-method.js`, `slides/05-representations.js`.
-- **Rename (`git mv`):** `slides/03-takeaway.js` → `slides/06-takeaway.js`,
-  `slides/04-thanks.js` → `slides/07-thanks.js`.
-- **Delete:** `slides/02-alignment.js`.
-- **Edit:** `shell.js` (update `SLIDES` array).
-- **Edit:** `styles.css` (add slide-specific layout classes only — no token
-  changes).
-- **Do not touch:** `index.html`, `CLAUDE.md`, `DESIGN.md`, `images/*`,
-  `01-title.js`.
+### Subtask 3 — PC scatter + renames
+- Create `slides/11-pc-scatter.js` using `images/pc_scatter.svg`. Title can be
+  "Internal representations" or similar — caption may say "PC scatter of the
+  coarse-grain model's internal representations".
+- `git mv slides/06-takeaway.js slides/12-takeaway.js`
+- `git mv slides/07-thanks.js slides/13-thanks.js`
+- **Do not edit** the contents of takeaway/thanks — pure rename.
+- **Do not edit** `shell.js` — manager will do that after merge to avoid
+  three-way conflicts on the `SLIDES` array.
+- Acceptance: `node --check slides/11-pc-scatter.js slides/12-takeaway.js slides/13-thanks.js`
+  passes; `git log --diff-filter=R --follow slides/12-takeaway.js` shows the rename.
 
 ---
 
-## Out of scope for this iteration
+## Verification (manager runs after each merge)
 
-- Slides beyond #7 (NSD results, RSA schematics, THINGS results, model
-  comparison, trained-vs-untrained, QR slide). User will dictate those next.
-- Image-level edits (cropping, recolouring, re-exporting).
-- Speaker notes (`notes:` field on modules) — leave for later.
+```
+node --check shell.js
+for f in slides/*.js; do node --check "$f"; done
+```
+
+Then start `python -m http.server 8000` and step through slides 1→13 in the
+browser to confirm no slide errors and all images either resolve or render as
+labeled placeholders (if the image is missing).
 
 ---
 
-## Manager verification checklist (post-merge)
+## Out of scope
 
-- [ ] `node --check` passes on shell + every slide file.
-- [ ] `git status` clean; worktree removed; `delegate/task-N` branch deleted.
-- [ ] Browser smoke: 7 slides navigate cleanly, slide 4 step reveals correct.
-- [ ] No hardcoded colors/fonts/sizes introduced in slide files (grep slides/
-      for `font-family`, `color:`, `#` hex codes).
-- [ ] Footer strip + counter render correctly on all 7 slides.
-- [ ] Aesthetic pass: titles read well, figures are well-sized and balanced,
-      no awkward whitespace.
+- Real body text on the new slides (user will write later).
+- Visual polish, color/font tuning (user explicitly said: not now).
+- Step-by-step reveal animations on individual chart elements.
+- Inlining any of the SVGs (all are referenced via `<img>`).
+- Any changes to slides 1–5.
+- Any changes to `styles.css` beyond what's strictly needed for layout.
