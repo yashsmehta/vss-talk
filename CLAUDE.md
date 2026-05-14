@@ -25,8 +25,7 @@ a historical artifact of the showcase-v1 build and can be ignored.
 
 ```
 vss26/
-├── CLAUDE.md                  # this file — project guide for any session
-├── copilot-instructions.md    # symlink → CLAUDE.md (Copilot reads it under that name)
+├── CLAUDE.md                  # this file — project guide for any session (auto-detected by Copilot CLI and Claude Code)
 ├── DESIGN.md                  # visual system (tokens, type scale, motion)
 ├── plan.md                    # historical: original showcase-v1 delegation plan
 ├── index.html                 # shell: stage + footer strip + font links
@@ -249,7 +248,7 @@ import * as d3 from 'https://cdn.jsdelivr.net/npm/d3@7/+esm';
    (`git worktree add -b delegate/task-N .worktrees/task-N master`),
    write `TASK.md` inside it referencing CLAUDE.md and DESIGN.md.
 4. Spawn Copilot: `copilot -p "<prompt>" --model gpt-5.5 --allow-all --log-dir .copilot-logs`.
-   Copilot automatically reads `copilot-instructions.md` (symlinked to this file).
+   Copilot CLI auto-loads `CLAUDE.md` from the repo root — no extra config needed.
 5. Manager verifies — re-run
    `node --check shell.js && for f in slides/*.js; do node --check "$f"; done`,
    read the diff, smoke-test in browser — then `git merge --ff-only`.
