@@ -635,18 +635,22 @@ body:has(.title-slide) #footer-strip {
   align-self: stretch;
   justify-self: stretch;
   display: grid;
-  grid-template-columns: 1fr auto;
-  column-gap: 56px;
+  grid-template-rows: auto auto;
+  row-gap: 24px;
   min-height: 0;
-  margin-top: 36px;
+  margin-top: 24px;
   align-items: start;
+  justify-items: center;
 }
 
 .nsd-result-slide .nsd-result-panel {
   display: grid;
   grid-template-rows: auto auto;
-  row-gap: 8px;
+  row-gap: 6px;
   min-height: 0;
+  width: 100%;
+  max-width: 1640px;
+  justify-self: center;
 }
 
 .nsd-result-slide .nsd-subplot-titles {
@@ -666,13 +670,14 @@ body:has(.title-slide) #footer-strip {
   place-items: center;
   min-height: 0;
   margin: 0;
+  width: 100%;
 }
 
 .nsd-result-slide .nsd-result-figure svg {
   display: block;
   width: 100%;
-  max-width: 1480px;
-  max-height: 700px;
+  max-width: 1640px;
+  max-height: 680px;
   height: auto;
 }
 
@@ -680,26 +685,28 @@ body:has(.title-slide) #footer-strip {
   list-style: none;
   margin: 0;
   padding: 0;
-  display: grid;
-  gap: 18px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 36px;
   font-family: var(--font-sans);
-  font-size: 26px;
+  font-size: 24px;
   color: var(--ink);
-  align-self: start;
-  margin-top: 56px;
+  justify-self: center;
 }
 
 .nsd-result-slide .nsd-legend li {
-  display: grid;
-  grid-template-columns: 36px auto;
+  display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 12px;
 }
 
 .nsd-result-slide .nsd-legend .swatch {
   width: 36px;
   height: 18px;
   display: block;
+  flex: 0 0 auto;
 }
 
 /* ----- Slide 11 (PC scatter): full-bleed figure with overlay column titles ----- */
