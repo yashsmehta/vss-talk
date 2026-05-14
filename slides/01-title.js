@@ -61,29 +61,21 @@ export default {
 
         <aside class="title-hero" aria-hidden="true">
           ${heroMotif}
-          <p class="hero-caption">
-            <span class="hero-num">64</span>
-            <span class="hero-sep">·</span>
-            <span class="hero-num">16</span>
-            <span class="hero-sep">·</span>
-            <span class="hero-num">4</span>
-            <span class="hero-sep">·</span>
-            <span class="hero-num">2</span>
-          </p>
+          <p class="hero-caption">coarse categorization</p>
         </aside>
       </div>
 
       <footer class="title-meta">
         <div class="author-block">
-          <p class="author-name">Yash S. Mehta</p>
-          <p class="author-affil">coarse categorization</p>
-          <img class="jhu-mark" src="images/jhu-wordmark.svg" alt="Johns Hopkins University">
+          <p class="author-name">Yash Mehta</p>
+          <p class="author-affil">Cognitive Science, Bonner Lab</p>
+          <figure class="qr">
+            <img src="images/qr-code.svg" alt="QR code linking to author website">
+            <figcaption>yashmehta.com</figcaption>
+          </figure>
         </div>
 
-        <figure class="qr">
-          <figcaption>yashmehta.com</figcaption>
-          <img src="images/qr-code.svg" alt="QR code linking to author website">
-        </figure>
+        <img class="jhu-mark" src="images/jhu-wordmark.svg" alt="Johns Hopkins University">
       </footer>
     </section>
   `,

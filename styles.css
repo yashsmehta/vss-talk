@@ -350,23 +350,11 @@ p {
 
 .title-slide .hero-caption {
   margin: 0;
-  display: flex;
-  align-items: baseline;
-  gap: 10px;
   font-family: var(--font-mono);
   font-size: 13px;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
   color: var(--ink-muted);
-}
-
-.title-slide .hero-num {
-  color: var(--ink);
-  font-weight: 500;
-}
-
-.title-slide .hero-sep {
-  color: var(--orange);
-  opacity: 0.7;
 }
 
 .title-slide .hero-axis {
@@ -449,13 +437,16 @@ p {
 }
 
 .title-slide .author-block {
-  align-self: start;
+  align-self: end;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
 }
 
 .title-slide .author-name {
   margin: 0;
   font-family: var(--font-display);
-  font-size: 36px;
+  font-size: 38px;
   font-weight: 400;
   letter-spacing: -0.012em;
   line-height: 1.15;
@@ -476,7 +467,8 @@ p {
   display: block;
   width: 480px;
   height: auto;
-  margin-top: 28px;
+  align-self: end;
+  justify-self: end;
 }
 
 .title-slide .dim {
@@ -500,14 +492,13 @@ p {
 
 .title-slide .qr {
   margin: 0;
-  display: grid;
-  gap: 8px;
-  justify-items: end;
-  align-self: end;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  align-items: flex-start;
 }
 
 .title-slide .qr figcaption {
-  order: -1;
   font-family: var(--font-mono);
   font-size: 12px;
   letter-spacing: 0.05em;
@@ -516,8 +507,8 @@ p {
 
 .title-slide .qr img {
   display: block;
-  width: 140px;
-  height: 140px;
+  width: 128px;
+  height: 128px;
 }
 
 /* Hide global footer strip on the title slide for a cleaner cover */
