@@ -552,6 +552,32 @@ body:has(.title-slide) #footer-strip {
   transform: none;
 }
 
+/* ----- Slide 04 (PCA method): replace SVG subplot subtitles with a
+   styled subtitle under each col-title to avoid overlap. ----- */
+
+.pca-method-slide #text_3,
+.pca-method-slide #text_6 {
+  display: none;
+}
+
+.pca-method-slide .col-title {
+  top: 4%;
+  transform: translateX(-50%);
+  text-align: center;
+  display: block;
+}
+
+.pca-method-slide .col-subtitle {
+  display: block;
+  margin-top: 6px;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 300;
+  font-size: 22px;
+  letter-spacing: 0;
+  color: var(--ink-muted);
+}
+
 /* ----- Slide 06 (NSD schematic): overlay labels on a stacked image ----- */
 
 .nsd-schematic-slide .nsd-schematic-stack {
