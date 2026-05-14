@@ -7,7 +7,10 @@ export default {
           <p class="author-name">Yash Mehta</p>
           <p class="author-affil">Bonner Lab · Cognitive Science</p>
         </div>
-        <div class="placeholder" data-name="qr-code.png"></div>
+        <figure class="qr">
+          <img src="images/personal_website_qr.png" alt="QR code linking to author website">
+          <figcaption>yashmehta.dev</figcaption>
+        </figure>
       </div>
       <p class="venue">18 MAY 2026 · VSS</p>
     </section>

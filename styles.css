@@ -276,9 +276,24 @@ p {
   line-height: 1.2;
 }
 
-.title-slide .placeholder {
-  width: 140px;
-  height: 140px;
+.title-slide .qr {
+  display: grid;
+  gap: 10px;
+  justify-items: start;
+}
+
+.title-slide .qr img {
+  display: block;
+  width: 160px;
+  height: 160px;
+  mix-blend-mode: multiply;
+}
+
+.title-slide .qr figcaption {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  letter-spacing: 0.04em;
+  color: var(--ink-muted);
 }
 
 .venue {
@@ -549,62 +564,71 @@ p {
   text-align: center;
 }
 
+.takeaway-slide .hero-sentence::before {
+  content: "";
+  display: block;
+  width: 40px;
+  height: 1px;
+  background: var(--orange);
+  margin: 0 auto 32px;
+}
+
 .thanks-slide {
   display: grid;
-  grid-template-columns: 520px 1fr;
   grid-template-rows: auto 1fr auto;
-  column-gap: 180px;
-  row-gap: 32px;
+  row-gap: 64px;
 }
 
 .thanks-slide .thanks-title {
-  position: relative;
-  z-index: 1;
-  grid-column: 2;
-  justify-self: end;
-  align-self: start;
-  text-align: right;
+  grid-row: 1;
+  justify-self: start;
 }
 
-.thanks-slide .team-grid {
-  position: relative;
-  z-index: 1;
-  grid-column: 1;
-  grid-row: 1 / 4;
+.thanks-slide .team-row {
+  grid-row: 2;
   align-self: center;
+  justify-self: center;
   display: grid;
-  grid-template-columns: repeat(2, 200px);
-  gap: 40px 56px;
+  grid-template-columns: repeat(5, 200px);
+  gap: 56px;
   min-height: 0;
 }
 
 .thanks-slide .team-card {
   display: grid;
-  gap: 10px;
+  gap: 16px;
+  justify-items: start;
 }
 
-.thanks-slide .placeholder {
+.thanks-slide .team-card img {
+  display: block;
   width: 200px;
   height: 200px;
+  object-fit: cover;
+  mix-blend-mode: multiply;
 }
 
 .thanks-slide .team-name {
-  margin-top: 10px;
-  font-size: 24px;
+  font-family: var(--font-sans);
+  font-size: 22px;
   font-weight: 500;
   line-height: 1.15;
+  color: var(--ink);
+  margin: 0;
 }
 
 .thanks-slide .team-role {
-  color: var(--ink-muted);
-  font-size: 20px;
+  font-family: var(--font-sans);
+  font-size: 18px;
+  font-style: italic;
+  font-weight: 400;
   line-height: 1.2;
+  color: var(--ink-muted);
+  margin: 0;
 }
 
 .thanks-slide .venue {
-  grid-column: 2;
   grid-row: 3;
   justify-self: end;
   align-self: end;
-  text-transform: none;
 }
