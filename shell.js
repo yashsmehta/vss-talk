@@ -120,4 +120,18 @@ document.addEventListener('mousemove', () => {
   cursorTimer = setTimeout(() => document.body.classList.add('cursor-hidden'), 2000);
 });
 
+// Compute slide scale + centering offsets to fit viewport while preserving 1920x1080 aspect ratio
+function updateSlideScale() {
+  const scale = Math.min(window.innerWidth / 1920, window.innerHeight / 1080);
+  const scaledW = 1920 * scale;
+  const scaledH = 1080 * scale;
+  const offsetX = (window.innerWidth - scaledW) / 2;
+  const offsetY = (window.innerHeight - scaledH) / 2;
+  document.documentElement.style.setProperty('--slide-scale', scale);
+  document.documentElement.style.setProperty('--slide-offset-x', `${offsetX}px`);
+  document.documentElement.style.setProperty('--slide-offset-y', `${offsetY}px`);
+}
+window.addEventListener('resize', updateSlideScale);
+updateSlideScale();
+
 loadSlide(0);
