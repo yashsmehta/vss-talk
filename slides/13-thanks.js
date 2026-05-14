@@ -29,7 +29,7 @@ export default {
           <p class="team-role">PhD Student</p>
         </div>
       </div>
-      <p class="venue">18 MAY 2026 · VSS</p>
+      <p class="venue">bonnerlab.org</p>
     </section>
   `,
 };
