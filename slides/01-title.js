@@ -71,7 +71,6 @@ export default {
           <p class="author-affil">Cognitive Science, Bonner Lab</p>
           <figure class="qr">
             <img src="images/qr-code.svg" alt="QR code linking to author website">
-            <figcaption>yashmehta.com</figcaption>
           </figure>
         </div>
 
