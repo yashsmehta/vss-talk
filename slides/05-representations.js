@@ -1,8 +1,8 @@
 export default {
   html: `
-    <section class="slide representations-slide">
+    <section class="slide figure-slide">
       <h1>Coarse training yields more categorical representations</h1>
-      <figure class="representations-figure">
+      <figure>
         <img src="images/representations.svg" alt="">
         <figcaption class="caption step step-1">1000-way vs 4-way CNN — the 4-way model's internal representations become more categorical.</figcaption>
       </figure>

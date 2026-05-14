@@ -1,8 +1,8 @@
 export default {
   html: `
-    <section class="slide nsd-schematic-slide">
+    <section class="slide figure-slide nsd-schematic-slide">
       <h1>Natural Scenes Dataset</h1>
-      <figure class="nsd-schematic-figure">
+      <figure>
         <div class="nsd-schematic-stack">
           <img src="images/nsd_description.png" alt="">
           <span class="nsd-overlay-label nsd-overlay-stimuli">73,000 input stimuli</span>
@@ -13,5 +13,4 @@ export default {
       <aside class="nsd-citation">Allen et al. (2022), <em>Nature Neuroscience</em></aside>
     </section>
   `,
-  notes: '',
 };

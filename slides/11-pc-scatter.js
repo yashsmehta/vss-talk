@@ -1,8 +1,8 @@
 export default {
   html: `
-    <section class="slide pc-scatter-slide">
+    <section class="slide figure-slide pc-scatter-slide" style="--fig-max-w: 100%; --fig-w: 100%">
       <h1>Internal representations</h1>
-      <figure class="pc-scatter-figure">
+      <figure>
         <div class="svg-wrap">
           <img src="images/pc_scatter.svg" alt="">
           <span class="col-title" style="left: 17.92%;">Behavioral</span>
@@ -14,5 +14,4 @@ export default {
     </section>
   `,
   steps: 1,
-  notes: '',
 };

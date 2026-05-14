@@ -47,8 +47,6 @@ body.blackout #stage { opacity: 0; }
   position: relative;
   width: 100vw;
   height: 100vh;
-  display: grid;
-  place-items: center;
   transition: opacity 200ms var(--ease);
 }
 
@@ -152,24 +150,6 @@ p {
 
 .slide figure figcaption {
   mix-blend-mode: normal;
-}
-
-.placeholder {
-  display: grid;
-  place-items: center;
-  background: var(--paper-2);
-  border: 1px dashed var(--rule);
-  border-radius: 4px;
-  color: var(--ink-muted);
-  font-family: var(--font-sans);
-  font-size: 18px;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  box-sizing: border-box;
-}
-
-.placeholder::after {
-  content: attr(data-name);
 }
 
 .step {
@@ -326,12 +306,17 @@ p {
   align-self: end;
 }
 
-.imagenet-slide {
+/* ======================================================================
+   Figure slides — shared layout for any slide that's "title + figure".
+   Per-slide max-width via inline style="--fig-max-w: NNNpx".
+   ====================================================================== */
+
+.figure-slide {
   display: grid;
   grid-template-rows: auto 1fr;
 }
 
-.imagenet-slide .imagenet-figure {
+.figure-slide > figure {
   align-self: stretch;
   justify-self: stretch;
   display: grid;
@@ -340,124 +325,35 @@ p {
   margin-top: var(--figure-gap);
 }
 
-.imagenet-slide .imagenet-figure img,
-.imagenet-slide .imagenet-figure svg {
+.figure-slide > figure > img,
+.figure-slide > figure > svg,
+.figure-slide > figure > .svg-wrap {
   display: block;
-  max-width: 880px;
+  max-width: var(--fig-max-w, 1500px);
   max-height: 100%;
-  width: auto;
+  width: var(--fig-w, auto);
   height: auto;
 }
 
-.classification-slide {
-  display: grid;
-  grid-template-rows: auto 1fr;
-}
-
-.classification-slide .classification-figure {
-  align-self: stretch;
-  justify-self: stretch;
-  display: grid;
-  place-items: center;
-  min-height: 0;
-  margin-top: var(--figure-gap);
-}
-
-.classification-slide .classification-figure img,
-.classification-slide .classification-figure svg {
-  display: block;
-  max-width: 1500px;
-  max-height: 100%;
-  width: auto;
-  height: auto;
-}
-
-.pca-method-slide {
-  display: grid;
-  grid-template-rows: auto 1fr;
-}
-
-.pca-method-slide .pca-method-figure {
-  align-self: stretch;
-  justify-self: stretch;
-  display: grid;
-  place-items: center;
-  min-height: 0;
-  margin-top: var(--figure-gap);
-}
-
-.pca-method-slide .pca-method-figure img,
-.pca-method-slide .pca-method-figure svg {
-  display: block;
-  max-width: 1500px;
-  max-height: 100%;
-  width: auto;
-  height: auto;
-}
-
-.pca-method-figure .step {
+/* Slides with .step elements inside SVGs (matplotlib bars, axes) need
+   to fade only — translate would shift the chart contents. */
+.pca-method-slide figure .step,
+.nsd-result-slide .step {
   transform: none;
 }
 
-.representations-slide {
-  display: grid;
-  grid-template-rows: auto 1fr;
-}
-
-.representations-slide .representations-figure {
-  align-self: stretch;
-  justify-self: stretch;
-  display: grid;
-  place-items: center;
-  min-height: 0;
-  margin-top: var(--figure-gap);
-}
-
-.representations-slide .representations-figure img,
-.representations-slide .representations-figure svg {
-  display: block;
-  max-width: 1500px;
-  max-height: 100%;
-  width: auto;
-  height: auto;
-}
-
-.nsd-schematic-slide {
-  display: grid;
-  grid-template-rows: auto 1fr;
-}
-
-.nsd-schematic-slide .nsd-schematic-figure {
-  align-self: stretch;
-  justify-self: stretch;
-  display: grid;
-  place-items: center;
-  min-height: 0;
-  margin-top: var(--figure-gap);
-}
-
-.nsd-schematic-slide .nsd-schematic-figure img,
-.nsd-schematic-slide .nsd-schematic-figure svg {
-  display: block;
-  max-width: 1320px;
-  max-height: 100%;
-  width: auto;
-  height: auto;
-}
+/* ----- Slide 06 (NSD schematic): overlay labels on a stacked image ----- */
 
 .nsd-schematic-slide .nsd-schematic-stack {
   position: relative;
   display: block;
   max-width: 1320px;
-  max-height: 100%;
   aspect-ratio: 1672 / 941;
 }
 
 .nsd-schematic-slide .nsd-schematic-stack > img {
   width: 100%;
   height: 100%;
-  max-width: 100%;
-  max-height: 100%;
 }
 
 .nsd-schematic-slide .nsd-overlay-label {
@@ -482,9 +378,7 @@ p {
   bottom: 56px;
   font-family: var(--font-sans);
   font-size: 18px;
-  font-weight: 400;
   color: var(--ink-muted);
-  letter-spacing: 0;
   mix-blend-mode: normal;
 }
 
@@ -492,132 +386,126 @@ p {
   font-style: italic;
 }
 
-.nsd-result-slide {
+/* ----- Slide 07 (NSD result): centered head + figure + legend grid ----- */
+
+.nsd-result-slide .nsd-result-head {
+  text-align: center;
+}
+
+.nsd-result-slide .nsd-result-head h1 {
+  font-size: 64px;
+  font-weight: 400;
+  letter-spacing: -0.015em;
+  line-height: 1.05;
+  text-align: center;
+}
+
+.nsd-result-slide .nsd-result-sub {
+  margin-top: 6px;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 32px;
+  font-weight: 400;
+  line-height: 1.15;
+  letter-spacing: -0.005em;
+  color: var(--ink-muted);
+  text-align: center;
+}
+
+.nsd-result-slide .nsd-result-stage {
+  align-self: stretch;
+  justify-self: stretch;
   display: grid;
-  grid-template-rows: auto 1fr;
+  grid-template-columns: 1fr auto;
+  column-gap: 56px;
+  min-height: 0;
+  margin-top: 36px;
+  align-items: start;
+}
+
+.nsd-result-slide .nsd-result-panel {
+  display: grid;
+  grid-template-rows: auto auto;
+  row-gap: 8px;
+  min-height: 0;
+}
+
+.nsd-result-slide .nsd-subplot-titles {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-items: center;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 28px;
+  font-weight: 400;
+  letter-spacing: -0.005em;
+  color: var(--ink-muted);
 }
 
 .nsd-result-slide .nsd-result-figure {
-  align-self: stretch;
-  justify-self: stretch;
   display: grid;
   place-items: center;
   min-height: 0;
-  margin-top: var(--figure-gap);
+  margin: 0;
 }
 
-.nsd-result-slide .nsd-result-figure img,
 .nsd-result-slide .nsd-result-figure svg {
   display: block;
   width: 100%;
-  max-width: 1700px;
-  max-height: 100%;
+  max-width: 1480px;
+  max-height: 700px;
   height: auto;
 }
 
-.nsd-result-figure .step {
-  transform: none;
-}
-
-.things-schematic-slide {
+.nsd-result-slide .nsd-legend {
+  list-style: none;
+  margin: 0;
+  padding: 0;
   display: grid;
-  grid-template-rows: auto 1fr;
+  gap: 18px;
+  font-family: var(--font-sans);
+  font-size: 26px;
+  color: var(--ink);
+  align-self: start;
+  margin-top: 56px;
 }
 
-.things-schematic-slide .things-schematic-figure {
-  align-self: stretch;
-  justify-self: stretch;
+.nsd-result-slide .nsd-legend li {
   display: grid;
-  place-items: center;
-  min-height: 0;
-  margin-top: var(--figure-gap);
+  grid-template-columns: 36px auto;
+  align-items: center;
+  gap: 14px;
 }
 
-.things-schematic-slide .things-schematic-figure img,
-.things-schematic-slide .things-schematic-figure svg {
+.nsd-result-slide .nsd-legend .swatch {
+  width: 36px;
+  height: 18px;
   display: block;
-  max-width: 1320px;
-  max-height: 100%;
-  width: auto;
-  height: auto;
 }
 
-.things-result-slide {
-  display: grid;
-  grid-template-rows: auto 1fr;
-}
-
-.things-result-slide .things-result-figure {
-  align-self: stretch;
-  justify-self: stretch;
-  display: grid;
-  place-items: center;
-  min-height: 0;
-  margin-top: var(--figure-gap);
-}
-
-.things-result-slide .things-result-figure img,
-.things-result-slide .things-result-figure svg {
-  display: block;
-  max-width: 950px;
-  max-height: 100%;
-  width: auto;
-  height: auto;
-}
-
-.things-model-comparison-slide {
-  display: grid;
-  grid-template-rows: auto 1fr;
-}
-
-.things-model-comparison-slide .things-model-comparison-figure {
-  align-self: stretch;
-  justify-self: stretch;
-  display: grid;
-  place-items: center;
-  min-height: 0;
-  margin-top: var(--figure-gap);
-}
-
-.things-model-comparison-slide .things-model-comparison-figure img,
-.things-model-comparison-slide .things-model-comparison-figure svg {
-  display: block;
-  max-width: 1180px;
-  max-height: 100%;
-  width: auto;
-  height: auto;
-}
+/* ----- Slide 11 (PC scatter): full-bleed figure with overlay column titles ----- */
 
 .pc-scatter-slide {
-  display: grid;
-  grid-template-rows: auto 1fr;
   padding-left: 0;
   padding-right: 0;
 }
 
-.pc-scatter-slide .pc-scatter-figure {
-  align-self: stretch;
-  justify-self: stretch;
-  display: grid;
-  place-items: center;
-  min-height: 0;
-  margin-top: var(--figure-gap);
+.pc-scatter-slide > h1 {
+  padding-left: var(--pad-side);
+  padding-right: var(--pad-side);
 }
 
-.pc-scatter-slide .pc-scatter-figure .svg-wrap {
+.pc-scatter-slide .svg-wrap {
   position: relative;
-  width: 100%;
-  max-width: none;
   aspect-ratio: 819.024729 / 258.228528;
 }
 
-.pc-scatter-slide .pc-scatter-figure .svg-wrap img {
-  display: block;
+.pc-scatter-slide .svg-wrap > img {
   width: 100%;
   height: 100%;
 }
 
-.pc-scatter-slide .pc-scatter-figure .col-title {
+.pc-scatter-slide .col-title {
   position: absolute;
   top: 6.5%;
   transform: translate(-50%, -50%);
@@ -627,11 +515,6 @@ p {
   color: var(--ink);
   letter-spacing: -0.01em;
   white-space: nowrap;
-}
-
-.pc-scatter-slide > h1 {
-  padding-left: var(--pad-side);
-  padding-right: var(--pad-side);
 }
 
 .takeaway-slide {
