@@ -388,6 +388,117 @@ of the same size when ready.
 - The PDF's QR code is rendered as a small `.placeholder` box, ~140×140px, bottom-left
   under the author.
 
+## Editorial refinements (v2.2)
+
+This section adds intentional, restrained design moves on top of the projection
+foundation. Every move below earns its place: it must add character without
+adding noise. None of these are decorative for decoration's sake.
+
+### Paper grain everywhere
+
+The subtle paper-noise overlay (already on `.title-slide` and `.thanks-slide`
+at opacity 0.04) extends to **every slide** at opacity **0.02**. The existing
+title/thanks treatment stays at 0.04 (more presence in the bespoke layouts).
+The overlay sits below content (`z-index: 0`) and above the paper background.
+Texture is pre-multiplied via `mix-blend-mode: multiply` so it darkens the paper
+slightly, never brightens it.
+
+```css
+.slide::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg ...%3E"); /* same noise SVG */
+  mix-blend-mode: multiply;
+  opacity: 0.02;
+  pointer-events: none;
+  z-index: 0;
+}
+.title-slide::before, .thanks-slide::before { opacity: 0.04; }
+```
+
+### Folio (page numeral) refinement
+
+The `#progress` element ("03 / 13") moves from `Geist Mono` to **italic
+Fraunces** at 18 px, optical-size 9 (small text axis). This is a magazine
+folio treatment — discreet, distinctive, editorial. Position stays
+bottom-right in the footer strip.
+
+```css
+#progress {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 18px;
+  font-weight: 400;
+  font-variation-settings: "opsz" 9;
+  letter-spacing: 0;
+  text-transform: lowercase;          /* "03 / 13" stays the way the shell writes it,
+                                         but if rendered numerically the lowercase
+                                         softens any Roman-numeral-like substitution */
+}
+```
+
+### Captions in italic Geist
+
+Captions move from regular Geist 22 px to **Geist italic 22 px**, letter-spacing
+0. Italic body type is a quiet editorial signal that this is *commentary on the
+figure*, not a heading. (The base `.caption` rule is updated globally; per-slide
+captions inherit.)
+
+### Accent color discipline
+
+The existing palette (`--orange / --teal / --blue / --red / --purple`) stays
+**figure-only**. The single editorial exception below is the only chrome use of
+accent.
+
+#### Editorial em-rule (bespoke slides only)
+
+The takeaway slide uses a 1-px **`--orange` em-rule** (40 px wide) above the
+hero phrase as a pull-quote signal. No other slide uses chrome accent color.
+
+```css
+.takeaway-slide .hero-sentence::before {
+  content: "";
+  display: block;
+  width: 40px;
+  height: 1px;
+  background: var(--orange);
+  margin: 0 auto 32px;
+}
+```
+
+### Title slide composition (specific)
+
+- Real QR (`images/personal_website_qr.png`) at 160×160, bottom-left under the
+  author block.
+- Small Geist Mono label below QR: `"yashmehta.dev"` at 14 px,
+  `--ink-muted`, lowercase, letter-spacing 0.04em. (User may swap label text.)
+- Author block: `Yash Mehta` in Geist 32 px weight 500, lab affiliation in
+  Geist 22 px `--ink-muted` line below.
+- Venue: bottom-right, current treatment (uppercase tracked) maintained.
+
+### Thanks slide composition (specific)
+
+5 current Bonner Lab members in a single **horizontal row of 5** portrait
+cards, evenly spaced, occupying the lower 2/3 of the slide. The "Thank you"
+title sits top-right (current position). Each card:
+
+- Portrait: 200×200 square, `images/team/<surname>.jpg`, `mix-blend-mode:
+  multiply` for paper integration, `border-radius: 0` (square, not circular —
+  the deck has no other rounded chrome).
+- Name: Geist 22 px weight 500, line-height 1.15, ink color.
+- Role: Geist italic 18 px `--ink-muted`, line-height 1.2.
+- Card layout: portrait, name 16 px below, role 4 px below name.
+
+5 cards × 200 px + 4 gaps × 56 px = 1224 px wide. The 1640 px content area
+accommodates this with 208 px breathing room left and right.
+
+### Takeaway slide composition (specific)
+
+- Hero phrase remains centered, 72 px Fraunces.
+- Add the 40 px `--orange` em-rule above the phrase (see "Editorial em-rule").
+- No other chrome.
+
 ## What workers must inherit
 
 Workers **must** use these classes/tokens:

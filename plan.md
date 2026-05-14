@@ -1,180 +1,337 @@
-# Plan: Responsive figure containment — fix overflow on every slide
+# Plan: Editorial refinements v2.2 — bespoke slides + global polish
 
-Apply the *Responsive figure containment* pattern from DESIGN.md (newly added)
-to every slide. Today, fixed-pixel widths in `styles.css` cause figures to
-overflow the slide's safe content area (1640 × 827 px) and get clipped by
-`overflow: hidden`. The pc-scatter slide is the most affected (~273 px clipped
-at the bottom on every projection), but every figure-bearing slide is at risk
-at non-standard projector aspect ratios.
+Apply the *Editorial refinements* spec (DESIGN.md §"Editorial refinements")
+across the deck.
 
-Single serial worker — this is a global, uniform refactor of `styles.css` and
-selected slide modules. Parallel workers would cause merge conflicts and
-inconsistent application of the pattern.
+Two parallel workers:
+- **Worker A:** bespoke slides — title (real QR), takeaway (em-rule), thanks
+  (5 real portraits).
+- **Worker B:** global editorial polish — paper-grain on all slides, italic
+  Fraunces folio, italic captions.
+
+These touch disjoint regions: Worker A only edits bespoke slide modules + their
+slide-specific CSS rules. Worker B only edits global CSS rules (`.slide::before`,
+`#progress`, `.caption`) and the title/thanks `::before` opacity overrides.
 
 Manager (Claude) verifies and merges per `~/.claude/skills/delegate/SKILL.md`.
 
 ---
 
-## Goal
+## Files to touch
 
-Every figure in the deck must fit inside the slide's safe content area at
-every viewport aspect ratio without clipping.
+### Worker A
+- `slides/01-title.js`, `slides/12-takeaway.js`, `slides/13-thanks.js`
+- `styles.css` — only the per-slide rule blocks for `.title-slide`,
+  `.takeaway-slide`, `.thanks-slide` and their child selectors
+
+### Worker B
+- `styles.css` — only `.slide::before`, `.title-slide::before`,
+  `.thanks-slide::before`, `#progress`, `.caption`
+
+### Files NOT to touch (both workers)
+- `:root` token block, global `.slide`, `h1`, `.kicker`, `p`, `.placeholder`,
+  `.step`, `.step.revealed`, `#footer-strip`, `.footer-left`,
+  any figure-bearing slide rules (slides 02–11)
+- `shell.js`, `index.html`, `DESIGN.md`, `plan.md`, `CLAUDE.md`
+- Image assets (Worker A may *reference* new assets, not edit them)
 
 ---
 
-## Files to touch
+## Worker A — bespoke slides
 
-- `styles.css` (per-slide figure rules — all of them)
-- `slides/04-pca-method.js` — the inlined SVG has fixed `width=` / `height=`
-  attributes that must be removed (only `viewBox` kept) so CSS can govern.
-- All other slide modules: read-only verification (no changes expected).
+### Subtask A1 — `slides/01-title.js`
+
+Replace the QR placeholder with the real image:
+
+```html
+<!-- Before -->
+<div class="placeholder" data-name="qr-code.png"></div>
+
+<!-- After -->
+<figure class="qr">
+  <img src="images/personal_website_qr.png" alt="QR code linking to author website">
+  <figcaption>yashmehta.dev</figcaption>
+</figure>
+```
+
+Add per-slide CSS rules (within `.title-slide` scope):
+
+```css
+.title-slide .qr {
+  display: grid;
+  gap: 10px;
+  justify-items: start;
+}
+
+.title-slide .qr img {
+  display: block;
+  width: 160px;
+  height: 160px;
+  mix-blend-mode: multiply;
+}
+
+.title-slide .qr figcaption {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  letter-spacing: 0.04em;
+  color: var(--ink-muted);
+}
+```
+
+The QR sits in the existing `.title-meta` row, right of the author block (use
+the existing `grid-template-columns: auto 1fr; align-items: end; gap: 32px`
+row).
+
+### Subtask A2 — `slides/12-takeaway.js`
+
+Slide is bespoke text-only, no figure. Add the editorial em-rule above the
+hero phrase:
+
+```html
+<section class="slide takeaway-slide">
+  <p class="hero-sentence">…existing hero phrase, unchanged…</p>
+</section>
+```
+
+Add per-slide CSS (within `.takeaway-slide` scope):
+
+```css
+.takeaway-slide .hero-sentence::before {
+  content: "";
+  display: block;
+  width: 40px;
+  height: 1px;
+  background: var(--orange);
+  margin: 0 auto 32px;
+}
+```
+
+Do not add or modify the hero phrase text.
+
+### Subtask A3 — `slides/13-thanks.js`
+
+Replace the 4-card 2×2 grid with a 5-card horizontal row using real
+portraits.
+
+```html
+<section class="slide thanks-slide">
+  <h1 class="thanks-title">Thank you</h1>
+  <div class="team-row">
+    <div class="team-card">
+      <img src="images/team/bonner.jpg" alt="Michael Bonner">
+      <p class="team-name">Michael Bonner</p>
+      <p class="team-role">PI · Asst. Professor</p>
+    </div>
+    <div class="team-card">
+      <img src="images/team/han.jpg" alt="Kelsey Han">
+      <p class="team-name">Kelsey Han</p>
+      <p class="team-role">PhD Student</p>
+    </div>
+    <div class="team-card">
+      <img src="images/team/passi.jpg" alt="Ananya Passi">
+      <p class="team-name">Ananya Passi</p>
+      <p class="team-role">PhD Student</p>
+    </div>
+    <div class="team-card">
+      <img src="images/team/mehta.jpg" alt="Yash Mehta">
+      <p class="team-name">Yash Mehta</p>
+      <p class="team-role">PhD Student</p>
+    </div>
+    <div class="team-card">
+      <img src="images/team/chen.jpg" alt="Zirui Chen">
+      <p class="team-name">Zirui Chen</p>
+      <p class="team-role">PhD Student</p>
+    </div>
+  </div>
+  <p class="venue">18 MAY 2026 · VSS</p>
+</section>
+```
+
+Replace the existing `.thanks-slide`, `.thanks-title`, `.team-grid`,
+`.team-card`, `.team-name`, `.team-role` rules with a horizontal 5-card row:
+
+```css
+.thanks-slide {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  row-gap: 64px;
+}
+
+.thanks-slide .thanks-title {
+  grid-row: 1;
+  justify-self: start;       /* anchor top-left now that it's the only top element */
+}
+
+.thanks-slide .team-row {
+  grid-row: 2;
+  align-self: center;
+  justify-self: center;
+  display: grid;
+  grid-template-columns: repeat(5, 200px);
+  gap: 56px;
+  min-height: 0;
+}
+
+.thanks-slide .team-card {
+  display: grid;
+  gap: 16px;
+  justify-items: start;
+}
+
+.thanks-slide .team-card img {
+  display: block;
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  mix-blend-mode: multiply;
+}
+
+.thanks-slide .team-name {
+  font-family: var(--font-sans);
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 1.15;
+  color: var(--ink);
+  margin: 0;
+}
+
+.thanks-slide .team-role {
+  font-family: var(--font-sans);
+  font-size: 18px;
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.2;
+  color: var(--ink-muted);
+  margin: 0;
+}
+
+.thanks-slide .venue {
+  grid-row: 3;
+  justify-self: end;
+  align-self: end;
+}
+```
+
+Total row width: 5 × 200 + 4 × 56 = 1224 px. Fits the 1640 px content area.
+
+The existing `.team-grid` class is removed (replaced by `.team-row`). Existing
+`.thanks-slide .placeholder` rule is removed (no more placeholders).
+
+## Worker A acceptance
+
+- 01-title renders with real QR (160×160) + lowercase mono label below.
+- 12-takeaway renders with a 40 px orange em-rule above the hero phrase,
+  hero phrase text unchanged.
+- 13-thanks renders with 5 real portrait cards in a horizontal row, names
+  in Geist 22 px, roles in Geist italic 18 px muted.
+- No regressions on any other slide (Worker A doesn't touch them).
+
+---
+
+## Worker B — global editorial polish
+
+### Subtask B1 — paper-grain on every slide
+
+The existing `.title-slide::before, .thanks-slide::before { ... }` rule sets
+the grain at opacity 0.04 on those two slides only. Refactor:
+
+```css
+/* applies to every slide */
+.slide::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='0.45'/%3E%3C/svg%3E");
+  mix-blend-mode: multiply;
+  opacity: 0.02;          /* baseline for every slide */
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* bespoke slides keep the stronger grain */
+.title-slide::before,
+.thanks-slide::before {
+  opacity: 0.04;
+}
+```
+
+Verify the existing `h1`, `.kicker`, `.title-meta`, `.venue`, etc. all already
+have `position: relative; z-index: 1` (they do). The grain sits at z-index 0
+behind content.
+
+### Subtask B2 — folio refinement
+
+Update `#progress`:
+
+```css
+#progress {
+  grid-column: 3;
+  justify-self: end;
+  color: var(--ink-muted);
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 18px;
+  font-weight: 400;
+  font-variation-settings: "opsz" 9;
+  letter-spacing: 0;
+  text-transform: lowercase;
+}
+```
+
+(The `letter-spacing: 0.08em` and `font-family: var(--font-mono)` are removed.)
+
+### Subtask B3 — italic captions
+
+Update the global `.caption`:
+
+```css
+.caption {
+  margin-top: 18px;
+  color: var(--ink-muted);
+  font-family: var(--font-sans);
+  font-style: italic;
+  font-size: 22px;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+```
+
+(Remove `letter-spacing: 0.02em`.)
+
+## Worker B acceptance
+
+- Every slide (1–13) has a faint paper-grain texture; title and thanks have
+  the stronger version.
+- Folio "03 / 13" reads in italic Fraunces, lowercase, less mono-feel.
+- Every figure caption renders in italic Geist (visible on slides with
+  captions: 02–11).
+- Worker B touches only the four CSS rules listed above (and the bespoke
+  `::before` opacity override).
+
+---
 
 ## Out of scope
 
-- `:root` tokens, font system, color palette, motion settings.
-- DESIGN.md (already updated).
-- `shell.js`, `index.html`.
-- Any image asset.
-- Any slide-content edits (titles, captions stay as-is).
+- Slide content text (titles, hero phrase, captions).
+- Figure-bearing slides 02–11 (no per-slide changes — Worker B's global
+  caption + folio updates affect them, but no per-slide rules edit).
+- New images beyond the 5 already-downloaded team portraits and the
+  pre-existing QR.
+- Animation changes.
 
 ---
 
-## Subtasks (single worker)
-
-### Subtask 1 — refactor every per-slide figure rule in `styles.css`
-
-For each per-slide block in `styles.css`, replace fixed-pixel `width:` figure
-rules with the *Responsive figure containment* pattern from DESIGN.md
-§"Responsive figure containment".
-
-Slides to refactor:
-
-| Slide                       | Asset shape (best guess)        | Preferred cap     |
-|-----------------------------|----------------------------------|-------------------|
-| `02-imagenet`               | scatter, near-square            | 1100 px width     |
-| `03-classification`         | wide deep-net diagram (~3:1)    | 1500 px width     |
-| `04-pca-method`             | wide 2-panel SVG (~2:1)         | 1500 px width     |
-| `05-representations`        | medium chart                    | 1240 px width     |
-| `06-nsd-schematic`          | schematic (~2:1)                | 1320 px width     |
-| `07-nsd-result`             | bar chart                        | 1240 px width     |
-| `08-things-schematic`       | schematic (~2:1)                | 1320 px width     |
-| `09-things-result`          | bar chart                        | 1240 px width     |
-| `10-things-model-comparison`| bar chart, possibly wider       | 1400 px width     |
-| `11-pc-scatter`             | square scatter — **HEIGHT bound** | use `max-height: 800px` instead of width cap; let aspect drive width |
-
-For each, use this pattern (replace `<name>` with the slide's canonical name):
-
-```css
-.<name>-slide {
-  display: grid;
-  grid-template-rows: auto 1fr;
-}
-
-.<name>-slide .<name>-figure {
-  align-self: stretch;
-  justify-self: stretch;
-  display: grid;
-  place-items: center;
-  min-height: 0;
-  margin-top: var(--figure-gap);
-}
-
-.<name>-slide .<name>-figure img,
-.<name>-slide .<name>-figure svg {
-  display: block;
-  max-width: <cap>px;
-  max-height: 100%;
-  width: auto;
-  height: auto;
-}
-```
-
-For `pc-scatter` (square asset, height-bound):
-
-```css
-.pc-scatter-slide .pc-scatter-figure img {
-  display: block;
-  max-width: 100%;
-  max-height: 800px;
-  width: auto;
-  height: auto;
-}
-```
-
-The existing block of slide-1–5 rules in `styles.css` should be reorganized so
-each slide has the pattern above; redundancy is fine — readability over
-DRY-ness, since these are the contract between slide module and slide layout.
-
-### Subtask 2 — strip fixed `width=` / `height=` from the inlined SVG in `slides/04-pca-method.js`
-
-The SVG opens with:
-
-```html
-<svg xmlns:xlink="..." width="708.017187pt" height="373.494687pt" viewBox="0 0 708.017187 373.494687" ...>
-```
-
-Remove the `width="..."` and `height="..."` attributes (a previous worker
-already did this — verify and re-apply if missing). Keep `viewBox` so the
-intrinsic aspect ratio is preserved when CSS sizes it.
-
-### Subtask 3 — bespoke-layout slides (01-title, 12-takeaway, 13-thanks)
-
-Audit each:
-
-- **01-title** — the QR placeholder is `width: 140px; height: 140px;`. Wrap in
-  `min-height: 0` parent if not already. Author block, venue, title h1 — these
-  are text and naturally responsive; no figure containment needed.
-- **12-takeaway** — `place-items: center; .hero-sentence` is text. Add
-  `min-height: 0` to `.takeaway-slide` if it doesn't have it. No figure to
-  contain.
-- **13-thanks** — team-grid placeholders are `200×200`. They sit in a 2×2 grid
-  at column 1 with 40 px row gap, ~520 px wide. At maximum height
-  `2 * 200 + 1 * 40 = 440 px` which fits comfortably in the slide.
-  Confirm `min-height: 0` on the team-grid container so it can shrink in 1fr
-  rows. If `.thanks-slide`'s grid template is not grid-row-bounded, no change
-  needed.
-
-For all three: when team-card placeholders or QR code are eventually replaced
-with `<img>`, the same `max-width: 100%; max-height: 100%; width: auto;
-height: auto` pattern applies inside the placeholder container.
-
----
-
-## Acceptance
-
-After the worker commits and you merge:
-
-1. `styles.css` syntactically valid — equal `{` and `}` counts.
-2. Every figure-bearing slide (02–11) uses the *Responsive figure containment*
-   pattern with no remaining `.figure { width: <fixed>px; }` declarations.
-3. `slides/04-pca-method.js` SVG has no `width=` / `height=` attributes on the
-   root `<svg>`.
-4. Manager smoke-tests in browser at `http://localhost:8000`:
-   - Step through 01 → 13.
-   - Resize browser window to a few aspects (16:9, 16:10, 4:3, ultra-wide).
-   - Confirm no figure is clipped at any aspect.
-   - Confirm pc-scatter (slide 11) is no longer clipped at the bottom.
-   - Confirm titles still sit high; spatial rhythm is preserved.
-
----
-
-## Verification (worker runs before committing)
+## Verification (manager runs after both merges)
 
 ```bash
 python -c "s=open('styles.css').read(); assert s.count('{')==s.count('}'), 'brace mismatch'; print('OK')"
 ```
 
-Then visually re-read styles.css and confirm:
-
-- Every `.<name>-slide` block uses `grid-template-rows: auto 1fr`.
-- Every `.<name>-figure` block has `min-height: 0` and `place-items: center`
-  (or `justify-self: stretch; align-self: stretch` and `display: grid`).
-- Every `.<name>-figure img` or `svg` has `max-width: <cap>; max-height: 100%`
-  with `width: auto; height: auto`. NO declarations of `.figure img { width:
-  100%; }` remain.
-
-Worker commit message:
-
-```
-Apply responsive figure containment to all slides (DESIGN.md v2.1)
-```
+Then load `http://localhost:8000`:
+- Step through 01 → 13.
+- Title (01): real QR with label visible bottom-left.
+- Takeaway (12): orange em-rule above hero phrase.
+- Thanks (13): 5 portraits in a row, names + roles below each.
+- Folio bottom-right reads in italic Fraunces.
+- Figure captions are italic Geist.
+- Faint paper texture present on every slide; stronger on title/thanks.
