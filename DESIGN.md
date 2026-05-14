@@ -14,6 +14,36 @@ natural extension of it.
 The audience is a Vision Sciences conference. Projector legibility and visual restraint
 matter more than flashiness.
 
+### Conference-projection design principles
+
+This deck is projected onto a 4–8 m screen in a partially darkened room, viewed from up
+to 25 m back. Every visual choice on every slide must respect the following:
+
+1. **No floating panels.** Figures must read as *part of the page*, not as opaque PNGs
+   pasted onto it. White backgrounds in SVG/PNG assets must be removed visually
+   (see [Figure integration](#figure-integration)). The paper background is the slide;
+   ink is the only mark on it.
+2. **No frames, borders, drop shadows, gradients, rounded card chrome on figures.** A
+   figure's silhouette is the figure itself. The eye finds it because it is the only
+   marked region in a sea of paper.
+3. **Top of slide is prime real estate.** From the back of the room, the bottom 15% is
+   often blocked by a head row. Compress top padding so the title sits high and the
+   figure begins as close to the title as the typographic rhythm allows.
+4. **One idea, one anchor.** Each slide has exactly one figure (or one hero phrase) and
+   one short title. The title labels the slide; the figure carries the argument.
+5. **Read in two seconds.** A viewer scanning the slide should be able to identify the
+   title and the figure's point in under two seconds. No multi-clause titles, no busy
+   captions, no decorative typography.
+6. **Spatial rhythm is identical across slides.** Title baseline, hairline rule, figure
+   top edge — all sit at the same y-coordinate from slide to slide. The eye should never
+   re-search for the title position when the deck advances.
+7. **Color discipline.** The accent palette
+   (`--orange / --teal / --blue / --red / --purple`) is for *chart marks only*. Slide
+   chrome (footer, rule, captions, slide number) uses ink + muted ink + rule grey only.
+   No accent colors in titles, headers, footers, or decorative dividers.
+8. **Motion is invisible.** A presenter clicking forward should feel a soft re-anchor,
+   not an animation. If the audience notices the transition, it is too loud.
+
 ## Tokens
 
 ```css
@@ -40,6 +70,13 @@ matter more than flashiness.
   /* Logical slide size; everything inside slides uses px at this scale */
   --slide-w: 1920px;
   --slide-h: 1080px;
+
+  /* Spatial rhythm — tuned for projection legibility from the back of the room */
+  --pad-top:        56px;     /* was 96 — title raised so it sits high on screen */
+  --pad-side:      140px;
+  --pad-bottom:     64px;     /* was 80 — footer is only 36px tall, no need for more */
+  --title-rule-gap: 20px;     /* was 28 — tighter rhythm between title and rule */
+  --figure-gap:     24px;     /* was 38 — figure begins close under the title rule */
 
   /* Motion */
   --ease:    cubic-bezier(.2, .7, .2, 1);
@@ -77,21 +114,131 @@ Load via Google Fonts in `index.html` (one `<link>` for performance):
 
 ## Layout
 
-- **Outer padding inside the section:** `padding: 96px 140px 80px;`
+- **Outer padding inside the section:**
+  `padding: var(--pad-top) var(--pad-side) var(--pad-bottom);` (56 / 140 / 64 px).
+  Top padding is intentionally tight — see *Conference-projection design principles*
+  point 3.
 - **Title anchor:** top-left, on its own line; followed by an optional `<p class="kicker">`
-  subtitle in muted ink.
-- **Hairline rule** (`--rule`, 1px) under the title block with `margin-top: 28px` —
-  echoes the editorial print feel without shouting.
-- **Figure area:** the rest of the slide. Centered or two-column layouts via simple flex
-  / grid. Never use viewport units inside the section.
+  subtitle in muted ink. Title baseline sits at the same y-coordinate on every slide
+  (point 6 in the projection principles).
+- **Hairline rule** (`--rule`, 1px) under the title block with
+  `margin-top: var(--title-rule-gap)` (20px) — echoes the editorial print feel without
+  shouting. On the title, takeaway, and thanks slides, the rule is suppressed (those
+  are bespoke layouts).
+- **Figure area:** the rest of the slide, beginning `var(--figure-gap)` (24px) below the
+  rule. Centered or two-column layouts via simple flex / grid. Never use viewport units
+  inside the section.
 - **Footer strip:** a fixed band at the bottom, 36px tall, `--paper-2` background, with
   three slots:
   - left: talk short title — `"COARSE FEEDBACK · VSS 2026"`
   - center: empty (kept for breathing room)
-  - right: slide number `"03 / 16"` (replaces the spec's `#progress` div)
+  - right: slide number `"03 / 13"` (replaces the spec's `#progress` div)
 - The shell's `#progress` element should be styled as that right-side slide number.
 
-## Image placeholders
+## Figure integration
+
+Figures must feel embedded in the paper, not pasted onto it.
+
+### The white-background problem
+
+Most assets in `images/` are matplotlib SVG exports or screenshots with a hard
+`#FFFFFF` background. Dropped onto the `--paper #FAF8F3` slide, they read as
+opaque rectangles floating above the page. This violates the
+*"no floating panels"* principle.
+
+### Solution: multiply blending
+
+Apply `mix-blend-mode: multiply` to every figure (`<img>`, `<svg>`,
+inline `<svg>`) inside a slide. White areas in the asset multiply with the paper
+color (`#FFFFFF × #FAF8F3 = #FAF8F3`) and disappear into the page. Anything
+darker than paper (axis lines, marks, text) is unchanged.
+
+```css
+.slide { isolation: isolate; }              /* contain blend; don't leak to footer */
+.slide figure img,
+.slide figure svg,
+.slide > figure { mix-blend-mode: multiply; }
+```
+
+The `isolation: isolate` is required so the blend doesn't bleed into the footer
+strip or the next slide during transitions.
+
+### What multiply does *not* solve
+
+- Assets where the chart fill area uses **off-white** (e.g. `#FCFCFC`) — those
+  multiply to a slightly darker paper. Visible only on careful inspection;
+  acceptable for v1. If a specific asset looks wrong, edit the SVG to either
+  remove the background `<rect>` or recolor it to `var(--paper)`.
+- Assets where chart marks are pure **white-on-color** (uncommon in this deck) —
+  those would disappear. None of the current `images/` exhibit this.
+- Raster PNGs where the background is anti-aliased — fine in practice, paper
+  edges around the figure may show a 1-px halo at very high zoom; invisible
+  from the audience.
+
+### Figure containers
+
+Use `<figure>` for every figure region. Inside it:
+
+```html
+<figure class="<slide-name>-figure">
+  <img src="images/<asset>" alt="">
+  <figcaption class="caption step step-1">Short descriptive label.</figcaption>
+</figure>
+```
+
+- No border, no `box-shadow`, no `border-radius`, no background on the `<figure>`
+  itself — the figure's silhouette is the figure.
+- The `<img>` inherits the slide-class layout for sizing (do not inline pixel
+  widths if a slide-class rule covers it; see *Per-slide overrides* below).
+- Caption sits 18px below the figure, in `--ink-muted`, at the caption type size.
+
+## Per-slide overrides
+
+Every slide gets a unique class on its root `<section>` (e.g.
+`.nsd-schematic-slide`, `.things-result-slide`). The slide module's HTML must
+include this class. Per-slide layout rules live in **`styles.css`**, scoped to
+that class, not in the slide module.
+
+```css
+/* in styles.css */
+.nsd-schematic-slide {
+  display: grid;
+  grid-template-rows: auto 1fr;
+}
+
+.nsd-schematic-slide .nsd-schematic-figure {
+  width: 1180px;
+  align-self: center;
+  justify-self: center;
+}
+
+.nsd-schematic-slide .nsd-schematic-figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+```
+
+Slide modules **must not** contain inline `style="..."` attributes for sizing
+or color. The only acceptable inline style on a slide module is for things the
+shell genuinely cannot reach (vanishingly rare). Picking the right figure
+width per asset is a styles.css responsibility, not a slide-module one.
+
+### Picking figure widths per slide
+
+Aim widths in the **1000–1320 px** range at 1920×1080 logical scale. Decide by
+asset aspect ratio, not by a default:
+
+- **Square or near-square** assets → 1000–1100 px
+- **Wide** charts (e.g. RSA bar charts spanning many conditions) → 1200–1320 px
+- **Schematic diagrams** (NSD methods, deep-net diagram) → 1180–1280 px
+- **Tall** assets → set `height` (700–820 px) and let `width` follow
+
+A figure must never overflow the slide's content area
+(`1920 - 2*140 = 1640 px wide`, `1080 - 56 - 64 - 36 = 924 px` tall minus title
+block).
+
+
 
 The user will drop real PNGs into `assets/` later. Every `<img>` placeholder slot should
 render as a labelled empty box so the layout looks correct in advance:
@@ -144,15 +291,32 @@ of the same size when ready.
 
 ## What workers must inherit
 
-Workers B and C **must** use these classes/tokens:
+Workers **must** use these classes/tokens:
 
-- Slide root: `<section class="slide">` (the shell wraps it; this class applies the
-  padding and title hierarchy from above).
-- Title: `<h1>`.
+- Slide root: `<section class="slide <slide-name>-slide">` — both the global `.slide`
+  class AND the slide-specific class (e.g. `nsd-schematic-slide`). The shell wraps
+  the section; the global class applies the padding and title hierarchy; the
+  slide-specific class is the hook for per-slide layout in `styles.css`.
+- Title: `<h1>`. Always present, always at the top of the slide. Bespoke layouts
+  (title, takeaway, thanks) may suppress the rule via the `.no-rule` modifier.
 - Subtitle/kicker: `<p class="kicker">`.
 - Body bullet: `<p class="step step-N">` for reveal text.
-- Figure box: `<div class="placeholder" data-name="…" style="width:…; height:…;"></div>`.
+- Figure container: `<figure class="<slide-name>-figure">` — see
+  [Figure integration](#figure-integration) for the contents.
+- Figure during placeholder phase:
+  `<div class="placeholder" data-name="…" style="width:…; height:…;"></div>`
+  (only until a real asset replaces it).
 - Captions: `<figcaption class="caption">…</figcaption>`.
 
-No worker should define their own colors, fonts, or px-precise type sizes. Layout-only
-overrides (flex direction, grid columns, figure positioning per slide) are fine.
+**Worker rules:**
+
+1. **No colors, fonts, font sizes** in slide modules. Tokens only, via classes
+   already defined in `styles.css`.
+2. **No inline `style="..."` attributes for sizing.** Per-slide widths/heights live
+   in `styles.css`, scoped to the slide-specific class. (See
+   [Per-slide overrides](#per-slide-overrides).)
+3. **No `box-shadow`, `border`, `border-radius`, or `background-color` on figures.**
+   Figures are silhouettes on paper.
+4. **Every `<img>` and `<svg>` figure** inherits the global `mix-blend-mode: multiply`
+   rule. Workers do not need to add the rule per slide; they only need to ensure the
+   asset sits inside `<figure>`.

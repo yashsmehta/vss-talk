@@ -1,120 +1,151 @@
-# Plan: Talk-sequence v2 — extend with NSD, THINGS, PC scatter
+# Plan: Visual overhaul v1 — projection-grade integration
 
-Extend the deck with the empirical-results arc. Slides 1–5 stay as-is. Add
-NSD (schematic + result), THINGS (schematic + result + model comparison),
-PC scatter, and renumber the takeaway/thanks bookends.
+Apply the revised `DESIGN.md` (projection principles, tighter rhythm, figure
+integration via `mix-blend-mode: multiply`, per-slide overrides in `styles.css`).
+Refine each slide for a conference-projection setting.
+
+Two sequential phases:
+
+1. **Phase A (serial, 1 worker):** rewrite `styles.css` to apply the new global
+   visual layer.
+2. **Phase B (parallel, 7 workers):** each worker takes 2 slides (last takes 1),
+   refines per-slide layout in `styles.css` (slide-class-scoped) and slide-module
+   markup.
 
 Manager (Claude) verifies and merges per `~/.claude/skills/delegate/SKILL.md`.
 
 ---
 
-## Goal
+## Phase A — global styles overhaul (serial, 1 worker)
 
-Add 6 new slides (NSD x2, THINGS x3, PC scatter) and renumber takeaway/thanks
-so the final deck is 13 slides.
+### Subtask A1 — `styles.css`: apply DESIGN.md v2
 
----
+**Files touched:** `styles.css` only.
 
-## Final slide sequence (the contract)
+**Required changes:**
 
-| #  | File                              | Content                                          | Image                          | Steps |
-|----|-----------------------------------|--------------------------------------------------|--------------------------------|-------|
-| 1  | `slides/01-title.js`              | Title — **unchanged**                            | —                              | —     |
-| 2  | `slides/02-imagenet.js`           | ImageNet 1000-class scatter — **unchanged**      | `imagenet_1000.svg`            | —     |
-| 3  | `slides/03-classification.js`     | Deep net classifier — **unchanged**              | `deep-neural-network-classification.png` | — |
-| 4  | `slides/04-pca-method.js`         | PCA-based coarse signal — **unchanged**          | `pca_method.svg`               | —     |
-| 5  | `slides/05-representations.js`    | Coarse → categorical reps — **unchanged**        | `representations.svg`          | —     |
-| 6  | `slides/06-nsd-schematic.js`      | **NEW** — NSD methods schematic                  | `nsd_description.png`          | 1     |
-| 7  | `slides/07-nsd-result.js`         | **NEW** — NSD RSA results across granularity     | `nsd_results.svg`              | 1     |
-| 8  | `slides/08-things-schematic.js`   | **NEW** — THINGS database overview               | `things-schematic.png`         | 1     |
-| 9  | `slides/09-things-result.js`      | **NEW** — THINGS coarse alignment results        | `things_coarse_results.svg`    | 1     |
-| 10 | `slides/10-things-model-comparison.js` | **NEW** — vs. pretrained models             | `things_model_comparison.svg`  | 1     |
-| 11 | `slides/11-pc-scatter.js`         | **NEW** — PC scatter = internal reps of coarse-grain models | `pc_scatter.svg`    | 1     |
-| 12 | `slides/12-takeaway.js`           | Takeaway — **renamed** from `06-takeaway.js`     | —                              | —     |
-| 13 | `slides/13-thanks.js`             | Thanks — **renamed** from `07-thanks.js`         | —                              | —     |
+1. **Add the new spatial-rhythm tokens** to `:root`:
+   `--pad-top: 56px; --pad-side: 140px; --pad-bottom: 64px;
+    --title-rule-gap: 20px; --figure-gap: 24px;`
+2. **Replace `.slide` padding** to use the new tokens:
+   `padding: var(--pad-top) var(--pad-side) var(--pad-bottom);`
+3. **Replace `.slide > h1::after` margin-top** with `var(--title-rule-gap)`.
+4. **Add `isolation: isolate` to `.slide`** so blend modes don't leak to the
+   footer or sibling slides during transitions.
+5. **Add the global figure-blending rule:**
+   ```css
+   .slide figure img,
+   .slide figure svg,
+   .slide figure { mix-blend-mode: multiply; }
+   ```
+   Captions inside `<figure>` must NOT blend — exempt them:
+   ```css
+   .slide figure figcaption { mix-blend-mode: normal; }
+   ```
+6. **Update existing per-slide figure rules** (slides 1–5) to use the new
+   `--figure-gap` token in place of hardcoded `margin-top: 38px`.
+7. **Add per-slide layout rules for slides 06–13** — for each new slide
+   (`nsd-schematic`, `nsd-result`, `things-schematic`, `things-result`,
+   `things-model-comparison`, `pc-scatter`, `takeaway` already styled,
+   `thanks` already styled), add:
+   ```css
+   .<name>-slide {
+     display: grid;
+     grid-template-rows: auto 1fr;
+   }
+   .<name>-slide .<name>-figure {
+     align-self: center;
+     justify-self: center;
+     margin-top: var(--figure-gap);
+   }
+   .<name>-slide .<name>-figure img {
+     display: block;
+     width: 100%;
+     height: auto;
+   }
+   ```
+   Pick a width per asset by aspect ratio (1000–1320 px range; see DESIGN.md
+   §"Picking figure widths per slide"). For now use **1180px** as a default for
+   schematic-style PNGs and **1240px** for results SVGs; per-slide workers in
+   Phase B may refine.
+8. **Do not change** the title-slide, takeaway-slide, or thanks-slide bespoke
+   rules in this subtask — they are already custom and Phase-B workers will
+   refine them.
+9. **Do not change** color tokens, font tokens, or any chart accent values.
 
-After all worker merges, manager updates `shell.js` `SLIDES` array to:
-
-```js
-const SLIDES = [
-  '01-title', '02-imagenet', '03-classification', '04-pca-method',
-  '05-representations', '06-nsd-schematic', '07-nsd-result',
-  '08-things-schematic', '09-things-result', '10-things-model-comparison',
-  '11-pc-scatter', '12-takeaway', '13-thanks',
-];
-```
-
----
-
-## Slide content conventions for the 6 new slides
-
-User has explicitly said: **don't worry about polish or final body text** — this
-pass is structural. Each new slide should follow the existing pattern (look at
-`02-imagenet.js`, `03-classification.js`, `05-representations.js` for reference):
-
-- `h1` = a short placeholder title derived from the slide name
-  (e.g. "NSD" / "NSD: results" / "THINGS" / "THINGS: results" /
-  "THINGS: model comparison" / "Internal representations").
-  Copilot should keep titles short and neutral — the user will rewrite later.
-- Optional small caption under the figure.
-- Figure: `<img src="images/<asset>" alt="" style="width: <px>px; height: auto;">`
-  sized in the 900–1300 px range at 1920×1080 logical scale.
-- 1 step (caption fade-in is fine; figure can be visible from step 0).
-- **No hardcoded colors / fonts / font sizes.** Use only existing tokens and
-  utility classes from `styles.css`. If a new layout class is genuinely needed,
-  add it to `styles.css`; do not inline it.
-- Module shape: `export default { html, steps: 1, notes: '' }` — same as siblings.
-
----
-
-## Subtasks (parallel)
-
-Three workers, all touching disjoint files.
-
-### Subtask 1 — NSD slides
-- Create `slides/06-nsd-schematic.js` using `images/nsd_description.png`.
-- Create `slides/07-nsd-result.js` using `images/nsd_results.svg`.
-- Acceptance: `node --check slides/06-nsd-schematic.js slides/07-nsd-result.js`
-  passes; both modules `export default` with `html` string and `steps: 1`.
-
-### Subtask 2 — THINGS slides
-- Create `slides/08-things-schematic.js` using `images/things-schematic.png`.
-- Create `slides/09-things-result.js` using `images/things_coarse_results.svg`.
-- Create `slides/10-things-model-comparison.js` using `images/things_model_comparison.svg`.
-- Acceptance: `node --check` passes for all three; same module shape as above.
-
-### Subtask 3 — PC scatter + renames
-- Create `slides/11-pc-scatter.js` using `images/pc_scatter.svg`. Title can be
-  "Internal representations" or similar — caption may say "PC scatter of the
-  coarse-grain model's internal representations".
-- `git mv slides/06-takeaway.js slides/12-takeaway.js`
-- `git mv slides/07-thanks.js slides/13-thanks.js`
-- **Do not edit** the contents of takeaway/thanks — pure rename.
-- **Do not edit** `shell.js` — manager will do that after merge to avoid
-  three-way conflicts on the `SLIDES` array.
-- Acceptance: `node --check slides/11-pc-scatter.js slides/12-takeaway.js slides/13-thanks.js`
-  passes; `git log --diff-filter=R --follow slides/12-takeaway.js` shows the rename.
+**Acceptance:**
+- The browser at `http://localhost:8000` loads without console errors.
+- Slides 1–5 still render; figures now sit closer to the title and have no
+  visible white bounding box (white SVG bg blends into paper).
+- Slides 6–11 render with their assets correctly sized (no overflow, no crop).
+- Footer strip is unaffected (no blending leak).
 
 ---
 
-## Verification (manager runs after each merge)
+## Phase B — per-slide refinement (parallel, 7 workers)
+
+Each worker takes a slide pair (or single, for W7) and refines:
+
+- The slide module's HTML to use `<section class="slide <name>-slide">` and
+  `<figure class="<name>-figure"><img …><figcaption …/></figure>`.
+- **Remove all `style="..."` attributes from the slide module.** Any sizing/layout
+  goes into `styles.css` under the slide-specific class.
+- Add or tighten per-slide layout in `styles.css` ONLY for the slides the worker
+  owns (do not touch other slides' rules). If Phase A already added a rule for
+  the worker's slide, the worker may refine it (figure width, grid arrangement,
+  caption position) but must not delete other slides' rules.
+- Add a one-line caption that *describes the figure* in the audience's terms
+  (not a placeholder like "Figure 1"). Captions are short and concrete.
+
+**Parallelism note:** all 7 workers touch `styles.css`. To avoid merge conflicts,
+each worker only edits CSS rules whose selector starts with `.<their-slide>-slide`
+(or `.<their-slide>-figure`). They must not touch the `:root` block, the global
+`.slide` block, or any other slide's rules. Manager will merge sequentially and
+fall back to manual conflict resolution if any worker oversteps.
+
+### Pair assignments
+
+| Worker | Slides                                   |
+|--------|------------------------------------------|
+| W1     | `01-title.js`, `02-imagenet.js`          |
+| W2     | `03-classification.js`, `04-pca-method.js` |
+| W3     | `05-representations.js`, `06-nsd-schematic.js` |
+| W4     | `07-nsd-result.js`, `08-things-schematic.js` |
+| W5     | `09-things-result.js`, `10-things-model-comparison.js` |
+| W6     | `11-pc-scatter.js`, `12-takeaway.js`     |
+| W7     | `13-thanks.js`                           |
+
+### Per-pair acceptance
+
+For each worker:
+- Both slide modules render in the browser without errors.
+- Both slides' figures sit in the new tighter spatial rhythm (titles high,
+  figures close to title).
+- White bg from SVG/PNG assets is no longer visible.
+- No inline `style=""` attributes remain in the slide modules.
+- Captions are descriptive one-liners, not placeholders.
+
+---
+
+## Out of scope
+
+- Changes to `shell.js`, `index.html`, font choice, color tokens.
+- Animations beyond the existing step-reveal and slide-transition machinery.
+- Edits to image assets (no SVG editing — rely on `mix-blend-mode`).
+- Changes to slide content/text beyond captions and the title placeholder strings
+  (user will rewrite final copy later).
+
+---
+
+## Verification (manager runs after Phase B merges)
 
 ```
 node --check shell.js
 for f in slides/*.js; do node --check "$f"; done
 ```
 
-Then start `python -m http.server 8000` and step through slides 1→13 in the
-browser to confirm no slide errors and all images either resolve or render as
-labeled placeholders (if the image is missing).
-
----
-
-## Out of scope
-
-- Real body text on the new slides (user will write later).
-- Visual polish, color/font tuning (user explicitly said: not now).
-- Step-by-step reveal animations on individual chart elements.
-- Inlining any of the SVGs (all are referenced via `<img>`).
-- Any changes to slides 1–5.
-- Any changes to `styles.css` beyond what's strictly needed for layout.
+Then load `http://localhost:8000`, step through 1→13, confirm:
+- titles all sit at the same y-coordinate (top of slide, not floating mid-page)
+- no white panels around figures
+- no horizontal/vertical overflow
+- footer + slide number visible on every slide
