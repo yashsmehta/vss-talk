@@ -1,16 +1,18 @@
-const TILE_SIZE = 160;
+const TILE_SIZE = 145;
 const TILE_GAP = 28;
 
-function dotCluster(n) {
+function dotCluster(rows, cols) {
   const pad = 16;
   const inner = TILE_SIZE - 2 * pad;
-  const cell = inner / n;
-  const r = n === 1 ? 46 : cell * 0.32;
+  const cellW = inner / cols;
+  const cellH = inner / rows;
+  const cellMin = Math.min(cellW, cellH);
+  const r = Math.max(3, cellMin * 0.36);
   const dots = [];
-  for (let i = 0; i < n; i++) {
-    for (let j = 0; j < n; j++) {
-      const cx = pad + cell * (i + 0.5);
-      const cy = pad + cell * (j + 0.5);
+  for (let i = 0; i < cols; i++) {
+    for (let j = 0; j < rows; j++) {
+      const cx = pad + cellW * (i + 0.5);
+      const cy = pad + cellH * (j + 0.5);
       dots.push(`<circle cx="${cx.toFixed(1)}" cy="${cy.toFixed(1)}" r="${r.toFixed(1)}"/>`);
     }
   }
@@ -18,22 +20,23 @@ function dotCluster(n) {
 }
 
 const HERO_LAYOUT = [
-  { n: 1, col: 0, row: 0 },
-  { n: 2, col: 1, row: 0 },
-  { n: 4, col: 0, row: 1 },
-  { n: 8, col: 1, row: 1 },
+  { rows: 8, cols: 8, col: 0, row: 0 },
+  { rows: 4, cols: 4, col: 1, row: 0 },
+  { rows: 2, cols: 2, col: 1, row: 1 },
+  { rows: 1, cols: 2, col: 1, row: 2 },
 ];
 
-const HERO_TOTAL = TILE_SIZE * 2 + TILE_GAP;
+const HERO_W = TILE_SIZE * 2 + TILE_GAP;
+const HERO_H = TILE_SIZE * 3 + TILE_GAP * 2;
 
 const heroMotif = `
   <svg class="hero-motif"
-       viewBox="0 0 ${HERO_TOTAL} ${HERO_TOTAL}"
+       viewBox="0 0 ${HERO_W} ${HERO_H}"
        xmlns="http://www.w3.org/2000/svg"
        aria-hidden="true">
-    ${HERO_LAYOUT.map(({ n, col, row }) => `
+    ${HERO_LAYOUT.map(({ rows, cols, col, row }) => `
       <g transform="translate(${col * (TILE_SIZE + TILE_GAP)}, ${row * (TILE_SIZE + TILE_GAP)})">
-        <g class="hero-dots">${dotCluster(n)}</g>
+        <g class="hero-dots">${dotCluster(rows, cols)}</g>
       </g>
     `).join('')}
   </svg>
@@ -59,22 +62,21 @@ export default {
         <aside class="title-hero" aria-hidden="true">
           ${heroMotif}
           <p class="hero-caption">
-            <span class="hero-num">1</span>
-            <span class="hero-sep">·</span>
-            <span class="hero-num">4</span>
+            <span class="hero-num">64</span>
             <span class="hero-sep">·</span>
             <span class="hero-num">16</span>
             <span class="hero-sep">·</span>
-            <span class="hero-num">64</span>
-            <span class="hero-axis">categories</span>
+            <span class="hero-num">4</span>
+            <span class="hero-sep">·</span>
+            <span class="hero-num">2</span>
           </p>
         </aside>
       </div>
 
       <footer class="title-meta">
         <div class="author-block">
-          <p class="author-name">Yash Mehta</p>
-          <p class="author-affil">Bonner Lab <span class="dim">·</span> Cognitive Science</p>
+          <p class="author-name">Yash S. Mehta</p>
+          <p class="author-affil">coarse categorization</p>
           <img class="jhu-mark" src="images/jhu-wordmark.svg" alt="Johns Hopkins University">
         </div>
 

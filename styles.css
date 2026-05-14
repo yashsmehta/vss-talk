@@ -339,8 +339,8 @@ p {
 }
 
 .title-slide .hero-motif {
-  width: 348px;
-  height: 348px;
+  width: 318px;
+  height: auto;
   display: block;
 }
 
@@ -454,28 +454,29 @@ p {
 
 .title-slide .author-name {
   margin: 0;
-  font-family: var(--font-sans);
-  font-size: 30px;
-  font-weight: 600;
-  letter-spacing: -0.005em;
-  line-height: 1.2;
+  font-family: var(--font-display);
+  font-size: 36px;
+  font-weight: 400;
+  letter-spacing: -0.012em;
+  line-height: 1.15;
   color: var(--ink);
 }
 
 .title-slide .author-affil {
-  margin: 6px 0 0;
-  font-family: var(--font-sans);
+  margin: 4px 0 0;
+  font-family: var(--font-display);
   font-size: 22px;
-  font-weight: 400;
+  font-style: italic;
+  font-weight: 300;
   line-height: 1.2;
   color: var(--ink-muted);
 }
 
 .title-slide .jhu-mark {
   display: block;
-  width: 168px;
+  width: 480px;
   height: auto;
-  margin-top: 14px;
+  margin-top: 28px;
 }
 
 .title-slide .dim {
@@ -515,9 +516,8 @@ p {
 
 .title-slide .qr img {
   display: block;
-  width: 96px;
-  height: 96px;
-  mix-blend-mode: multiply;
+  width: 140px;
+  height: 140px;
 }
 
 /* Hide global footer strip on the title slide for a cleaner cover */
