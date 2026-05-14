@@ -326,7 +326,7 @@ p {
 
 .classification-figure img {
   display: block;
-  width: 1220px;
+  width: 100%;
   height: auto;
 }
 
@@ -336,7 +336,7 @@ p {
 
 .pca-method-figure svg {
   display: block;
-  width: 1280px;
+  width: 100%;
   height: auto;
 }
 

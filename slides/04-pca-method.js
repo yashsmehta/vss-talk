@@ -3,7 +3,7 @@ export default {
     <section class="slide pca-method-slide">
       <h1>What if the feedback signal were coarser?</h1>
       <figure class="pca-method-figure">
-        <svg xmlns:xlink="http://www.w3.org/1999/xlink" width="708.017187pt" height="373.494687pt" viewBox="0 0 708.017187 373.494687" xmlns="http://www.w3.org/2000/svg" version="1.1">
+        <svg xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 708.017187 373.494687" xmlns="http://www.w3.org/2000/svg" version="1.1">
          <metadata>
           <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
            <cc:Work>
@@ -999,7 +999,8 @@ export default {
           </g>
          </g>
         </svg>
-        
+        <figcaption class="caption step step-2">PCA-based splits turn fine-grained classes into coarser labels.</figcaption>
+
       </figure>
     </section>
   `,
