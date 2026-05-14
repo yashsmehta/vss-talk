@@ -350,7 +350,7 @@ p {
 
 .representations-figure img {
   display: block;
-  width: 1240px;
+  width: 100%;
   height: auto;
 }
 

@@ -3,7 +3,7 @@ export default {
     <section class="slide nsd-schematic-slide">
       <h1>NSD</h1>
       <figure class="nsd-schematic-figure">
-        <img src="images/nsd_description.png" alt="" style="width: 1120px; height: auto;">
+        <img src="images/nsd_description.png" alt="">
         <figcaption class="caption step step-1">Natural Scenes Dataset methods schematic.</figcaption>
       </figure>
     </section>
