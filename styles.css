@@ -281,7 +281,7 @@ p {
   height: 140px;
 }
 
-.title-slide .venue {
+.venue {
   position: relative;
   z-index: 1;
   color: var(--ink-muted);
