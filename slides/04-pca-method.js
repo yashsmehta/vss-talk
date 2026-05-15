@@ -1,7 +1,7 @@
 export default {
   html: `
     <section class="slide figure-slide pca-method-slide" style="--fig-w: 100%">
-      <h1>How does a certain granularity of learning feedback yield brain-aligned neural representations?</h1>
+      <h1>How Does the Granularity of Feedback Signal Affect Alignment of Computational Models?</h1>
       <figure>
         <div class="svg-wrap" style="aspect-ratio: 708.017187 / 373.494687;">
         <svg xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 708.017187 373.494687" xmlns="http://www.w3.org/2000/svg" version="1.1">
