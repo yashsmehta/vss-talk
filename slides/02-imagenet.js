@@ -1,7 +1,7 @@
 export default {
   html: `
     <section class="slide figure-slide imagenet-slide" style="--fig-max-w: 1500px">
-      <h1>Deep learning trends toward finer feedback signals</h1>
+      <h1>Traditional Object Classification Tasks provides finegrained feedback to neural networks</h1>
       <figure>
         <span class="col-title">1,000 classes</span>
         <div class="svg-wrap" style="aspect-ratio: 405 / 318;">

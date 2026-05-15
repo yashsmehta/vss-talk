@@ -1,17 +1,22 @@
 export default {
   html: `
-    <section class="slide figure-slide pc-scatter-slide" style="--fig-max-w: 100%; --fig-w: 100%">
+    <section class="slide pc-scatter-slide">
       <h1>Internal representations</h1>
-      <figure>
-        <div class="svg-wrap" style="aspect-ratio: 819.024729 / 258.228528;">
-          <img src="images/pc_scatter.svg" alt="">
-          <span class="col-title" style="left: 17.92%;">Behavioral</span>
-          <span class="col-title" style="left: 51.78%;">AlexNet</span>
-          <span class="col-title" style="left: 85.64%;">CNN</span>
+      <div class="pc-grid">
+        <div class="pc-col">
+          <span class="pc-col-heading">Behavioral ground truth</span>
+          <img src="images/pc_scatter_panel_1.svg" alt="">
         </div>
-        <figcaption class="caption step step-1">PC scatter of the coarse-grain model's internal representations.</figcaption>
-      </figure>
+        <div class="pc-col step step-1">
+          <span class="pc-col-heading">AlexNet (1K classes)</span>
+          <img src="images/pc_scatter_panel_2.svg" alt="">
+        </div>
+        <div class="pc-col step step-2">
+          <span class="pc-col-heading">CNN (8 classes, CLIP representations)</span>
+          <img src="images/pc_scatter_panel_3.svg" alt="">
+        </div>
+      </div>
     </section>
   `,
-  steps: 1,
+  steps: 2,
 };

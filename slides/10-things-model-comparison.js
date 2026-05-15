@@ -1,9 +1,10 @@
 export default {
   html: `
-    <section class="slide figure-slide things-model-comparison-slide" style="--fig-max-w: 1500px">
+    <section class="slide figure-slide things-model-comparison-slide" style="--fig-w: 100%; --fig-max-w: 1300px">
       <h1>Comparison with Pretrained Models</h1>
       <figure>
-        <svg xmlns:xlink="http://www.w3.org/1999/xlink" width="565.430637pt" height="408.758606pt" viewBox="0 0 565.430637 408.758606" xmlns="http://www.w3.org/2000/svg" version="1.1">
+        <div class="svg-wrap" style="aspect-ratio: 565.430637 / 408.758606;">
+        <svg xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 565.430637 408.758606" xmlns="http://www.w3.org/2000/svg" version="1.1">
          <metadata>
           <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
            <cc:Work>
@@ -1870,6 +1871,7 @@ export default {
           </clipPath>
          </defs>
         </svg>
+        </div>
       </figure>
     </section>
   `,
