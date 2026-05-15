@@ -816,15 +816,23 @@ body:has(.title-slide) #footer-strip {
 /* ----- Slide 10 (model comparison): inlined SVG, generous figure ----- */
 
 .things-model-comparison-slide {
-  padding-top: 32px;
-  padding-bottom: 36px;
-  --figure-gap: 16px;
-  --title-rule-gap: 12px;
+  padding-top: 24px;
+  padding-bottom: 28px;
+  --figure-gap: 12px;
+  --title-rule-gap: 8px;
 }
 
 .things-model-comparison-slide h1 {
   font-size: 72px;
   line-height: 1.05;
+}
+
+/* Make the wrap height-bound so its aspect-ratio-derived width is exact
+   (no letterbox) regardless of --fig-max-w. */
+.things-model-comparison-slide > figure > .svg-wrap {
+  width: auto;
+  height: 100%;
+  max-width: 100%;
 }
 
 /* ----- Slide 11 (PC scatter): full-bleed figure with overlay column titles ----- */
