@@ -3,7 +3,6 @@ export default {
     <section class="slide figure-slide nsd-result-slide">
       <header class="nsd-result-head">
         <h1>Comparing neural alignment</h1>
-        <p class="nsd-result-sub">in the early visual cortex and the high-level visual cortex</p>
       </header>
       <div class="nsd-result-stage">
         <div class="nsd-result-panel">

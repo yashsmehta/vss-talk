@@ -530,9 +530,20 @@ body:has(.title-slide) #footer-strip {
   align-self: stretch;
   justify-self: stretch;
   display: grid;
-  place-items: center;
+  grid-template-rows: 1fr auto;
+  justify-items: center;
+  align-items: center;
   min-height: 0;
+  row-gap: 4px;
   margin-top: var(--figure-gap);
+}
+
+/* Allow grid items (svg-wrap, figcaption) to shrink below their intrinsic
+   size so that an aspect-ratio'd svg-wrap doesn't push the figcaption out
+   of the visible area. */
+.figure-slide > figure > * {
+  min-height: 0;
+  min-width: 0;
 }
 
 .figure-slide > figure > img,
@@ -548,8 +559,44 @@ body:has(.title-slide) #footer-strip {
 /* Slides with .step elements inside SVGs (matplotlib bars, axes) need
    to fade only — translate would shift the chart contents. */
 .pca-method-slide figure .step,
-.nsd-result-slide .step {
+.nsd-result-slide .step,
+.things-result-slide .step,
+.things-model-comparison-slide .step {
   transform: none;
+}
+
+/* ----- Slide 02 (ImageNet 1000): big chart, header label above ----- */
+
+.imagenet-slide > figure {
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  row-gap: 14px;
+  align-items: stretch;
+  justify-items: center;
+}
+
+.imagenet-slide > figure > .col-title {
+  position: static;
+  transform: none;
+  align-self: end;
+  justify-self: center;
+}
+
+.imagenet-slide > figure > .svg-wrap {
+  align-self: center;
+  justify-self: center;
+  width: auto;
+  height: 100%;
+  max-height: 100%;
+}
+
+.imagenet-slide > figure > .svg-wrap > img {
+  width: 100%;
+  height: 100%;
+}
+
+.imagenet-slide > figure > figcaption {
+  align-self: start;
+  justify-self: center;
 }
 
 /* ----- Slide 04 (PCA method): replace SVG subplot subtitles with a
@@ -567,6 +614,13 @@ body:has(.title-slide) #footer-strip {
   display: block;
 }
 
+/* Preserve horizontal centering when col-title carries .step (so the
+   step reveal only animates opacity, not position). */
+.pca-method-slide .col-title.step,
+.pca-method-slide .col-title.step.revealed {
+  transform: translateX(-50%);
+}
+
 .pca-method-slide .col-subtitle {
   display: block;
   margin-top: 6px;
@@ -578,12 +632,21 @@ body:has(.title-slide) #footer-strip {
   color: var(--ink-muted);
 }
 
+/* Longer question-style heading needs a smaller display size to fit
+   on two lines without crowding the figure. */
+.pca-method-slide h1 {
+  font-size: 54px;
+  line-height: 1.1;
+  max-width: 38ch;
+}
+
 /* ----- Slide 06 (NSD schematic): overlay labels on a stacked image ----- */
 
 .nsd-schematic-slide .nsd-schematic-stack {
   position: relative;
   display: block;
-  max-width: 1320px;
+  width: 100%;
+  max-width: 1500px;
   aspect-ratio: 1672 / 941;
 }
 
@@ -595,18 +658,26 @@ body:has(.title-slide) #footer-strip {
 .nsd-schematic-slide .nsd-overlay-label {
   position: absolute;
   transform: translateX(-50%);
-  font-family: var(--font-sans);
-  font-size: 26px;
-  font-weight: 500;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 32px;
+  font-weight: 400;
   letter-spacing: -0.005em;
-  color: var(--ink);
+  color: var(--ink-muted);
   white-space: nowrap;
   mix-blend-mode: normal;
 }
 
-.nsd-schematic-slide .nsd-overlay-stimuli      { left: 16%; top:  4%; }
-.nsd-schematic-slide .nsd-overlay-participants { left: 49%; top: 13%; }
-.nsd-schematic-slide .nsd-overlay-fmri         { left: 81%; top: 28%; }
+.nsd-schematic-slide .nsd-overlay-label strong {
+  font-style: normal;
+  font-weight: 500;
+  color: var(--ink);
+  font-feature-settings: "lnum" 1, "tnum" 1;
+}
+
+.nsd-schematic-slide .nsd-overlay-stimuli      { left: 18%; top:  4%; }
+.nsd-schematic-slide .nsd-overlay-participants { left: 51%; top: 13%; }
+.nsd-schematic-slide .nsd-overlay-fmri         { left: 84%; top: 10%; }
 
 .nsd-schematic-slide .nsd-citation {
   position: absolute;
@@ -629,22 +700,10 @@ body:has(.title-slide) #footer-strip {
 }
 
 .nsd-result-slide .nsd-result-head h1 {
-  font-size: 64px;
+  font-size: 68px;
   font-weight: 400;
   letter-spacing: -0.015em;
   line-height: 1.05;
-  text-align: center;
-}
-
-.nsd-result-slide .nsd-result-sub {
-  margin-top: 6px;
-  font-family: var(--font-display);
-  font-style: italic;
-  font-size: 32px;
-  font-weight: 400;
-  line-height: 1.15;
-  letter-spacing: -0.005em;
-  color: var(--ink-muted);
   text-align: center;
 }
 
@@ -653,9 +712,9 @@ body:has(.title-slide) #footer-strip {
   justify-self: stretch;
   display: grid;
   grid-template-rows: auto auto;
-  row-gap: 24px;
+  row-gap: 28px;
   min-height: 0;
-  margin-top: 24px;
+  margin-top: 56px;
   align-items: start;
   justify-items: center;
 }
@@ -663,23 +722,36 @@ body:has(.title-slide) #footer-strip {
 .nsd-result-slide .nsd-result-panel {
   display: grid;
   grid-template-rows: auto auto;
-  row-gap: 6px;
+  row-gap: 10px;
   min-height: 0;
   width: 100%;
   max-width: 1640px;
   justify-self: center;
 }
 
+/* Match the matplotlib SVG viewBox columns so each label sits centered
+   above its plot area:
+     pre-axis-1 : axis-1 : gap : axis-2 : tail
+        57.16  : 200.08 : 56.02 : 200.08 : 7.20  (sums to viewBox 520.55) */
 .nsd-result-slide .nsd-subplot-titles {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  justify-items: center;
+  grid-template-columns: 57.16fr 200.08fr 56.02fr 200.08fr 7.20fr;
   font-family: var(--font-display);
   font-style: italic;
-  font-size: 28px;
+  font-size: 30px;
   font-weight: 400;
   letter-spacing: -0.005em;
   color: var(--ink-muted);
+}
+
+.nsd-result-slide .nsd-subplot-titles span:nth-child(1) {
+  grid-column: 2;
+  justify-self: center;
+}
+
+.nsd-result-slide .nsd-subplot-titles span:nth-child(2) {
+  grid-column: 4;
+  justify-self: center;
 }
 
 .nsd-result-slide .nsd-result-figure {
@@ -724,6 +796,21 @@ body:has(.title-slide) #footer-strip {
   height: 18px;
   display: block;
   flex: 0 0 auto;
+}
+
+/* ----- Slide 09 (THINGS result): reveal-by-step bar chart ----- */
+
+/* Tighter chrome so the near-square chart can take more vertical space. */
+.things-result-slide {
+  padding-top: 28px;
+  padding-bottom: 36px;
+  --figure-gap: 14px;
+  --title-rule-gap: 10px;
+}
+
+.things-result-slide h1 {
+  font-size: 64px;
+  line-height: 1.05;
 }
 
 /* ----- Slide 11 (PC scatter): full-bleed figure with overlay column titles ----- */

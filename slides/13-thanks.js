@@ -19,8 +19,8 @@ export default {
           <p class="team-role">PhD Student</p>
         </div>
         <div class="team-card">
-          <img src="images/team/mehta.jpg" alt="Yash Mehta">
-          <p class="team-name">Yash Mehta</p>
+          <img src="images/team/magesh.jpg" alt="Raj Magesh Gauthaman">
+          <p class="team-name">Raj Magesh</p>
           <p class="team-role">PhD Student</p>
         </div>
         <div class="team-card">

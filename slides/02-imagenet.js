@@ -1,11 +1,11 @@
 export default {
   html: `
-    <section class="slide figure-slide" style="--fig-max-w: 880px">
+    <section class="slide figure-slide imagenet-slide" style="--fig-max-w: 1500px">
       <h1>Deep learning trends toward finer feedback signals</h1>
       <figure>
-        <div class="svg-wrap" style="aspect-ratio: 429.017187 / 369.494687;">
+        <span class="col-title">1,000 classes</span>
+        <div class="svg-wrap" style="aspect-ratio: 405 / 318;">
           <img src="images/imagenet_1000.svg" alt="">
-          <span class="col-title" style="left: 52.80%;">1,000 classes</span>
         </div>
         <figcaption class="caption step step-1">Each point is one of 1000 ImageNet classes.</figcaption>
       </figure>

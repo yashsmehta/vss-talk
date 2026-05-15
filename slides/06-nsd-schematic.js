@@ -5,9 +5,9 @@ export default {
       <figure>
         <div class="nsd-schematic-stack">
           <img src="images/nsd_description.png" alt="">
-          <span class="nsd-overlay-label nsd-overlay-stimuli">73,000 input stimuli</span>
-          <span class="nsd-overlay-label nsd-overlay-participants">8 participants</span>
-          <span class="nsd-overlay-label nsd-overlay-fmri">7T fMRI</span>
+          <span class="nsd-overlay-label nsd-overlay-stimuli"><strong>73,000</strong> input stimuli</span>
+          <span class="nsd-overlay-label nsd-overlay-participants"><strong>8</strong> participants</span>
+          <span class="nsd-overlay-label nsd-overlay-fmri"><strong>7T</strong> fMRI</span>
         </div>
       </figure>
       <aside class="nsd-citation">Allen et al. (2022), <em>Nature Neuroscience</em></aside>
