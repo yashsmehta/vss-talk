@@ -135,28 +135,27 @@ update the relevant slide file. Until then, do not invent assignments.
 | # | File | Content | Images |
 |---|---|---|---|
 | 1 | `01-title.js` | Title, author, QR | `personal_website_qr.png` |
-| 2 | `02-imagenet.js` | Deep learning trends toward finer feedback | `imagenet_1000.svg` |
-| 3 | `03-classification.js` | …trained with a fine-grained signal | `deep-neural-network-classification.png` |
-| 4 | `04-pca-method.js` | What if the feedback signal were coarser? | inline SVG |
-| 5 | `05-representations.js` | Coarse training → categorical representations | `representations.svg` |
-| 6 | `06-nsd-schematic.js` | Natural Scenes Dataset overview | `nsd_description.png` |
-| 7 | `07-nsd-result.js` | NSD: comparing neural alignment | inline SVG |
-| 8 | `08-things-schematic.js` | THINGS database | `things-schematic.png` |
-| 9 | `09-things-result.js` | THINGS: results | `things_coarse_results.svg` |
-| 10 | `10-things-model-comparison.js` | THINGS: model comparison | `things_model_comparison.svg` |
-| 11 | `11-pc-scatter.js` | Internal representations (full-bleed) | `pc_scatter.svg` |
-| 12 | `12-takeaway.js` | Takeaway sentence | — |
-| 13 | `13-thanks.js` | Thanks + team portraits | `images/team/*` |
+| 2 | `03-imagenet.js` | Deep learning trends toward finer feedback | `imagenet_1000.svg` |
+| 3 | `04-pca-method.js` | What if the feedback signal were coarser? | inline SVG |
+| 4 | `05-representations.js` | Coarse training → categorical representations | `representations.svg` |
+| 5 | `06-nsd-schematic.js` | Natural Scenes Dataset overview | `nsd_description.png` |
+| 6 | `08-nsd-result.js` | NSD: comparing neural alignment | inline SVG |
+| 7 | `09-things-schematic.js` | THINGS database | `things-schematic.png` |
+| 8 | `10-things-result.js` | THINGS: results | `things_coarse_results.svg` |
+| 9 | `11-things-model-comparison.js` | THINGS: model comparison | `things_model_comparison.svg` |
+| 10 | `12-pc-scatter.js` | Internal representations (full-bleed) | `pc_scatter.svg` |
+| 11 | `13-takeaway.js` | Takeaway sentence | — |
+| 12 | `14-thanks.js` | Thanks + team portraits | `images/team/*` |
 
 ---
 
 ## Current state
 
-- **Built:** all 13 slides of the talk sequence are wired up with real assets.
+- **Built:** all 14 slides of the talk sequence are wired up with real assets.
 - **Live:** `python -m http.server 8000` in the repo root, then `http://localhost:8000`.
-- Most slides use the shared `.figure-slide` pattern; slides 06, 07, 11 carry
-  bespoke per-slide CSS (overlay labels, two-panel grid, full-bleed figure with
-  overlay column titles).
+- Most slides use the shared `.figure-slide` pattern; slides 06, 07, 08, 12 carry
+  bespoke per-slide CSS (overlay labels, side-by-side panels, two-panel grid,
+  full-bleed figure with overlay column titles).
 
 ---
 

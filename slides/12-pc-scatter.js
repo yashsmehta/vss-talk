@@ -4,15 +4,24 @@ export default {
       <h1>Internal representations</h1>
       <div class="pc-grid">
         <div class="pc-col">
-          <span class="pc-col-heading">Behavioral ground truth</span>
+          <div class="pc-col-heading">
+            <span class="pc-col-name">Behavior</span>
+            <span class="pc-col-sub">ground truth</span>
+          </div>
           <img src="images/pc_scatter_panel_1.svg" alt="">
         </div>
         <div class="pc-col step step-1">
-          <span class="pc-col-heading">AlexNet (1K classes)</span>
+          <div class="pc-col-heading">
+            <span class="pc-col-name">AlexNet</span>
+            <span class="pc-col-sub">1000 categories</span>
+          </div>
           <img src="images/pc_scatter_panel_2.svg" alt="">
         </div>
         <div class="pc-col step step-2">
-          <span class="pc-col-heading">CNN (8 classes, CLIP representations)</span>
+          <div class="pc-col-heading">
+            <span class="pc-col-name">CNN</span>
+            <span class="pc-col-sub">8 categories &middot; CLIP</span>
+          </div>
           <img src="images/pc_scatter_panel_3.svg" alt="">
         </div>
       </div>
@@ -20,3 +29,4 @@ export default {
   `,
   steps: 2,
 };
+

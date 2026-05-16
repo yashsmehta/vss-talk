@@ -1,17 +1,16 @@
 const SLIDES = [
   '01-title',
-  '02-imagenet',
-  '03-classification',
+  '03-imagenet',
   '04-pca-method',
   '05-representations',
   '06-nsd-schematic',
-  '07-nsd-result',
-  '08-things-schematic',
-  '09-things-result',
-  '10-things-model-comparison',
-  '11-pc-scatter',
-  '12-takeaway',
-  '13-thanks',
+  '08-nsd-result',
+  '09-things-schematic',
+  '10-things-result',
+  '11-things-model-comparison',
+  '12-pc-scatter',
+  '13-takeaway',
+  '14-thanks',
 ];
 
 const stage = document.getElementById('stage');

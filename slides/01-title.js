@@ -46,7 +46,7 @@ export default {
   html: `
     <section class="slide title-slide">
       <header class="title-header">
-        <p class="eyebrow">Vision Sciences Society <span class="eyebrow-sep">/</span> 2026</p>
+        <p class="eyebrow">VSS <span class="eyebrow-sep">/</span> 18 May 2026</p>
       </header>
 
       <div class="title-stage">
