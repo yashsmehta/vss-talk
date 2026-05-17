@@ -585,38 +585,172 @@ body:has(.title-slide) #footer-strip {
   height: 100%;
 }
 
-/* ----- Slide 02 (ImageNet 1000): big chart, header label above ----- */
+/* ----- Slide 02 (feedback granularity): conceptual scale ----- */
 
-.imagenet-slide > figure {
-  grid-template-rows: auto minmax(0, 1fr) auto;
-  row-gap: 14px;
-  align-items: stretch;
-  justify-items: center;
+.granularity-slide {
+  display: grid;
+  grid-template-rows: auto 1fr;
 }
 
-.imagenet-slide > figure > .col-title {
-  position: static;
-  transform: none;
+.granularity-slide h1 {
+  max-width: 1400px;
+  font-size: 70px;
+  line-height: 1.08;
+}
+
+.granularity-figure {
+  position: relative;
+  display: grid;
+  grid-template-rows: 96px 1fr;
+  min-height: 0;
+  margin-top: var(--figure-gap);
+}
+
+.granularity-axis {
+  position: relative;
   align-self: end;
-  justify-self: center;
+  height: 70px;
+  margin: 0 88px;
 }
 
-.imagenet-slide > figure > .svg-wrap {
-  align-self: center;
-  justify-self: center;
-  width: auto;
-  height: 100%;
-  max-height: 100%;
+.granularity-axis .axis-line {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  background: var(--ink);
+  opacity: 0.82;
 }
 
-.imagenet-slide > figure > .svg-wrap > img {
+.granularity-axis .axis-arrow {
+  position: absolute;
+  right: -2px;
+  bottom: -9px;
+  width: 0;
+  height: 0;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-left: 17px solid var(--ink);
+}
+
+.granularity-axis .axis-label {
+  position: absolute;
+  bottom: 24px;
+  color: var(--ink-muted);
+  font-family: var(--font-sans);
+  font-size: 19px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.granularity-axis .axis-label-left {
+  left: 0;
+}
+
+.granularity-axis .axis-label-right {
+  right: 0;
+}
+
+.granularity-items {
+  position: relative;
+  display: grid;
+  grid-template-columns: 570px 620px 300px;
+  justify-content: start;
+  column-gap: 40px;
+  align-items: start;
+  min-height: 0;
+  padding-left: 10px;
+  padding-right: 18px;
+}
+
+.granularity-item {
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) auto;
+  justify-items: center;
+  gap: 22px;
+  min-width: 0;
+  min-height: 0;
+}
+
+.granularity-item::before {
+  content: "";
+  width: 14px;
+  height: 14px;
+  margin-top: -7px;
+  border-radius: 999px;
+  background: var(--paper);
+  border: 2px solid var(--ink);
+  box-sizing: border-box;
+  z-index: 1;
+}
+
+.granularity-visual {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  min-height: 0;
+  margin-top: 8px;
+  mix-blend-mode: multiply;
+}
+
+.two-class-visual {
+  width: 100%;
+  max-width: 600px;
+  aspect-ratio: 333.643 / 319.32;
+  overflow: hidden;
+}
+
+.two-class-visual img,
+.two-class-visual svg {
   width: 100%;
   height: 100%;
 }
 
-.imagenet-slide > figure > figcaption {
-  align-self: start;
-  justify-self: center;
+.imagenet-visual {
+  width: 100%;
+  max-width: 600px;
+  aspect-ratio: 333.643 / 319.32;
+}
+
+.imagenet-visual img {
+  width: 100%;
+  height: 100%;
+}
+
+.self-supervised-visual {
+  align-self: stretch;
+  width: 100%;
+  max-width: 300px;
+  min-height: 380px;
+  mix-blend-mode: normal;
+}
+
+.self-supervised-visual span {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 100%;
+  min-height: 320px;
+  color: var(--blue);
+  font-family: var(--font-display);
+  font-size: 44px;
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: -0.015em;
+  line-height: 1.08;
+  text-align: center;
+}
+
+.granularity-title {
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-size: 38px;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  line-height: 1.1;
+  text-align: center;
 }
 
 /* ----- Slide 04 (PCA method): replace SVG subplot subtitles with a
@@ -628,7 +762,7 @@ body:has(.title-slide) #footer-strip {
 }
 
 .pca-method-slide .col-title {
-  top: 4%;
+  top: 0.5%;
   transform: translateX(-50%);
   text-align: center;
   display: block;
@@ -652,12 +786,36 @@ body:has(.title-slide) #footer-strip {
   color: var(--ink-muted);
 }
 
-/* Longer question-style heading needs a smaller display size to fit
-   on two lines without crowding the figure. */
 .pca-method-slide h1 {
-  font-size: 54px;
-  line-height: 1.1;
-  max-width: 38ch;
+  max-width: none;
+  font-size: 50px;
+  line-height: 1.04;
+  letter-spacing: 0;
+  white-space: nowrap;
+}
+
+.pca-method-slide h1 sup,
+.pca-method-slide h1 sub {
+  position: relative;
+  font-size: 0.56em;
+  line-height: 0;
+}
+
+.pca-method-slide h1 sup {
+  top: -0.45em;
+}
+
+.pca-method-slide h1 sub {
+  bottom: -0.16em;
+}
+
+.pca-method-slide .pca-heading-formula {
+  font-size: 1.22em;
+  color: var(--blue);
+}
+
+.pca-method-slide .pca-heading-method {
+  color: var(--ink);
 }
 
 /* ----- Slide 06 (NSD schematic): overlay labels on a stacked image ----- */
@@ -701,15 +859,44 @@ body:has(.title-slide) #footer-strip {
 
 .nsd-schematic-slide .nsd-citation {
   position: absolute;
+  right: 210px;
+  bottom: 88px;
+  font-family: var(--font-sans);
+  font-size: 20px;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  color: var(--ink-muted);
+  mix-blend-mode: normal;
+  text-align: right;
+  line-height: 1.3;
+}
+
+.nsd-schematic-slide .nsd-citation::before {
+  content: "";
+  display: block;
+  width: 36px;
+  height: 1px;
+  margin: 0 0 8px auto;
+  background: var(--rule);
+}
+
+.nsd-schematic-slide .nsd-citation em {
+  font-family: var(--font-display);
+  font-style: italic;
+  color: var(--ink);
+  letter-spacing: 0;
+}
+
+.things-schematic-slide .things-citation {
+  position: absolute;
   right: var(--pad-side);
   bottom: 56px;
   font-family: var(--font-sans);
   font-size: 18px;
   color: var(--ink-muted);
-  mix-blend-mode: normal;
 }
 
-.nsd-schematic-slide .nsd-citation em {
+.things-schematic-slide .things-citation em {
   font-style: italic;
 }
 
@@ -942,10 +1129,12 @@ body:has(.title-slide) #footer-strip {
   /* Column widths follow each panel's native viewBox width so the three
      scatter plots line up at the same scale. */
   grid-template-columns: 285.43fr 277.32fr 256.28fr;
-  column-gap: 24px;
+  column-gap: 32px;
   width: 100%;
-  padding: 0 80px;
-  margin-top: 24px;
+  max-width: 1560px;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 24px auto 0;
   align-items: end;
 }
 
@@ -1045,6 +1234,38 @@ body:has(.title-slide) #footer-strip {
   height: 1px;
   background: var(--orange);
   margin: 0 auto 32px;
+}
+
+.takeaway-slide .hero-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 1280px;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+}
+
+.takeaway-slide .hero-item {
+  position: relative;
+  padding-left: 56px;
+  font-family: var(--font-display);
+  font-size: 56px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.18;
+  color: var(--ink);
+}
+
+.takeaway-slide .hero-item::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.62em;
+  width: 32px;
+  height: 2px;
+  background: var(--orange);
 }
 
 .thanks-slide {
