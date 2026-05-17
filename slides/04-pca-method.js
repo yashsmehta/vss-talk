@@ -1,7 +1,10 @@
 export default {
   html: `
     <section class="slide figure-slide pca-method-slide" style="--fig-w: 100%">
-      <h1>How Does the Granularity of Feedback Signal Affect Alignment of Computational Models?</h1>
+      <h1>
+        <span class="pca-heading-formula">2<sup>i</sup> classes,</span>
+        <span class="pca-heading-method">iteratively median split on PC<sub>i</sub></span>
+      </h1>
       <figure>
         <div class="svg-wrap" style="aspect-ratio: 708.017187 / 373.494687;">
         <svg xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 708.017187 373.494687" xmlns="http://www.w3.org/2000/svg" version="1.1">
@@ -810,8 +813,8 @@ export default {
           </g>
          </g>
         </svg>
-          <span class="col-title step step-1" style="left: 26.71%;">2 classes<span class="col-subtitle">median split on PC 1</span></span>
-          <span class="col-title step step-2" style="left: 76.68%;">4 classes<span class="col-subtitle">+ split on PC 2</span></span>
+          <span class="col-title step step-1" style="left: 26.71%;">Two classes<span class="col-subtitle">median split on PC1</span></span>
+          <span class="col-title step step-2" style="left: 76.68%;">Four classes<span class="col-subtitle">median split on PC2</span></span>
         </div>
         <figcaption class="caption step step-2">PCA-based splits turn fine-grained classes into coarser labels.</figcaption>
 

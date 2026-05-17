@@ -12,21 +12,21 @@ export default {
         </div>
         <div class="pc-col step step-1">
           <div class="pc-col-heading">
-            <span class="pc-col-name">AlexNet</span>
+            <span class="pc-col-name">standard labels</span>
             <span class="pc-col-sub">1000 categories</span>
           </div>
           <img src="images/pc_scatter_panel_2.svg" alt="">
         </div>
-        <div class="pc-col step step-2">
+        <div class="pc-col step step-1">
           <div class="pc-col-heading">
-            <span class="pc-col-name">CNN</span>
-            <span class="pc-col-sub">8 categories &middot; CLIP</span>
+            <span class="pc-col-name">coarse labels</span>
+            <span class="pc-col-sub">8 categories</span>
           </div>
           <img src="images/pc_scatter_panel_3.svg" alt="">
         </div>
       </div>
     </section>
   `,
-  steps: 2,
+  steps: 1,
 };
 

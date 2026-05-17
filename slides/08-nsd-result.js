@@ -7,8 +7,8 @@ export default {
       <div class="nsd-result-stage">
         <div class="nsd-result-panel">
           <div class="nsd-subplot-titles">
-            <span>Early visual cortex</span>
-            <span>High-level visual cortex</span>
+            <span>Early ventral stream</span>
+            <span>Ventral visual stream</span>
           </div>
           <figure class="nsd-result-figure">
           <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 520.553328 223.396023" version="1.1">
@@ -402,84 +402,84 @@ export default {
     </g>
    </g>
    <g id="LineCollection_1">
-    <path d="M 66.043534 87.646163  L 66.043534 81.459265  " clip-path="url(#p2160b7242b)" style="fill: none; stroke: #6baed6; stroke-width: 0.7" class="step step-2" />
+    <path d="M 66.043534 87.646163  L 66.043534 81.459265  " clip-path="url(#p2160b7242b)" style="fill: none; stroke: #6baed6; stroke-width: 0.7" class="step step-3" />
    </g>
    <g id="line2d_27">
     <defs>
      <path id="m570ee37bc7" d="M 1.5 0  L -1.5 -0  " style="stroke: #6baed6; stroke-width: 0.6" />
     </defs>
     <g clip-path="url(#p2160b7242b)">
-     <use xlink:href="#m570ee37bc7" x="66.043534" y="87.646163" style="fill: #6baed6; stroke: #6baed6; stroke-width: 0.6" class="step step-2" />
+     <use xlink:href="#m570ee37bc7" x="66.043534" y="87.646163" style="fill: #6baed6; stroke: #6baed6; stroke-width: 0.6" class="step step-3" />
     </g>
    </g>
    <g id="line2d_28">
     <g clip-path="url(#p2160b7242b)">
-     <use xlink:href="#m570ee37bc7" x="66.043534" y="81.459265" style="fill: #6baed6; stroke: #6baed6; stroke-width: 0.6" class="step step-2" />
+     <use xlink:href="#m570ee37bc7" x="66.043534" y="81.459265" style="fill: #6baed6; stroke: #6baed6; stroke-width: 0.6" class="step step-3" />
     </g>
    </g>
    <g id="LineCollection_2">
-    <path d="M 93.370244 87.729507  L 93.370244 81.443462  " clip-path="url(#p2160b7242b)" style="fill: none; stroke: #6baed6; stroke-width: 0.7" class="step step-2" />
+    <path d="M 93.370244 87.729507  L 93.370244 81.443462  " clip-path="url(#p2160b7242b)" style="fill: none; stroke: #6baed6; stroke-width: 0.7" class="step step-3" />
    </g>
    <g id="line2d_29">
     <g clip-path="url(#p2160b7242b)">
-     <use xlink:href="#m570ee37bc7" x="93.370244" y="87.729507" style="fill: #6baed6; stroke: #6baed6; stroke-width: 0.6" class="step step-2" />
+     <use xlink:href="#m570ee37bc7" x="93.370244" y="87.729507" style="fill: #6baed6; stroke: #6baed6; stroke-width: 0.6" class="step step-3" />
     </g>
    </g>
    <g id="line2d_30">
     <g clip-path="url(#p2160b7242b)">
-     <use xlink:href="#m570ee37bc7" x="93.370244" y="81.443462" style="fill: #6baed6; stroke: #6baed6; stroke-width: 0.6" class="step step-2" />
+     <use xlink:href="#m570ee37bc7" x="93.370244" y="81.443462" style="fill: #6baed6; stroke: #6baed6; stroke-width: 0.6" class="step step-3" />
     </g>
    </g>
    <g id="LineCollection_3">
-    <path d="M 120.696955 78.894304  L 120.696955 72.362079  " clip-path="url(#p2160b7242b)" style="fill: none; stroke: #6baed6; stroke-width: 0.7" class="step step-2" />
+    <path d="M 120.696955 78.894304  L 120.696955 72.362079  " clip-path="url(#p2160b7242b)" style="fill: none; stroke: #6baed6; stroke-width: 0.7" class="step step-3" />
    </g>
    <g id="line2d_31">
     <g clip-path="url(#p2160b7242b)">
-     <use xlink:href="#m570ee37bc7" x="120.696955" y="78.894304" style="fill: #6baed6; stroke: #6baed6; stroke-width: 0.6" class="step step-2" />
+     <use xlink:href="#m570ee37bc7" x="120.696955" y="78.894304" style="fill: #6baed6; stroke: #6baed6; stroke-width: 0.6" class="step step-3" />
     </g>
    </g>
    <g id="line2d_32">
     <g clip-path="url(#p2160b7242b)">
-     <use xlink:href="#m570ee37bc7" x="120.696955" y="72.362079" style="fill: #6baed6; stroke: #6baed6; stroke-width: 0.6" class="step step-2" />
+     <use xlink:href="#m570ee37bc7" x="120.696955" y="72.362079" style="fill: #6baed6; stroke: #6baed6; stroke-width: 0.6" class="step step-3" />
     </g>
    </g>
    <g id="LineCollection_4">
-    <path d="M 148.023666 80.453177  L 148.023666 73.594384  " clip-path="url(#p2160b7242b)" style="fill: none; stroke: #6baed6; stroke-width: 0.7" class="step step-2" />
+    <path d="M 148.023666 80.453177  L 148.023666 73.594384  " clip-path="url(#p2160b7242b)" style="fill: none; stroke: #6baed6; stroke-width: 0.7" class="step step-3" />
    </g>
    <g id="line2d_33">
     <g clip-path="url(#p2160b7242b)">
-     <use xlink:href="#m570ee37bc7" x="148.023666" y="80.453177" style="fill: #6baed6; stroke: #6baed6; stroke-width: 0.6" class="step step-2" />
+     <use xlink:href="#m570ee37bc7" x="148.023666" y="80.453177" style="fill: #6baed6; stroke: #6baed6; stroke-width: 0.6" class="step step-3" />
     </g>
    </g>
    <g id="line2d_34">
     <g clip-path="url(#p2160b7242b)">
-     <use xlink:href="#m570ee37bc7" x="148.023666" y="73.594384" style="fill: #6baed6; stroke: #6baed6; stroke-width: 0.6" class="step step-2" />
+     <use xlink:href="#m570ee37bc7" x="148.023666" y="73.594384" style="fill: #6baed6; stroke: #6baed6; stroke-width: 0.6" class="step step-3" />
     </g>
    </g>
    <g id="LineCollection_5">
-    <path d="M 175.350376 79.525823  L 175.350376 71.989818  " clip-path="url(#p2160b7242b)" style="fill: none; stroke: #6baed6; stroke-width: 0.7" class="step step-2" />
+    <path d="M 175.350376 79.525823  L 175.350376 71.989818  " clip-path="url(#p2160b7242b)" style="fill: none; stroke: #6baed6; stroke-width: 0.7" class="step step-3" />
    </g>
    <g id="line2d_35">
     <g clip-path="url(#p2160b7242b)">
-     <use xlink:href="#m570ee37bc7" x="175.350376" y="79.525823" style="fill: #6baed6; stroke: #6baed6; stroke-width: 0.6" class="step step-2" />
+     <use xlink:href="#m570ee37bc7" x="175.350376" y="79.525823" style="fill: #6baed6; stroke: #6baed6; stroke-width: 0.6" class="step step-3" />
     </g>
    </g>
    <g id="line2d_36">
     <g clip-path="url(#p2160b7242b)">
-     <use xlink:href="#m570ee37bc7" x="175.350376" y="71.989818" style="fill: #6baed6; stroke: #6baed6; stroke-width: 0.6" class="step step-2" />
+     <use xlink:href="#m570ee37bc7" x="175.350376" y="71.989818" style="fill: #6baed6; stroke: #6baed6; stroke-width: 0.6" class="step step-3" />
     </g>
    </g>
    <g id="LineCollection_6">
-    <path d="M 202.677087 71.476727  L 202.677087 64.195723  " clip-path="url(#p2160b7242b)" style="fill: none; stroke: #6baed6; stroke-width: 0.7" class="step step-2" />
+    <path d="M 202.677087 71.476727  L 202.677087 64.195723  " clip-path="url(#p2160b7242b)" style="fill: none; stroke: #6baed6; stroke-width: 0.7" class="step step-3" />
    </g>
    <g id="line2d_37">
     <g clip-path="url(#p2160b7242b)">
-     <use xlink:href="#m570ee37bc7" x="202.677087" y="71.476727" style="fill: #6baed6; stroke: #6baed6; stroke-width: 0.6" class="step step-2" />
+     <use xlink:href="#m570ee37bc7" x="202.677087" y="71.476727" style="fill: #6baed6; stroke: #6baed6; stroke-width: 0.6" class="step step-3" />
     </g>
    </g>
    <g id="line2d_38">
     <g clip-path="url(#p2160b7242b)">
-     <use xlink:href="#m570ee37bc7" x="202.677087" y="64.195723" style="fill: #6baed6; stroke: #6baed6; stroke-width: 0.6" class="step step-2" />
+     <use xlink:href="#m570ee37bc7" x="202.677087" y="64.195723" style="fill: #6baed6; stroke: #6baed6; stroke-width: 0.6" class="step step-3" />
     </g>
    </g>
    <g id="LineCollection_7">
@@ -499,149 +499,149 @@ export default {
     </g>
    </g>
    <g id="LineCollection_8">
-    <path d="M 95.829648 80.477525  L 95.829648 74.583193  " clip-path="url(#p2160b7242b)" style="fill: none; stroke: #08519c; stroke-width: 0.7" class="step step-1" />
+    <path d="M 95.829648 80.477525  L 95.829648 74.583193  " clip-path="url(#p2160b7242b)" style="fill: none; stroke: #08519c; stroke-width: 0.7" class="step step-2" />
    </g>
    <g id="line2d_41">
     <g clip-path="url(#p2160b7242b)">
-     <use xlink:href="#m8fb5b3c33b" x="95.829648" y="80.477525" style="fill: #08519c; stroke: #08519c; stroke-width: 0.6" class="step step-1" />
+     <use xlink:href="#m8fb5b3c33b" x="95.829648" y="80.477525" style="fill: #08519c; stroke: #08519c; stroke-width: 0.6" class="step step-2" />
     </g>
    </g>
    <g id="line2d_42">
     <g clip-path="url(#p2160b7242b)">
-     <use xlink:href="#m8fb5b3c33b" x="95.829648" y="74.583193" style="fill: #08519c; stroke: #08519c; stroke-width: 0.6" class="step step-1" />
+     <use xlink:href="#m8fb5b3c33b" x="95.829648" y="74.583193" style="fill: #08519c; stroke: #08519c; stroke-width: 0.6" class="step step-2" />
     </g>
    </g>
    <g id="LineCollection_9">
-    <path d="M 123.156359 83.778469  L 123.156359 77.523342  " clip-path="url(#p2160b7242b)" style="fill: none; stroke: #08519c; stroke-width: 0.7" class="step step-1" />
+    <path d="M 123.156359 83.778469  L 123.156359 77.523342  " clip-path="url(#p2160b7242b)" style="fill: none; stroke: #08519c; stroke-width: 0.7" class="step step-2" />
    </g>
    <g id="line2d_43">
     <g clip-path="url(#p2160b7242b)">
-     <use xlink:href="#m8fb5b3c33b" x="123.156359" y="83.778469" style="fill: #08519c; stroke: #08519c; stroke-width: 0.6" class="step step-1" />
+     <use xlink:href="#m8fb5b3c33b" x="123.156359" y="83.778469" style="fill: #08519c; stroke: #08519c; stroke-width: 0.6" class="step step-2" />
     </g>
    </g>
    <g id="line2d_44">
     <g clip-path="url(#p2160b7242b)">
-     <use xlink:href="#m8fb5b3c33b" x="123.156359" y="77.523342" style="fill: #08519c; stroke: #08519c; stroke-width: 0.6" class="step step-1" />
+     <use xlink:href="#m8fb5b3c33b" x="123.156359" y="77.523342" style="fill: #08519c; stroke: #08519c; stroke-width: 0.6" class="step step-2" />
     </g>
    </g>
    <g id="LineCollection_10">
-    <path d="M 150.48307 83.174008  L 150.48307 76.70884  " clip-path="url(#p2160b7242b)" style="fill: none; stroke: #08519c; stroke-width: 0.7" class="step step-1" />
+    <path d="M 150.48307 83.174008  L 150.48307 76.70884  " clip-path="url(#p2160b7242b)" style="fill: none; stroke: #08519c; stroke-width: 0.7" class="step step-2" />
    </g>
    <g id="line2d_45">
     <g clip-path="url(#p2160b7242b)">
-     <use xlink:href="#m8fb5b3c33b" x="150.48307" y="83.174008" style="fill: #08519c; stroke: #08519c; stroke-width: 0.6" class="step step-1" />
+     <use xlink:href="#m8fb5b3c33b" x="150.48307" y="83.174008" style="fill: #08519c; stroke: #08519c; stroke-width: 0.6" class="step step-2" />
     </g>
    </g>
    <g id="line2d_46">
     <g clip-path="url(#p2160b7242b)">
-     <use xlink:href="#m8fb5b3c33b" x="150.48307" y="76.70884" style="fill: #08519c; stroke: #08519c; stroke-width: 0.6" class="step step-1" />
+     <use xlink:href="#m8fb5b3c33b" x="150.48307" y="76.70884" style="fill: #08519c; stroke: #08519c; stroke-width: 0.6" class="step step-2" />
     </g>
    </g>
    <g id="LineCollection_11">
-    <path d="M 177.80978 79.547303  L 177.80978 73.247783  " clip-path="url(#p2160b7242b)" style="fill: none; stroke: #08519c; stroke-width: 0.7" class="step step-1" />
+    <path d="M 177.80978 79.547303  L 177.80978 73.247783  " clip-path="url(#p2160b7242b)" style="fill: none; stroke: #08519c; stroke-width: 0.7" class="step step-2" />
    </g>
    <g id="line2d_47">
     <g clip-path="url(#p2160b7242b)">
-     <use xlink:href="#m8fb5b3c33b" x="177.80978" y="79.547303" style="fill: #08519c; stroke: #08519c; stroke-width: 0.6" class="step step-1" />
+     <use xlink:href="#m8fb5b3c33b" x="177.80978" y="79.547303" style="fill: #08519c; stroke: #08519c; stroke-width: 0.6" class="step step-2" />
     </g>
    </g>
    <g id="line2d_48">
     <g clip-path="url(#p2160b7242b)">
-     <use xlink:href="#m8fb5b3c33b" x="177.80978" y="73.247783" style="fill: #08519c; stroke: #08519c; stroke-width: 0.6" class="step step-1" />
+     <use xlink:href="#m8fb5b3c33b" x="177.80978" y="73.247783" style="fill: #08519c; stroke: #08519c; stroke-width: 0.6" class="step step-2" />
     </g>
    </g>
    <g id="LineCollection_12">
-    <path d="M 205.136491 79.297402  L 205.136491 73.1882  " clip-path="url(#p2160b7242b)" style="fill: none; stroke: #08519c; stroke-width: 0.7" class="step step-1" />
+    <path d="M 205.136491 79.297402  L 205.136491 73.1882  " clip-path="url(#p2160b7242b)" style="fill: none; stroke: #08519c; stroke-width: 0.7" class="step step-2" />
    </g>
    <g id="line2d_49">
     <g clip-path="url(#p2160b7242b)">
-     <use xlink:href="#m8fb5b3c33b" x="205.136491" y="79.297402" style="fill: #08519c; stroke: #08519c; stroke-width: 0.6" class="step step-1" />
+     <use xlink:href="#m8fb5b3c33b" x="205.136491" y="79.297402" style="fill: #08519c; stroke: #08519c; stroke-width: 0.6" class="step step-2" />
     </g>
    </g>
    <g id="line2d_50">
     <g clip-path="url(#p2160b7242b)">
-     <use xlink:href="#m8fb5b3c33b" x="205.136491" y="73.1882" style="fill: #08519c; stroke: #08519c; stroke-width: 0.6" class="step step-1" />
+     <use xlink:href="#m8fb5b3c33b" x="205.136491" y="73.1882" style="fill: #08519c; stroke: #08519c; stroke-width: 0.6" class="step step-2" />
     </g>
    </g>
    <g id="LineCollection_13">
-    <path d="M 70.962342 126.715452  L 70.962342 120.658166  " clip-path="url(#p2160b7242b)" style="fill: none; stroke: #c0a898; stroke-width: 0.7" class="step step-3" />
+    <path d="M 70.962342 126.715452  L 70.962342 120.658166  " clip-path="url(#p2160b7242b)" style="fill: none; stroke: #c0a898; stroke-width: 0.7" class="step step-4" />
    </g>
    <g id="line2d_51">
     <defs>
      <path id="mff2237f455" d="M 1.5 0  L -1.5 -0  " style="stroke: #c0a898; stroke-width: 0.6" />
     </defs>
     <g clip-path="url(#p2160b7242b)">
-     <use xlink:href="#mff2237f455" x="70.962342" y="126.715452" style="fill: #c0a898; stroke: #c0a898; stroke-width: 0.6" class="step step-3" />
+     <use xlink:href="#mff2237f455" x="70.962342" y="126.715452" style="fill: #c0a898; stroke: #c0a898; stroke-width: 0.6" class="step step-4" />
     </g>
    </g>
    <g id="line2d_52">
     <g clip-path="url(#p2160b7242b)">
-     <use xlink:href="#mff2237f455" x="70.962342" y="120.658166" style="fill: #c0a898; stroke: #c0a898; stroke-width: 0.6" class="step step-3" />
+     <use xlink:href="#mff2237f455" x="70.962342" y="120.658166" style="fill: #c0a898; stroke: #c0a898; stroke-width: 0.6" class="step step-4" />
     </g>
    </g>
    <g id="LineCollection_14">
-    <path d="M 98.289052 135.69262  L 98.289052 129.859133  " clip-path="url(#p2160b7242b)" style="fill: none; stroke: #c0a898; stroke-width: 0.7" class="step step-3" />
+    <path d="M 98.289052 135.69262  L 98.289052 129.859133  " clip-path="url(#p2160b7242b)" style="fill: none; stroke: #c0a898; stroke-width: 0.7" class="step step-4" />
    </g>
    <g id="line2d_53">
     <g clip-path="url(#p2160b7242b)">
-     <use xlink:href="#mff2237f455" x="98.289052" y="135.69262" style="fill: #c0a898; stroke: #c0a898; stroke-width: 0.6" class="step step-3" />
+     <use xlink:href="#mff2237f455" x="98.289052" y="135.69262" style="fill: #c0a898; stroke: #c0a898; stroke-width: 0.6" class="step step-4" />
     </g>
    </g>
    <g id="line2d_54">
     <g clip-path="url(#p2160b7242b)">
-     <use xlink:href="#mff2237f455" x="98.289052" y="129.859133" style="fill: #c0a898; stroke: #c0a898; stroke-width: 0.6" class="step step-3" />
+     <use xlink:href="#mff2237f455" x="98.289052" y="129.859133" style="fill: #c0a898; stroke: #c0a898; stroke-width: 0.6" class="step step-4" />
     </g>
    </g>
    <g id="LineCollection_15">
-    <path d="M 125.615763 140.857625  L 125.615763 134.680855  " clip-path="url(#p2160b7242b)" style="fill: none; stroke: #c0a898; stroke-width: 0.7" class="step step-3" />
+    <path d="M 125.615763 140.857625  L 125.615763 134.680855  " clip-path="url(#p2160b7242b)" style="fill: none; stroke: #c0a898; stroke-width: 0.7" class="step step-4" />
    </g>
    <g id="line2d_55">
     <g clip-path="url(#p2160b7242b)">
-     <use xlink:href="#mff2237f455" x="125.615763" y="140.857625" style="fill: #c0a898; stroke: #c0a898; stroke-width: 0.6" class="step step-3" />
+     <use xlink:href="#mff2237f455" x="125.615763" y="140.857625" style="fill: #c0a898; stroke: #c0a898; stroke-width: 0.6" class="step step-4" />
     </g>
    </g>
    <g id="line2d_56">
     <g clip-path="url(#p2160b7242b)">
-     <use xlink:href="#mff2237f455" x="125.615763" y="134.680855" style="fill: #c0a898; stroke: #c0a898; stroke-width: 0.6" class="step step-3" />
+     <use xlink:href="#mff2237f455" x="125.615763" y="134.680855" style="fill: #c0a898; stroke: #c0a898; stroke-width: 0.6" class="step step-4" />
     </g>
    </g>
    <g id="LineCollection_16">
-    <path d="M 152.942474 136.610548  L 152.942474 130.622617  " clip-path="url(#p2160b7242b)" style="fill: none; stroke: #c0a898; stroke-width: 0.7" class="step step-3" />
+    <path d="M 152.942474 136.610548  L 152.942474 130.622617  " clip-path="url(#p2160b7242b)" style="fill: none; stroke: #c0a898; stroke-width: 0.7" class="step step-4" />
    </g>
    <g id="line2d_57">
     <g clip-path="url(#p2160b7242b)">
-     <use xlink:href="#mff2237f455" x="152.942474" y="136.610548" style="fill: #c0a898; stroke: #c0a898; stroke-width: 0.6" class="step step-3" />
+     <use xlink:href="#mff2237f455" x="152.942474" y="136.610548" style="fill: #c0a898; stroke: #c0a898; stroke-width: 0.6" class="step step-4" />
     </g>
    </g>
    <g id="line2d_58">
     <g clip-path="url(#p2160b7242b)">
-     <use xlink:href="#mff2237f455" x="152.942474" y="130.622617" style="fill: #c0a898; stroke: #c0a898; stroke-width: 0.6" class="step step-3" />
+     <use xlink:href="#mff2237f455" x="152.942474" y="130.622617" style="fill: #c0a898; stroke: #c0a898; stroke-width: 0.6" class="step step-4" />
     </g>
    </g>
    <g id="LineCollection_17">
-    <path d="M 180.269184 137.721378  L 180.269184 131.783261  " clip-path="url(#p2160b7242b)" style="fill: none; stroke: #c0a898; stroke-width: 0.7" class="step step-3" />
+    <path d="M 180.269184 137.721378  L 180.269184 131.783261  " clip-path="url(#p2160b7242b)" style="fill: none; stroke: #c0a898; stroke-width: 0.7" class="step step-4" />
    </g>
    <g id="line2d_59">
     <g clip-path="url(#p2160b7242b)">
-     <use xlink:href="#mff2237f455" x="180.269184" y="137.721378" style="fill: #c0a898; stroke: #c0a898; stroke-width: 0.6" class="step step-3" />
+     <use xlink:href="#mff2237f455" x="180.269184" y="137.721378" style="fill: #c0a898; stroke: #c0a898; stroke-width: 0.6" class="step step-4" />
     </g>
    </g>
    <g id="line2d_60">
     <g clip-path="url(#p2160b7242b)">
-     <use xlink:href="#mff2237f455" x="180.269184" y="131.783261" style="fill: #c0a898; stroke: #c0a898; stroke-width: 0.6" class="step step-3" />
+     <use xlink:href="#mff2237f455" x="180.269184" y="131.783261" style="fill: #c0a898; stroke: #c0a898; stroke-width: 0.6" class="step step-4" />
     </g>
    </g>
    <g id="LineCollection_18">
-    <path d="M 207.595895 137.798615  L 207.595895 131.897283  " clip-path="url(#p2160b7242b)" style="fill: none; stroke: #c0a898; stroke-width: 0.7" class="step step-3" />
+    <path d="M 207.595895 137.798615  L 207.595895 131.897283  " clip-path="url(#p2160b7242b)" style="fill: none; stroke: #c0a898; stroke-width: 0.7" class="step step-4" />
    </g>
    <g id="line2d_61">
     <g clip-path="url(#p2160b7242b)">
-     <use xlink:href="#mff2237f455" x="207.595895" y="137.798615" style="fill: #c0a898; stroke: #c0a898; stroke-width: 0.6" class="step step-3" />
+     <use xlink:href="#mff2237f455" x="207.595895" y="137.798615" style="fill: #c0a898; stroke: #c0a898; stroke-width: 0.6" class="step step-4" />
     </g>
    </g>
    <g id="line2d_62">
     <g clip-path="url(#p2160b7242b)">
-     <use xlink:href="#mff2237f455" x="207.595895" y="131.897283" style="fill: #c0a898; stroke: #c0a898; stroke-width: 0.6" class="step step-3" />
+     <use xlink:href="#mff2237f455" x="207.595895" y="131.897283" style="fill: #c0a898; stroke: #c0a898; stroke-width: 0.6" class="step step-4" />
     </g>
    </g>
    <g id="line2d_63">
@@ -649,32 +649,32 @@ export default {
      <path id="m7c5241567a" d="M 0 3.5  C 0.928211 3.5 1.81853 3.131218 2.474874 2.474874  C 3.131218 1.81853 3.5 0.928211 3.5 0  C 3.5 -0.928211 3.131218 -1.81853 2.474874 -2.474874  C 1.81853 -3.131218 0.928211 -3.5 0 -3.5  C -0.928211 -3.5 -1.81853 -3.131218 -2.474874 -2.474874  C -3.131218 -1.81853 -3.5 -0.928211 -3.5 0  C -3.5 0.928211 -3.131218 1.81853 -2.474874 2.474874  C -1.81853 3.131218 -0.928211 3.5 0 3.5  z " style="stroke: #ffffff; stroke-width: 0.6" />
     </defs>
     <g clip-path="url(#p2160b7242b)">
-     <use xlink:href="#m7c5241567a" x="66.043534" y="84.565035" style="fill: #6baed6; stroke: #ffffff; stroke-width: 0.6" class="step step-2" />
+     <use xlink:href="#m7c5241567a" x="66.043534" y="84.565035" style="fill: #6baed6; stroke: #ffffff; stroke-width: 0.6" class="step step-3" />
     </g>
    </g>
    <g id="line2d_64">
     <g clip-path="url(#p2160b7242b)">
-     <use xlink:href="#m7c5241567a" x="93.370244" y="84.631785" style="fill: #6baed6; stroke: #ffffff; stroke-width: 0.6" class="step step-2" />
+     <use xlink:href="#m7c5241567a" x="93.370244" y="84.631785" style="fill: #6baed6; stroke: #ffffff; stroke-width: 0.6" class="step step-3" />
     </g>
    </g>
    <g id="line2d_65">
     <g clip-path="url(#p2160b7242b)">
-     <use xlink:href="#m7c5241567a" x="120.696955" y="75.539123" style="fill: #6baed6; stroke: #ffffff; stroke-width: 0.6" class="step step-2" />
+     <use xlink:href="#m7c5241567a" x="120.696955" y="75.539123" style="fill: #6baed6; stroke: #ffffff; stroke-width: 0.6" class="step step-3" />
     </g>
    </g>
    <g id="line2d_66">
     <g clip-path="url(#p2160b7242b)">
-     <use xlink:href="#m7c5241567a" x="148.023666" y="77.070839" style="fill: #6baed6; stroke: #ffffff; stroke-width: 0.6" class="step step-2" />
+     <use xlink:href="#m7c5241567a" x="148.023666" y="77.070839" style="fill: #6baed6; stroke: #ffffff; stroke-width: 0.6" class="step step-3" />
     </g>
    </g>
    <g id="line2d_67">
     <g clip-path="url(#p2160b7242b)">
-     <use xlink:href="#m7c5241567a" x="175.350376" y="75.841216" style="fill: #6baed6; stroke: #ffffff; stroke-width: 0.6" class="step step-2" />
+     <use xlink:href="#m7c5241567a" x="175.350376" y="75.841216" style="fill: #6baed6; stroke: #ffffff; stroke-width: 0.6" class="step step-3" />
     </g>
    </g>
    <g id="line2d_68">
     <g clip-path="url(#p2160b7242b)">
-     <use xlink:href="#m7c5241567a" x="202.677087" y="67.904232" style="fill: #6baed6; stroke: #ffffff; stroke-width: 0.6" class="step step-2" />
+     <use xlink:href="#m7c5241567a" x="202.677087" y="67.904232" style="fill: #6baed6; stroke: #ffffff; stroke-width: 0.6" class="step step-3" />
     </g>
    </g>
    <g id="line2d_69">
@@ -687,27 +687,27 @@ export default {
    </g>
    <g id="line2d_70">
     <g clip-path="url(#p2160b7242b)">
-     <use xlink:href="#mc20524f11d" x="95.829648" y="77.515189" style="fill: #08519c; stroke: #ffffff; stroke-width: 0.6; stroke-linejoin: miter" class="step step-1" />
+     <use xlink:href="#mc20524f11d" x="95.829648" y="77.515189" style="fill: #08519c; stroke: #ffffff; stroke-width: 0.6; stroke-linejoin: miter" class="step step-2" />
     </g>
    </g>
    <g id="line2d_71">
     <g clip-path="url(#p2160b7242b)">
-     <use xlink:href="#mc20524f11d" x="123.156359" y="80.66726" style="fill: #08519c; stroke: #ffffff; stroke-width: 0.6; stroke-linejoin: miter" class="step step-1" />
+     <use xlink:href="#mc20524f11d" x="123.156359" y="80.66726" style="fill: #08519c; stroke: #ffffff; stroke-width: 0.6; stroke-linejoin: miter" class="step step-2" />
     </g>
    </g>
    <g id="line2d_72">
     <g clip-path="url(#p2160b7242b)">
-     <use xlink:href="#mc20524f11d" x="150.48307" y="79.894717" style="fill: #08519c; stroke: #ffffff; stroke-width: 0.6; stroke-linejoin: miter" class="step step-1" />
+     <use xlink:href="#mc20524f11d" x="150.48307" y="79.894717" style="fill: #08519c; stroke: #ffffff; stroke-width: 0.6; stroke-linejoin: miter" class="step step-2" />
     </g>
    </g>
    <g id="line2d_73">
     <g clip-path="url(#p2160b7242b)">
-     <use xlink:href="#mc20524f11d" x="177.80978" y="76.387046" style="fill: #08519c; stroke: #ffffff; stroke-width: 0.6; stroke-linejoin: miter" class="step step-1" />
+     <use xlink:href="#mc20524f11d" x="177.80978" y="76.387046" style="fill: #08519c; stroke: #ffffff; stroke-width: 0.6; stroke-linejoin: miter" class="step step-2" />
     </g>
    </g>
    <g id="line2d_74">
     <g clip-path="url(#p2160b7242b)">
-     <use xlink:href="#mc20524f11d" x="205.136491" y="76.222337" style="fill: #08519c; stroke: #ffffff; stroke-width: 0.6; stroke-linejoin: miter" class="step step-1" />
+     <use xlink:href="#mc20524f11d" x="205.136491" y="76.222337" style="fill: #08519c; stroke: #ffffff; stroke-width: 0.6; stroke-linejoin: miter" class="step step-2" />
     </g>
    </g>
    <g id="line2d_75">
@@ -715,32 +715,32 @@ export default {
      <path id="mf4dd64d946" d="M -0 3.5  L 3.5 -3.5  L -3.5 -3.5  z " style="stroke: #ffffff; stroke-width: 0.6; stroke-linejoin: miter" />
     </defs>
     <g clip-path="url(#p2160b7242b)">
-     <use xlink:href="#mf4dd64d946" x="70.962342" y="123.861722" style="fill: #c0a898; stroke: #ffffff; stroke-width: 0.6; stroke-linejoin: miter" class="step step-3" />
+     <use xlink:href="#mf4dd64d946" x="70.962342" y="123.861722" style="fill: #c0a898; stroke: #ffffff; stroke-width: 0.6; stroke-linejoin: miter" class="step step-4" />
     </g>
    </g>
    <g id="line2d_76">
     <g clip-path="url(#p2160b7242b)">
-     <use xlink:href="#mf4dd64d946" x="98.289052" y="132.996119" style="fill: #c0a898; stroke: #ffffff; stroke-width: 0.6; stroke-linejoin: miter" class="step step-3" />
+     <use xlink:href="#mf4dd64d946" x="98.289052" y="132.996119" style="fill: #c0a898; stroke: #ffffff; stroke-width: 0.6; stroke-linejoin: miter" class="step step-4" />
     </g>
    </g>
    <g id="line2d_77">
     <g clip-path="url(#p2160b7242b)">
-     <use xlink:href="#mf4dd64d946" x="125.615763" y="137.910988" style="fill: #c0a898; stroke: #ffffff; stroke-width: 0.6; stroke-linejoin: miter" class="step step-3" />
+     <use xlink:href="#mf4dd64d946" x="125.615763" y="137.910988" style="fill: #c0a898; stroke: #ffffff; stroke-width: 0.6; stroke-linejoin: miter" class="step step-4" />
     </g>
    </g>
    <g id="line2d_78">
     <g clip-path="url(#p2160b7242b)">
-     <use xlink:href="#mf4dd64d946" x="152.942474" y="133.78275" style="fill: #c0a898; stroke: #ffffff; stroke-width: 0.6; stroke-linejoin: miter" class="step step-3" />
+     <use xlink:href="#mf4dd64d946" x="152.942474" y="133.78275" style="fill: #c0a898; stroke: #ffffff; stroke-width: 0.6; stroke-linejoin: miter" class="step step-4" />
     </g>
    </g>
    <g id="line2d_79">
     <g clip-path="url(#p2160b7242b)">
-     <use xlink:href="#mf4dd64d946" x="180.269184" y="134.906426" style="fill: #c0a898; stroke: #ffffff; stroke-width: 0.6; stroke-linejoin: miter" class="step step-3" />
+     <use xlink:href="#mf4dd64d946" x="180.269184" y="134.906426" style="fill: #c0a898; stroke: #ffffff; stroke-width: 0.6; stroke-linejoin: miter" class="step step-4" />
     </g>
    </g>
    <g id="line2d_80">
     <g clip-path="url(#p2160b7242b)">
-     <use xlink:href="#mf4dd64d946" x="207.595895" y="134.999505" style="fill: #c0a898; stroke: #ffffff; stroke-width: 0.6; stroke-linejoin: miter" class="step step-3" />
+     <use xlink:href="#mf4dd64d946" x="207.595895" y="134.999505" style="fill: #c0a898; stroke: #ffffff; stroke-width: 0.6; stroke-linejoin: miter" class="step step-4" />
     </g>
    </g>
    <g id="LineCollection_19">
@@ -1065,81 +1065,81 @@ export default {
     </g>
    </g>
    <g id="LineCollection_20">
-    <path d="M 322.151323 116.163872  L 322.151323 110.9873  " clip-path="url(#p032d4bc2aa)" style="fill: none; stroke: #6baed6; stroke-width: 0.7" class="step step-2" />
+    <path d="M 322.151323 116.163872  L 322.151323 110.9873  " clip-path="url(#p032d4bc2aa)" style="fill: none; stroke: #6baed6; stroke-width: 0.7" class="step step-3" />
    </g>
    <g id="line2d_112">
     <g clip-path="url(#p032d4bc2aa)">
-     <use xlink:href="#m570ee37bc7" x="322.151323" y="116.163872" style="fill: #6baed6; stroke: #6baed6; stroke-width: 0.6" class="step step-2" />
+     <use xlink:href="#m570ee37bc7" x="322.151323" y="116.163872" style="fill: #6baed6; stroke: #6baed6; stroke-width: 0.6" class="step step-3" />
     </g>
    </g>
    <g id="line2d_113">
     <g clip-path="url(#p032d4bc2aa)">
-     <use xlink:href="#m570ee37bc7" x="322.151323" y="110.9873" style="fill: #6baed6; stroke: #6baed6; stroke-width: 0.6" class="step step-2" />
+     <use xlink:href="#m570ee37bc7" x="322.151323" y="110.9873" style="fill: #6baed6; stroke: #6baed6; stroke-width: 0.6" class="step step-3" />
     </g>
    </g>
    <g id="LineCollection_21">
-    <path d="M 349.478034 109.872019  L 349.478034 103.579416  " clip-path="url(#p032d4bc2aa)" style="fill: none; stroke: #6baed6; stroke-width: 0.7" class="step step-2" />
+    <path d="M 349.478034 109.872019  L 349.478034 103.579416  " clip-path="url(#p032d4bc2aa)" style="fill: none; stroke: #6baed6; stroke-width: 0.7" class="step step-3" />
    </g>
    <g id="line2d_114">
     <g clip-path="url(#p032d4bc2aa)">
-     <use xlink:href="#m570ee37bc7" x="349.478034" y="109.872019" style="fill: #6baed6; stroke: #6baed6; stroke-width: 0.6" class="step step-2" />
+     <use xlink:href="#m570ee37bc7" x="349.478034" y="109.872019" style="fill: #6baed6; stroke: #6baed6; stroke-width: 0.6" class="step step-3" />
     </g>
    </g>
    <g id="line2d_115">
     <g clip-path="url(#p032d4bc2aa)">
-     <use xlink:href="#m570ee37bc7" x="349.478034" y="103.579416" style="fill: #6baed6; stroke: #6baed6; stroke-width: 0.6" class="step step-2" />
+     <use xlink:href="#m570ee37bc7" x="349.478034" y="103.579416" style="fill: #6baed6; stroke: #6baed6; stroke-width: 0.6" class="step step-3" />
     </g>
    </g>
    <g id="LineCollection_22">
-    <path d="M 376.804745 69.161508  L 376.804745 62.603242  " clip-path="url(#p032d4bc2aa)" style="fill: none; stroke: #6baed6; stroke-width: 0.7" class="step step-2" />
+    <path d="M 376.804745 69.161508  L 376.804745 62.603242  " clip-path="url(#p032d4bc2aa)" style="fill: none; stroke: #6baed6; stroke-width: 0.7" class="step step-3" />
    </g>
    <g id="line2d_116">
     <g clip-path="url(#p032d4bc2aa)">
-     <use xlink:href="#m570ee37bc7" x="376.804745" y="69.161508" style="fill: #6baed6; stroke: #6baed6; stroke-width: 0.6" class="step step-2" />
+     <use xlink:href="#m570ee37bc7" x="376.804745" y="69.161508" style="fill: #6baed6; stroke: #6baed6; stroke-width: 0.6" class="step step-3" />
     </g>
    </g>
    <g id="line2d_117">
     <g clip-path="url(#p032d4bc2aa)">
-     <use xlink:href="#m570ee37bc7" x="376.804745" y="62.603242" style="fill: #6baed6; stroke: #6baed6; stroke-width: 0.6" class="step step-2" />
+     <use xlink:href="#m570ee37bc7" x="376.804745" y="62.603242" style="fill: #6baed6; stroke: #6baed6; stroke-width: 0.6" class="step step-3" />
     </g>
    </g>
    <g id="LineCollection_23">
-    <path d="M 404.131455 74.770595  L 404.131455 68.809859  " clip-path="url(#p032d4bc2aa)" style="fill: none; stroke: #6baed6; stroke-width: 0.7" class="step step-2" />
+    <path d="M 404.131455 74.770595  L 404.131455 68.809859  " clip-path="url(#p032d4bc2aa)" style="fill: none; stroke: #6baed6; stroke-width: 0.7" class="step step-3" />
    </g>
    <g id="line2d_118">
     <g clip-path="url(#p032d4bc2aa)">
-     <use xlink:href="#m570ee37bc7" x="404.131455" y="74.770595" style="fill: #6baed6; stroke: #6baed6; stroke-width: 0.6" class="step step-2" />
+     <use xlink:href="#m570ee37bc7" x="404.131455" y="74.770595" style="fill: #6baed6; stroke: #6baed6; stroke-width: 0.6" class="step step-3" />
     </g>
    </g>
    <g id="line2d_119">
     <g clip-path="url(#p032d4bc2aa)">
-     <use xlink:href="#m570ee37bc7" x="404.131455" y="68.809859" style="fill: #6baed6; stroke: #6baed6; stroke-width: 0.6" class="step step-2" />
+     <use xlink:href="#m570ee37bc7" x="404.131455" y="68.809859" style="fill: #6baed6; stroke: #6baed6; stroke-width: 0.6" class="step step-3" />
     </g>
    </g>
    <g id="LineCollection_24">
-    <path d="M 431.458166 51.29742  L 431.458166 44.637834  " clip-path="url(#p032d4bc2aa)" style="fill: none; stroke: #6baed6; stroke-width: 0.7" class="step step-2" />
+    <path d="M 431.458166 51.29742  L 431.458166 44.637834  " clip-path="url(#p032d4bc2aa)" style="fill: none; stroke: #6baed6; stroke-width: 0.7" class="step step-3" />
    </g>
    <g id="line2d_120">
     <g clip-path="url(#p032d4bc2aa)">
-     <use xlink:href="#m570ee37bc7" x="431.458166" y="51.29742" style="fill: #6baed6; stroke: #6baed6; stroke-width: 0.6" class="step step-2" />
+     <use xlink:href="#m570ee37bc7" x="431.458166" y="51.29742" style="fill: #6baed6; stroke: #6baed6; stroke-width: 0.6" class="step step-3" />
     </g>
    </g>
    <g id="line2d_121">
     <g clip-path="url(#p032d4bc2aa)">
-     <use xlink:href="#m570ee37bc7" x="431.458166" y="44.637834" style="fill: #6baed6; stroke: #6baed6; stroke-width: 0.6" class="step step-2" />
+     <use xlink:href="#m570ee37bc7" x="431.458166" y="44.637834" style="fill: #6baed6; stroke: #6baed6; stroke-width: 0.6" class="step step-3" />
     </g>
    </g>
    <g id="LineCollection_25">
-    <path d="M 458.784877 55.198192  L 458.784877 48.690286  " clip-path="url(#p032d4bc2aa)" style="fill: none; stroke: #6baed6; stroke-width: 0.7" class="step step-2" />
+    <path d="M 458.784877 55.198192  L 458.784877 48.690286  " clip-path="url(#p032d4bc2aa)" style="fill: none; stroke: #6baed6; stroke-width: 0.7" class="step step-3" />
    </g>
    <g id="line2d_122">
     <g clip-path="url(#p032d4bc2aa)">
-     <use xlink:href="#m570ee37bc7" x="458.784877" y="55.198192" style="fill: #6baed6; stroke: #6baed6; stroke-width: 0.6" class="step step-2" />
+     <use xlink:href="#m570ee37bc7" x="458.784877" y="55.198192" style="fill: #6baed6; stroke: #6baed6; stroke-width: 0.6" class="step step-3" />
     </g>
    </g>
    <g id="line2d_123">
     <g clip-path="url(#p032d4bc2aa)">
-     <use xlink:href="#m570ee37bc7" x="458.784877" y="48.690286" style="fill: #6baed6; stroke: #6baed6; stroke-width: 0.6" class="step step-2" />
+     <use xlink:href="#m570ee37bc7" x="458.784877" y="48.690286" style="fill: #6baed6; stroke: #6baed6; stroke-width: 0.6" class="step step-3" />
     </g>
    </g>
    <g id="LineCollection_26">
@@ -1156,176 +1156,176 @@ export default {
     </g>
    </g>
    <g id="LineCollection_27">
-    <path d="M 351.937438 68.49553  L 351.937438 61.738866  " clip-path="url(#p032d4bc2aa)" style="fill: none; stroke: #08519c; stroke-width: 0.7" class="step step-1" />
+    <path d="M 351.937438 68.49553  L 351.937438 61.738866  " clip-path="url(#p032d4bc2aa)" style="fill: none; stroke: #08519c; stroke-width: 0.7" class="step step-2" />
    </g>
    <g id="line2d_126">
     <g clip-path="url(#p032d4bc2aa)">
-     <use xlink:href="#m8fb5b3c33b" x="351.937438" y="68.49553" style="fill: #08519c; stroke: #08519c; stroke-width: 0.6" class="step step-1" />
+     <use xlink:href="#m8fb5b3c33b" x="351.937438" y="68.49553" style="fill: #08519c; stroke: #08519c; stroke-width: 0.6" class="step step-2" />
     </g>
    </g>
    <g id="line2d_127">
     <g clip-path="url(#p032d4bc2aa)">
-     <use xlink:href="#m8fb5b3c33b" x="351.937438" y="61.738866" style="fill: #08519c; stroke: #08519c; stroke-width: 0.6" class="step step-1" />
+     <use xlink:href="#m8fb5b3c33b" x="351.937438" y="61.738866" style="fill: #08519c; stroke: #08519c; stroke-width: 0.6" class="step step-2" />
     </g>
    </g>
    <g id="LineCollection_28">
-    <path d="M 379.264149 49.303742  L 379.264149 42.780972  " clip-path="url(#p032d4bc2aa)" style="fill: none; stroke: #08519c; stroke-width: 0.7" class="step step-1" />
+    <path d="M 379.264149 49.303742  L 379.264149 42.780972  " clip-path="url(#p032d4bc2aa)" style="fill: none; stroke: #08519c; stroke-width: 0.7" class="step step-2" />
    </g>
    <g id="line2d_128">
     <g clip-path="url(#p032d4bc2aa)">
-     <use xlink:href="#m8fb5b3c33b" x="379.264149" y="49.303742" style="fill: #08519c; stroke: #08519c; stroke-width: 0.6" class="step step-1" />
+     <use xlink:href="#m8fb5b3c33b" x="379.264149" y="49.303742" style="fill: #08519c; stroke: #08519c; stroke-width: 0.6" class="step step-2" />
     </g>
    </g>
    <g id="line2d_129">
     <g clip-path="url(#p032d4bc2aa)">
-     <use xlink:href="#m8fb5b3c33b" x="379.264149" y="42.780972" style="fill: #08519c; stroke: #08519c; stroke-width: 0.6" class="step step-1" />
+     <use xlink:href="#m8fb5b3c33b" x="379.264149" y="42.780972" style="fill: #08519c; stroke: #08519c; stroke-width: 0.6" class="step step-2" />
     </g>
    </g>
    <g id="LineCollection_29">
-    <path d="M 406.590859 45.051246  L 406.590859 38.499038  " clip-path="url(#p032d4bc2aa)" style="fill: none; stroke: #08519c; stroke-width: 0.7" class="step step-1" />
+    <path d="M 406.590859 45.051246  L 406.590859 38.499038  " clip-path="url(#p032d4bc2aa)" style="fill: none; stroke: #08519c; stroke-width: 0.7" class="step step-2" />
    </g>
    <g id="line2d_130">
     <g clip-path="url(#p032d4bc2aa)">
-     <use xlink:href="#m8fb5b3c33b" x="406.590859" y="45.051246" style="fill: #08519c; stroke: #08519c; stroke-width: 0.6" class="step step-1" />
+     <use xlink:href="#m8fb5b3c33b" x="406.590859" y="45.051246" style="fill: #08519c; stroke: #08519c; stroke-width: 0.6" class="step step-2" />
     </g>
    </g>
    <g id="line2d_131">
     <g clip-path="url(#p032d4bc2aa)">
-     <use xlink:href="#m8fb5b3c33b" x="406.590859" y="38.499038" style="fill: #08519c; stroke: #08519c; stroke-width: 0.6" class="step step-1" />
+     <use xlink:href="#m8fb5b3c33b" x="406.590859" y="38.499038" style="fill: #08519c; stroke: #08519c; stroke-width: 0.6" class="step step-2" />
     </g>
    </g>
    <g id="LineCollection_30">
-    <path d="M 433.91757 46.822457  L 433.91757 40.634584  " clip-path="url(#p032d4bc2aa)" style="fill: none; stroke: #08519c; stroke-width: 0.7" class="step step-1" />
+    <path d="M 433.91757 46.822457  L 433.91757 40.634584  " clip-path="url(#p032d4bc2aa)" style="fill: none; stroke: #08519c; stroke-width: 0.7" class="step step-2" />
    </g>
    <g id="line2d_132">
     <g clip-path="url(#p032d4bc2aa)">
-     <use xlink:href="#m8fb5b3c33b" x="433.91757" y="46.822457" style="fill: #08519c; stroke: #08519c; stroke-width: 0.6" class="step step-1" />
+     <use xlink:href="#m8fb5b3c33b" x="433.91757" y="46.822457" style="fill: #08519c; stroke: #08519c; stroke-width: 0.6" class="step step-2" />
     </g>
    </g>
    <g id="line2d_133">
     <g clip-path="url(#p032d4bc2aa)">
-     <use xlink:href="#m8fb5b3c33b" x="433.91757" y="40.634584" style="fill: #08519c; stroke: #08519c; stroke-width: 0.6" class="step step-1" />
+     <use xlink:href="#m8fb5b3c33b" x="433.91757" y="40.634584" style="fill: #08519c; stroke: #08519c; stroke-width: 0.6" class="step step-2" />
     </g>
    </g>
    <g id="LineCollection_31">
-    <path d="M 461.244281 44.033384  L 461.244281 37.6949  " clip-path="url(#p032d4bc2aa)" style="fill: none; stroke: #08519c; stroke-width: 0.7" class="step step-1" />
+    <path d="M 461.244281 44.033384  L 461.244281 37.6949  " clip-path="url(#p032d4bc2aa)" style="fill: none; stroke: #08519c; stroke-width: 0.7" class="step step-2" />
    </g>
    <g id="line2d_134">
     <g clip-path="url(#p032d4bc2aa)">
-     <use xlink:href="#m8fb5b3c33b" x="461.244281" y="44.033384" style="fill: #08519c; stroke: #08519c; stroke-width: 0.6" class="step step-1" />
+     <use xlink:href="#m8fb5b3c33b" x="461.244281" y="44.033384" style="fill: #08519c; stroke: #08519c; stroke-width: 0.6" class="step step-2" />
     </g>
    </g>
    <g id="line2d_135">
     <g clip-path="url(#p032d4bc2aa)">
-     <use xlink:href="#m8fb5b3c33b" x="461.244281" y="37.6949" style="fill: #08519c; stroke: #08519c; stroke-width: 0.6" class="step step-1" />
+     <use xlink:href="#m8fb5b3c33b" x="461.244281" y="37.6949" style="fill: #08519c; stroke: #08519c; stroke-width: 0.6" class="step step-2" />
     </g>
    </g>
    <g id="LineCollection_32">
-    <path d="M 327.070131 174.655226  L 327.070131 170.897211  " clip-path="url(#p032d4bc2aa)" style="fill: none; stroke: #c0a898; stroke-width: 0.7" class="step step-3" />
+    <path d="M 327.070131 174.655226  L 327.070131 170.897211  " clip-path="url(#p032d4bc2aa)" style="fill: none; stroke: #c0a898; stroke-width: 0.7" class="step step-4" />
    </g>
    <g id="line2d_136">
     <g clip-path="url(#p032d4bc2aa)">
-     <use xlink:href="#mff2237f455" x="327.070131" y="174.655226" style="fill: #c0a898; stroke: #c0a898; stroke-width: 0.6" class="step step-3" />
+     <use xlink:href="#mff2237f455" x="327.070131" y="174.655226" style="fill: #c0a898; stroke: #c0a898; stroke-width: 0.6" class="step step-4" />
     </g>
    </g>
    <g id="line2d_137">
     <g clip-path="url(#p032d4bc2aa)">
-     <use xlink:href="#mff2237f455" x="327.070131" y="170.897211" style="fill: #c0a898; stroke: #c0a898; stroke-width: 0.6" class="step step-3" />
+     <use xlink:href="#mff2237f455" x="327.070131" y="170.897211" style="fill: #c0a898; stroke: #c0a898; stroke-width: 0.6" class="step step-4" />
     </g>
    </g>
    <g id="LineCollection_33">
-    <path d="M 354.396842 177.161478  L 354.396842 173.341559  " clip-path="url(#p032d4bc2aa)" style="fill: none; stroke: #c0a898; stroke-width: 0.7" class="step step-3" />
+    <path d="M 354.396842 177.161478  L 354.396842 173.341559  " clip-path="url(#p032d4bc2aa)" style="fill: none; stroke: #c0a898; stroke-width: 0.7" class="step step-4" />
    </g>
    <g id="line2d_138">
     <g clip-path="url(#p032d4bc2aa)">
-     <use xlink:href="#mff2237f455" x="354.396842" y="177.161478" style="fill: #c0a898; stroke: #c0a898; stroke-width: 0.6" class="step step-3" />
+     <use xlink:href="#mff2237f455" x="354.396842" y="177.161478" style="fill: #c0a898; stroke: #c0a898; stroke-width: 0.6" class="step step-4" />
     </g>
    </g>
    <g id="line2d_139">
     <g clip-path="url(#p032d4bc2aa)">
-     <use xlink:href="#mff2237f455" x="354.396842" y="173.341559" style="fill: #c0a898; stroke: #c0a898; stroke-width: 0.6" class="step step-3" />
+     <use xlink:href="#mff2237f455" x="354.396842" y="173.341559" style="fill: #c0a898; stroke: #c0a898; stroke-width: 0.6" class="step step-4" />
     </g>
    </g>
    <g id="LineCollection_34">
-    <path d="M 381.723553 176.855041  L 381.723553 172.950731  " clip-path="url(#p032d4bc2aa)" style="fill: none; stroke: #c0a898; stroke-width: 0.7" class="step step-3" />
+    <path d="M 381.723553 176.855041  L 381.723553 172.950731  " clip-path="url(#p032d4bc2aa)" style="fill: none; stroke: #c0a898; stroke-width: 0.7" class="step step-4" />
    </g>
    <g id="line2d_140">
     <g clip-path="url(#p032d4bc2aa)">
-     <use xlink:href="#mff2237f455" x="381.723553" y="176.855041" style="fill: #c0a898; stroke: #c0a898; stroke-width: 0.6" class="step step-3" />
+     <use xlink:href="#mff2237f455" x="381.723553" y="176.855041" style="fill: #c0a898; stroke: #c0a898; stroke-width: 0.6" class="step step-4" />
     </g>
    </g>
    <g id="line2d_141">
     <g clip-path="url(#p032d4bc2aa)">
-     <use xlink:href="#mff2237f455" x="381.723553" y="172.950731" style="fill: #c0a898; stroke: #c0a898; stroke-width: 0.6" class="step step-3" />
+     <use xlink:href="#mff2237f455" x="381.723553" y="172.950731" style="fill: #c0a898; stroke: #c0a898; stroke-width: 0.6" class="step step-4" />
     </g>
    </g>
    <g id="LineCollection_35">
-    <path d="M 409.050263 167.530025  L 409.050263 163.778516  " clip-path="url(#p032d4bc2aa)" style="fill: none; stroke: #c0a898; stroke-width: 0.7" class="step step-3" />
+    <path d="M 409.050263 167.530025  L 409.050263 163.778516  " clip-path="url(#p032d4bc2aa)" style="fill: none; stroke: #c0a898; stroke-width: 0.7" class="step step-4" />
    </g>
    <g id="line2d_142">
     <g clip-path="url(#p032d4bc2aa)">
-     <use xlink:href="#mff2237f455" x="409.050263" y="167.530025" style="fill: #c0a898; stroke: #c0a898; stroke-width: 0.6" class="step step-3" />
+     <use xlink:href="#mff2237f455" x="409.050263" y="167.530025" style="fill: #c0a898; stroke: #c0a898; stroke-width: 0.6" class="step step-4" />
     </g>
    </g>
    <g id="line2d_143">
     <g clip-path="url(#p032d4bc2aa)">
-     <use xlink:href="#mff2237f455" x="409.050263" y="163.778516" style="fill: #c0a898; stroke: #c0a898; stroke-width: 0.6" class="step step-3" />
+     <use xlink:href="#mff2237f455" x="409.050263" y="163.778516" style="fill: #c0a898; stroke: #c0a898; stroke-width: 0.6" class="step step-4" />
     </g>
    </g>
    <g id="LineCollection_36">
-    <path d="M 436.376974 167.769122  L 436.376974 164.00994  " clip-path="url(#p032d4bc2aa)" style="fill: none; stroke: #c0a898; stroke-width: 0.7" class="step step-3" />
+    <path d="M 436.376974 167.769122  L 436.376974 164.00994  " clip-path="url(#p032d4bc2aa)" style="fill: none; stroke: #c0a898; stroke-width: 0.7" class="step step-4" />
    </g>
    <g id="line2d_144">
     <g clip-path="url(#p032d4bc2aa)">
-     <use xlink:href="#mff2237f455" x="436.376974" y="167.769122" style="fill: #c0a898; stroke: #c0a898; stroke-width: 0.6" class="step step-3" />
+     <use xlink:href="#mff2237f455" x="436.376974" y="167.769122" style="fill: #c0a898; stroke: #c0a898; stroke-width: 0.6" class="step step-4" />
     </g>
    </g>
    <g id="line2d_145">
     <g clip-path="url(#p032d4bc2aa)">
-     <use xlink:href="#mff2237f455" x="436.376974" y="164.00994" style="fill: #c0a898; stroke: #c0a898; stroke-width: 0.6" class="step step-3" />
+     <use xlink:href="#mff2237f455" x="436.376974" y="164.00994" style="fill: #c0a898; stroke: #c0a898; stroke-width: 0.6" class="step step-4" />
     </g>
    </g>
    <g id="LineCollection_37">
-    <path d="M 463.703685 167.642298  L 463.703685 163.804248  " clip-path="url(#p032d4bc2aa)" style="fill: none; stroke: #c0a898; stroke-width: 0.7" class="step step-3" />
+    <path d="M 463.703685 167.642298  L 463.703685 163.804248  " clip-path="url(#p032d4bc2aa)" style="fill: none; stroke: #c0a898; stroke-width: 0.7" class="step step-4" />
    </g>
    <g id="line2d_146">
     <g clip-path="url(#p032d4bc2aa)">
-     <use xlink:href="#mff2237f455" x="463.703685" y="167.642298" style="fill: #c0a898; stroke: #c0a898; stroke-width: 0.6" class="step step-3" />
+     <use xlink:href="#mff2237f455" x="463.703685" y="167.642298" style="fill: #c0a898; stroke: #c0a898; stroke-width: 0.6" class="step step-4" />
     </g>
    </g>
    <g id="line2d_147">
     <g clip-path="url(#p032d4bc2aa)">
-     <use xlink:href="#mff2237f455" x="463.703685" y="163.804248" style="fill: #c0a898; stroke: #c0a898; stroke-width: 0.6" class="step step-3" />
+     <use xlink:href="#mff2237f455" x="463.703685" y="163.804248" style="fill: #c0a898; stroke: #c0a898; stroke-width: 0.6" class="step step-4" />
     </g>
    </g>
    <g id="line2d_148">
     <g clip-path="url(#p032d4bc2aa)">
-     <use xlink:href="#m7c5241567a" x="322.151323" y="113.643839" style="fill: #6baed6; stroke: #ffffff; stroke-width: 0.6" class="step step-2" />
+     <use xlink:href="#m7c5241567a" x="322.151323" y="113.643839" style="fill: #6baed6; stroke: #ffffff; stroke-width: 0.6" class="step step-3" />
     </g>
    </g>
    <g id="line2d_149">
     <g clip-path="url(#p032d4bc2aa)">
-     <use xlink:href="#m7c5241567a" x="349.478034" y="106.657453" style="fill: #6baed6; stroke: #ffffff; stroke-width: 0.6" class="step step-2" />
+     <use xlink:href="#m7c5241567a" x="349.478034" y="106.657453" style="fill: #6baed6; stroke: #ffffff; stroke-width: 0.6" class="step step-3" />
     </g>
    </g>
    <g id="line2d_150">
     <g clip-path="url(#p032d4bc2aa)">
-     <use xlink:href="#m7c5241567a" x="376.804745" y="65.908685" style="fill: #6baed6; stroke: #ffffff; stroke-width: 0.6" class="step step-2" />
+     <use xlink:href="#m7c5241567a" x="376.804745" y="65.908685" style="fill: #6baed6; stroke: #ffffff; stroke-width: 0.6" class="step step-3" />
     </g>
    </g>
    <g id="line2d_151">
     <g clip-path="url(#p032d4bc2aa)">
-     <use xlink:href="#m7c5241567a" x="404.131455" y="71.748708" style="fill: #6baed6; stroke: #ffffff; stroke-width: 0.6" class="step step-2" />
+     <use xlink:href="#m7c5241567a" x="404.131455" y="71.748708" style="fill: #6baed6; stroke: #ffffff; stroke-width: 0.6" class="step step-3" />
     </g>
    </g>
    <g id="line2d_152">
     <g clip-path="url(#p032d4bc2aa)">
-     <use xlink:href="#m7c5241567a" x="431.458166" y="47.858802" style="fill: #6baed6; stroke: #ffffff; stroke-width: 0.6" class="step step-2" />
+     <use xlink:href="#m7c5241567a" x="431.458166" y="47.858802" style="fill: #6baed6; stroke: #ffffff; stroke-width: 0.6" class="step step-3" />
     </g>
    </g>
    <g id="line2d_153">
     <g clip-path="url(#p032d4bc2aa)">
-     <use xlink:href="#m7c5241567a" x="458.784877" y="51.893349" style="fill: #6baed6; stroke: #ffffff; stroke-width: 0.6" class="step step-2" />
+     <use xlink:href="#m7c5241567a" x="458.784877" y="51.893349" style="fill: #6baed6; stroke: #ffffff; stroke-width: 0.6" class="step step-3" />
     </g>
    </g>
    <g id="line2d_154">
@@ -1335,57 +1335,57 @@ export default {
    </g>
    <g id="line2d_155">
     <g clip-path="url(#p032d4bc2aa)">
-     <use xlink:href="#mc20524f11d" x="351.937438" y="65.222238" style="fill: #08519c; stroke: #ffffff; stroke-width: 0.6; stroke-linejoin: miter" class="step step-1" />
+     <use xlink:href="#mc20524f11d" x="351.937438" y="65.222238" style="fill: #08519c; stroke: #ffffff; stroke-width: 0.6; stroke-linejoin: miter" class="step step-2" />
     </g>
    </g>
    <g id="line2d_156">
     <g clip-path="url(#p032d4bc2aa)">
-     <use xlink:href="#mc20524f11d" x="379.264149" y="46.04086" style="fill: #08519c; stroke: #ffffff; stroke-width: 0.6; stroke-linejoin: miter" class="step step-1" />
+     <use xlink:href="#mc20524f11d" x="379.264149" y="46.04086" style="fill: #08519c; stroke: #ffffff; stroke-width: 0.6; stroke-linejoin: miter" class="step step-2" />
     </g>
    </g>
    <g id="line2d_157">
     <g clip-path="url(#p032d4bc2aa)">
-     <use xlink:href="#mc20524f11d" x="406.590859" y="41.853793" style="fill: #08519c; stroke: #ffffff; stroke-width: 0.6; stroke-linejoin: miter" class="step step-1" />
+     <use xlink:href="#mc20524f11d" x="406.590859" y="41.853793" style="fill: #08519c; stroke: #ffffff; stroke-width: 0.6; stroke-linejoin: miter" class="step step-2" />
     </g>
    </g>
    <g id="line2d_158">
     <g clip-path="url(#p032d4bc2aa)">
-     <use xlink:href="#mc20524f11d" x="433.91757" y="43.720523" style="fill: #08519c; stroke: #ffffff; stroke-width: 0.6; stroke-linejoin: miter" class="step step-1" />
+     <use xlink:href="#mc20524f11d" x="433.91757" y="43.720523" style="fill: #08519c; stroke: #ffffff; stroke-width: 0.6; stroke-linejoin: miter" class="step step-2" />
     </g>
    </g>
    <g id="line2d_159">
     <g clip-path="url(#p032d4bc2aa)">
-     <use xlink:href="#mc20524f11d" x="461.244281" y="40.87858" style="fill: #08519c; stroke: #ffffff; stroke-width: 0.6; stroke-linejoin: miter" class="step step-1" />
+     <use xlink:href="#mc20524f11d" x="461.244281" y="40.87858" style="fill: #08519c; stroke: #ffffff; stroke-width: 0.6; stroke-linejoin: miter" class="step step-2" />
     </g>
    </g>
    <g id="line2d_160">
     <g clip-path="url(#p032d4bc2aa)">
-     <use xlink:href="#mf4dd64d946" x="327.070131" y="172.847404" style="fill: #c0a898; stroke: #ffffff; stroke-width: 0.6; stroke-linejoin: miter" class="step step-3" />
+     <use xlink:href="#mf4dd64d946" x="327.070131" y="172.847404" style="fill: #c0a898; stroke: #ffffff; stroke-width: 0.6; stroke-linejoin: miter" class="step step-4" />
     </g>
    </g>
    <g id="line2d_161">
     <g clip-path="url(#p032d4bc2aa)">
-     <use xlink:href="#mf4dd64d946" x="354.396842" y="175.370561" style="fill: #c0a898; stroke: #ffffff; stroke-width: 0.6; stroke-linejoin: miter" class="step step-3" />
+     <use xlink:href="#mf4dd64d946" x="354.396842" y="175.370561" style="fill: #c0a898; stroke: #ffffff; stroke-width: 0.6; stroke-linejoin: miter" class="step step-4" />
     </g>
    </g>
    <g id="line2d_162">
     <g clip-path="url(#p032d4bc2aa)">
-     <use xlink:href="#mf4dd64d946" x="381.723553" y="175.043321" style="fill: #c0a898; stroke: #ffffff; stroke-width: 0.6; stroke-linejoin: miter" class="step step-3" />
+     <use xlink:href="#mf4dd64d946" x="381.723553" y="175.043321" style="fill: #c0a898; stroke: #ffffff; stroke-width: 0.6; stroke-linejoin: miter" class="step step-4" />
     </g>
    </g>
    <g id="line2d_163">
     <g clip-path="url(#p032d4bc2aa)">
-     <use xlink:href="#mf4dd64d946" x="409.050263" y="165.65002" style="fill: #c0a898; stroke: #ffffff; stroke-width: 0.6; stroke-linejoin: miter" class="step step-3" />
+     <use xlink:href="#mf4dd64d946" x="409.050263" y="165.65002" style="fill: #c0a898; stroke: #ffffff; stroke-width: 0.6; stroke-linejoin: miter" class="step step-4" />
     </g>
    </g>
    <g id="line2d_164">
     <g clip-path="url(#p032d4bc2aa)">
-     <use xlink:href="#mf4dd64d946" x="436.376974" y="165.89652" style="fill: #c0a898; stroke: #ffffff; stroke-width: 0.6; stroke-linejoin: miter" class="step step-3" />
+     <use xlink:href="#mf4dd64d946" x="436.376974" y="165.89652" style="fill: #c0a898; stroke: #ffffff; stroke-width: 0.6; stroke-linejoin: miter" class="step step-4" />
     </g>
    </g>
    <g id="line2d_165">
     <g clip-path="url(#p032d4bc2aa)">
-     <use xlink:href="#mf4dd64d946" x="463.703685" y="165.77713" style="fill: #c0a898; stroke: #ffffff; stroke-width: 0.6; stroke-linejoin: miter" class="step step-3" />
+     <use xlink:href="#mf4dd64d946" x="463.703685" y="165.77713" style="fill: #c0a898; stroke: #ffffff; stroke-width: 0.6; stroke-linejoin: miter" class="step step-4" />
     </g>
    </g>
    <g id="LineCollection_38">
@@ -1464,23 +1464,11 @@ export default {
             <svg viewBox="0 0 24 14" class="swatch">
               <rect x="7" y="3" width="10" height="9" fill="#08519c"/>
             </svg>
-            <span>CLIP labels</span>
-          </li>
-          <li class="step step-2">
-            <svg viewBox="0 0 24 14" class="swatch">
-              <circle cx="12" cy="7" r="5" fill="#6baed6"/>
-            </svg>
-            <span>AlexNet labels</span>
-          </li>
-          <li class="step step-3">
-            <svg viewBox="0 0 24 14" class="swatch">
-              <polygon points="12,2 18,12 6,12" fill="#c0a898"/>
-            </svg>
-            <span>Pixel-value labels</span>
+            <span>Coarse labels</span>
           </li>
         </ul>
       </div>
     </section>
   `,
-  steps: 3,
+  steps: 2,
 };

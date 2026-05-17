@@ -12,12 +12,13 @@ a historical artifact of the showcase-v1 build and can be ignored.
 
 ## How to work in this repo
 
-- **Implementation tasks (install, scaffold, write code, refactor) are delegated to
-  GitHub Copilot via the `delegate` skill**, in worktrees branched from `master`.
-  See `~/.claude/skills/delegate/SKILL.md` for the manager/worker protocol.
-- **Claude's job** is planning, design, slide-sequencing review, and merge verification.
+- Treat this file as the repo guide for future Codex/Claude/Copilot sessions.
 - **Never invent slide content.** The user dictates which slides exist, in what order,
   with what text and which images. See `## Slide sequence` below.
+- Keep edits scoped. The deck has many generated/inline SVG blocks; avoid formatting
+  churn inside those blocks unless the chart itself is being changed.
+- The git remote should be:
+  `origin https://github.com/yashsmehta/vss-talk`
 
 ---
 
@@ -33,9 +34,10 @@ vss26/
 ├── styles.css                 # implements DESIGN.md tokens and layouts
 ├── slides/                    # one ES module per slide
 │   ├── 01-title.js
-│   ├── 02-alignment.js
-│   ├── 03-takeaway.js
-│   └── 04-thanks.js
+│   ├── 02-brain-predictivity.js   # available but not wired into shell.js
+│   ├── 03-imagenet.js
+│   ├── ...
+│   └── 14-thanks.js
 ├── images/                    # user-supplied figure assets (PNG / SVG)
 └── assets/                    # legacy/unused placeholder folder
 ```
@@ -81,9 +83,10 @@ vss26/
   `cubic-bezier(.2, .7, .2, 1)`. Subtle horizontal translate + opacity. No bounce,
   no scale, no parallax.
 - **Layout:** slides authored at logical 1920×1080 px, scaled by CSS to fit any
-  viewport. Standard slide padding `96px 140px 80px`. Title block top-left, hairline
-  rule under it (`--rule`), figure area below. Bottom footer strip (`#footer-strip`)
-  with `"COARSE FEEDBACK · VSS 2026"` left, slide counter right.
+  viewport. Standard slide padding comes from CSS variables:
+  `--pad-top: 56px`, `--pad-side: 140px`, `--pad-bottom: 64px`. Title block
+  top-left, hairline rule under it (`--rule`), figure area below. Bottom footer strip
+  (`#footer-strip`) has `"COARSE FEEDBACK · VSS 2026"` left and slide counter right.
 - **All style decisions live in `styles.css` via CSS variables.** Slide modules must
   not define their own colors, fonts, or px-precise font sizes — only layout-specific
   rules (grid columns, figure positioning).
@@ -105,16 +108,21 @@ The user maintains figure assets in `images/` and may use any format.
 - **PDF:** never use as a slide asset. Convert to SVG first (`inkscape foo.pdf
   --export-type=svg` or `pdftocairo -svg foo.pdf`).
 
-### Image inventory (as of last sync)
+### Image inventory
 
-Files currently in `images/`. The user will tell us which slide each one goes on.
+Files currently in `images/`. Some are active in the current slide sequence, while
+others are retained as source/alternate assets.
 
 | File | Format | Likely use |
 |---|---|---|
-| `personal_website_qr.png` | PNG | QR linking to author site |
+| `qr-code.svg` | SVG | QR linking to author website |
+| `arxiv-qr.svg` | SVG | QR linking to arXiv preprint |
 | `imagenet_1000.svg` | SVG | ImageNet 1000-class scatter |
 | `pca_method.svg` | SVG | PCA-based binary split schematic |
-| `pc_scatter.svg` | SVG | PC-coloured scatter (likely at multiple class counts) |
+| `pc_scatter.svg` | SVG | PC-coloured scatter source/alternate |
+| `pc_scatter_panel_1.svg` | SVG | PC scatter panel: behavior |
+| `pc_scatter_panel_2.svg` | SVG | PC scatter panel: AlexNet |
+| `pc_scatter_panel_3.svg` | SVG | PC scatter panel: coarse/CLIP CNN |
 | `deep-neural-network-classification.png` | PNG | ANN architecture diagram |
 | `representations.svg` | SVG | Internal-representation visualisation |
 | `nsd_description.png` | PNG | NSD methods schematic |
@@ -124,9 +132,11 @@ Files currently in `images/`. The user will tell us which slide each one goes on
 | `rsa_schematic_model.svg` | SVG | Model RSA pipeline |
 | `things_coarse_results.svg` | SVG | THINGS alignment results (likely build-up) |
 | `things_model_comparison.svg` | SVG | Comparison vs. pretrained models |
+| `jhu-wordmark.svg` | SVG | Title-slide institutional mark |
+| `images/team/*` | JPG | Thanks-slide team portraits |
 
-When the user dictates the slide sequence, map each image to its slide here and
-update the relevant slide file. Until then, do not invent assignments.
+Do not add an image to a slide unless the user asks for that content or the image is
+already clearly part of the slide's existing design.
 
 ---
 
@@ -134,28 +144,33 @@ update the relevant slide file. Until then, do not invent assignments.
 
 | # | File | Content | Images |
 |---|---|---|---|
-| 1 | `01-title.js` | Title, author, QR | `personal_website_qr.png` |
-| 2 | `03-imagenet.js` | Deep learning trends toward finer feedback | `imagenet_1000.svg` |
-| 3 | `04-pca-method.js` | What if the feedback signal were coarser? | inline SVG |
-| 4 | `05-representations.js` | Coarse training → categorical representations | `representations.svg` |
+| 1 | `01-title.js` | Title, author, QR, JHU wordmark | `qr-code.svg`, `jhu-wordmark.svg` |
+| 2 | `03-imagenet.js` | Fine-grained ImageNet feedback | `imagenet_1000.svg` |
+| 3 | `04-pca-method.js` | Coarsening feedback via PCA splits | inline SVG |
+| 4 | `05-representations.js` | Coarse training yields categorical representations | `representations.svg` |
 | 5 | `06-nsd-schematic.js` | Natural Scenes Dataset overview | `nsd_description.png` |
-| 6 | `08-nsd-result.js` | NSD: comparing neural alignment | inline SVG |
-| 7 | `09-things-schematic.js` | THINGS database | `things-schematic.png` |
-| 8 | `10-things-result.js` | THINGS: results | `things_coarse_results.svg` |
-| 9 | `11-things-model-comparison.js` | THINGS: model comparison | `things_model_comparison.svg` |
-| 10 | `12-pc-scatter.js` | Internal representations (full-bleed) | `pc_scatter.svg` |
+| 6 | `08-nsd-result.js` | Neural alignment results | inline SVG |
+| 7 | `09-things-schematic.js` | THINGS database overview | `things-schematic.png` |
+| 8 | `10-things-result.js` | Human behavioral alignment | inline SVG |
+| 9 | `11-things-model-comparison.js` | Comparison with pretrained models | inline SVG |
+| 10 | `12-pc-scatter.js` | Internal representations, three panels | `pc_scatter_panel_*.svg` |
 | 11 | `13-takeaway.js` | Takeaway sentence | — |
-| 12 | `14-thanks.js` | Thanks + team portraits | `images/team/*` |
+| 12 | `14-thanks.js` | Thanks, team portraits, preprint QR | `images/team/*`, `arxiv-qr.svg` |
+
+`slides/02-brain-predictivity.js` exists as an available slide module but is not in
+the active `SLIDES` array in `shell.js`.
 
 ---
 
 ## Current state
 
-- **Built:** all 14 slides of the talk sequence are wired up with real assets.
-- **Live:** `python -m http.server 8000` in the repo root, then `http://localhost:8000`.
-- Most slides use the shared `.figure-slide` pattern; slides 06, 07, 08, 12 carry
-  bespoke per-slide CSS (overlay labels, side-by-side panels, two-panel grid,
-  full-bleed figure with overlay column titles).
+- **Built:** 12 active slides are wired in `shell.js`; all use real assets or inline
+  SVG charts.
+- **Live:** `python3 -m http.server 8000` in the repo root, then
+  `http://localhost:8000`.
+- Most slides use the shared `.figure-slide` pattern. Bespoke per-slide CSS exists
+  for title, NSD schematic, RSA, NSD result, THINGS result, model comparison, PC
+  scatter, takeaway, and thanks.
 
 ---
 
@@ -257,7 +272,7 @@ import * as d3 from 'https://cdn.jsdelivr.net/npm/d3@7/+esm';
 ## Running locally
 
 ```bash
-python -m http.server 8000
+python3 -m http.server 8000
 # open http://localhost:8000
 ```
 

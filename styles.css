@@ -231,7 +231,6 @@ p {
   row-gap: 48px;
 }
 
-.takeaway-slide h1::after,
 .thanks-slide h1::after {
   display: none;
 }
@@ -656,7 +655,7 @@ body:has(.title-slide) #footer-strip {
 .granularity-items {
   position: relative;
   display: grid;
-  grid-template-columns: 570px 620px 300px;
+  grid-template-columns: 600px 600px 300px;
   justify-content: start;
   column-gap: 40px;
   align-items: start;
@@ -667,11 +666,15 @@ body:has(.title-slide) #footer-strip {
 
 .granularity-item {
   display: grid;
-  grid-template-rows: minmax(0, 1fr) auto;
+  grid-template-rows: minmax(0, 1fr) auto auto;
   justify-items: center;
-  gap: 22px;
+  row-gap: 0;
   min-width: 0;
   min-height: 0;
+}
+
+.granularity-item .granularity-title {
+  margin-top: 22px;
 }
 
 .granularity-item::before {
@@ -733,7 +736,7 @@ body:has(.title-slide) #footer-strip {
   place-items: center;
   width: 100%;
   min-height: 320px;
-  color: var(--blue);
+  color: var(--ink-muted);
   font-family: var(--font-display);
   font-size: 44px;
   font-style: italic;
@@ -751,6 +754,19 @@ body:has(.title-slide) #footer-strip {
   letter-spacing: -0.01em;
   line-height: 1.1;
   text-align: center;
+}
+
+.granularity-source {
+  margin-top: 6px;
+  color: var(--ink-muted);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: 0.18em;
+  line-height: 1;
+  text-align: center;
+  text-transform: uppercase;
+  opacity: 0.72;
 }
 
 /* ----- Slide 04 (PCA method): replace SVG subplot subtitles with a
@@ -1129,12 +1145,12 @@ body:has(.title-slide) #footer-strip {
   /* Column widths follow each panel's native viewBox width so the three
      scatter plots line up at the same scale. */
   grid-template-columns: 285.43fr 277.32fr 256.28fr;
-  column-gap: 32px;
+  column-gap: 20px;
   width: 100%;
-  max-width: 1560px;
+  max-width: 1760px;
   box-sizing: border-box;
   padding: 0;
-  margin: 24px auto 0;
+  margin: 96px auto 0;
   align-items: end;
 }
 
@@ -1142,7 +1158,7 @@ body:has(.title-slide) #footer-strip {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 18px;
+  gap: 22px;
   min-width: 0;
 }
 
@@ -1214,58 +1230,53 @@ body:has(.title-slide) #footer-strip {
 
 .takeaway-slide {
   display: grid;
-  place-items: center;
-}
-
-.takeaway-slide .hero-sentence {
-  max-width: 22em;
-  font-family: var(--font-display);
-  font-size: 72px;
-  font-weight: 500;
-  letter-spacing: -0.02em;
-  line-height: 1.12;
-  text-align: center;
-}
-
-.takeaway-slide .hero-sentence::before {
-  content: "";
-  display: block;
-  width: 40px;
-  height: 1px;
-  background: var(--orange);
-  margin: 0 auto 32px;
+  grid-template-rows: auto 1fr;
 }
 
 .takeaway-slide .hero-list {
   list-style: none;
   margin: 0;
   padding: 0;
-  width: 1280px;
-  max-width: 100%;
+  align-self: center;
+  width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 56px;
+  gap: 72px;
+  counter-reset: takeaway;
 }
 
 .takeaway-slide .hero-item {
-  position: relative;
-  padding-left: 56px;
-  font-family: var(--font-display);
-  font-size: 56px;
-  font-weight: 500;
-  letter-spacing: -0.02em;
-  line-height: 1.18;
-  color: var(--ink);
+  display: grid;
+  grid-template-columns: 132px 1fr;
+  column-gap: 40px;
+  align-items: start;
 }
 
-.takeaway-slide .hero-item::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0.62em;
-  width: 32px;
-  height: 2px;
-  background: var(--orange);
+.takeaway-slide .hero-num {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  align-self: stretch;
+  padding-right: 36px;
+  border-right: 1px solid var(--rule);
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 84px;
+  font-variation-settings: "opsz" 9;
+  color: var(--orange);
+  letter-spacing: -0.02em;
+  line-height: 0.95;
+}
+
+.takeaway-slide .hero-text {
+  font-family: var(--font-display);
+  font-size: 52px;
+  font-weight: 500;
+  letter-spacing: -0.018em;
+  line-height: 1.2;
+  color: var(--ink);
+  max-width: 22em;
 }
 
 .thanks-slide {
