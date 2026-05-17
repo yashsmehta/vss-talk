@@ -1,6 +1,6 @@
 export default {
   html: `
-    <section class="slide figure-slide things-schematic-slide" style="--fig-max-w: 1320px">
+    <section class="slide figure-slide things-schematic-slide" style="--fig-max-w: 1560px">
       <h1>Alignment to Human Perceptual Similarity</h1>
       <figure>
         <img src="images/things-schematic.png" alt="">
