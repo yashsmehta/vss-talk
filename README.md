@@ -1,12 +1,19 @@
 # VSS 2026 Talk Deck
 
-Self-contained HTML slide deck for Yash Mehta's VSS 2026 talk, *An extremely coarse feedback signal for learning human-aligned visual representations*.
+Self-contained HTML slide deck for Yash Mehta's VSS 2026 talk about the paper *An extremely coarse feedback signal is sufficient for learning human-aligned visual representations*.
+
+## Paper
+
+**An extremely coarse feedback signal is sufficient for learning human-aligned visual representations**  
+Yash Mehta and Michael F. Bonner  
+arXiv: [2605.05556](https://arxiv.org/abs/2605.05556) · DOI: [10.48550/arXiv.2605.05556](https://doi.org/10.48550/arXiv.2605.05556)
 
 The talk asks how far visual representation learning can get with an extremely coarse supervisory signal: instead of using fine-grained ImageNet labels, the model receives binary feedback derived from broad visual similarity structure. The deck walks through that idea, its connection to human and neural alignment, and comparisons against conventional pretrained models.
 
 This repository contains the presentation shell, slide modules, and figure assets for a browser-based talk deck. The deck is authored as plain HTML, CSS, and JavaScript: no bundler, no build step, and no generated framework output. Each slide is an ES module under `slides/`, loaded dynamically by `shell.js`.
 
 - Repository: <https://github.com/yashsmehta/vss-talk>
+- Paper: <https://arxiv.org/abs/2605.05556>
 - Project archive: [download the repository archive](https://github.com/yashsmehta/vss-talk/archive/refs/heads/master.zip)
 - Local entry point: `index.html`
 
