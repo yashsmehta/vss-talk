@@ -1,2 +1,5 @@
 .screens/
 .screenshot.py
+.DS_Store
+.copilot-logs/
+.worktrees/
